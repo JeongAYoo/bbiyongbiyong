@@ -8,11 +8,12 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController {
-    
+final class MainViewController: UIViewController {
+    // MARK: - Properties
     var scrollView = UIScrollView()
     var contentView = MainView()
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +21,7 @@ class MainViewController: UIViewController {
     
     }
     
+    // MARK: - Helpers
     func configureUI() {
         view.backgroundColor = .white
         view.addSubview(scrollView)

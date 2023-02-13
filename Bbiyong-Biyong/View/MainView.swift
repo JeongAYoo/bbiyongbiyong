@@ -10,37 +10,41 @@ import SnapKit
 
 class MainView: UIView {
     // MARK: - Properties
+    private let bbiyongImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "testImage")
+        iv.contentMode = .scaleAspectFit
+        
+        return iv
+    }()
 
     private let monthlyCostTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "이번 달 소비"
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: 32)
+        label.font = .boldSystemFont(ofSize: 28)
 
-        label.backgroundColor = .systemRed
         return label
     }()
 
     private let statisticsTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "사용자님의 통계"
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: 32)
+        label.font = .boldSystemFont(ofSize: 28)
 
-        label.backgroundColor = .systemBlue
         return label
     }()
 
     private let achievementTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "사용자님의 업적"
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: 32)
+        label.font = .boldSystemFont(ofSize: 28)
 
-        label.backgroundColor = .systemGreen
         return label
     }()
 
@@ -49,7 +53,7 @@ class MainView: UIView {
     private let achievementBackgroundView = UIView()
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [monthlyCostTitleLabel, monthlyCostBackgroundView, statisticsTitleLabel, statisticsBackgroundView, achievementTitleLabel, achievementBackgroundView])
+        let stackView = UIStackView(arrangedSubviews: [bbiyongImageView, monthlyCostTitleLabel, monthlyCostBackgroundView, statisticsTitleLabel, statisticsBackgroundView, achievementTitleLabel, achievementBackgroundView])
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
@@ -79,10 +83,22 @@ class MainView: UIView {
 
         [monthlyCostBackgroundView, statisticsBackgroundView, achievementBackgroundView].forEach {
             $0.backgroundColor = .lightGray
+            $0.layer.cornerRadius = 10
+            $0.layer.masksToBounds = true
+        }
+        
+        [monthlyCostTitleLabel, statisticsTitleLabel, achievementTitleLabel].forEach {
+            $0.snp.makeConstraints { make in
+                make.height.lessThanOrEqualTo(60)
+            }
+        }
+        
+        bbiyongImageView.snp.makeConstraints { make in
+            make.height.equalTo(300).priority(999)
         }
 
         monthlyCostBackgroundView.snp.makeConstraints { make in
-            make.height.equalTo(300)
+            make.height.equalTo(100)
         }
 
         statisticsBackgroundView.snp.makeConstraints { make in
@@ -90,7 +106,7 @@ class MainView: UIView {
         }
 
         achievementBackgroundView.snp.makeConstraints { make in
-            make.height.equalTo(300)
+            make.height.equalTo(200)
         }
     }
 

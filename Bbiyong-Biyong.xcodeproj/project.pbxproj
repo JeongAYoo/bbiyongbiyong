@@ -14,6 +14,11 @@
 		071D8E972996DE9F001B3E71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071D8E952996DE9F001B3E71 /* LaunchScreen.storyboard */; };
 		071D8EA22996E797001B3E71 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8EA12996E797001B3E71 /* MainView.swift */; };
 		074178092996F9A30002984B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 074178082996F9A30002984B /* SnapKit */; };
+		07FD2B792997F505000E5088 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B782997F505000E5088 /* RegistrationViewController.swift */; };
+		07FD2B7C2997F733000E5088 /* RegistrainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7B2997F733000E5088 /* RegistrainViewModel.swift */; };
+		07FD2B7F2997FAE8000E5088 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7E2997FAE8000E5088 /* User.swift */; };
+		07FD2B812997FDB2000E5088 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B802997FDB2000E5088 /* CustomTextField.swift */; };
+		07FD2B8429981664000E5088 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 07FD2B8329981664000E5088 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +30,10 @@
 		071D8E962996DE9F001B3E71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		071D8E982996DE9F001B3E71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		071D8EA12996E797001B3E71 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		07FD2B782997F505000E5088 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		07FD2B7B2997F733000E5088 /* RegistrainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrainViewModel.swift; sourceTree = "<group>"; };
+		07FD2B7E2997FAE8000E5088 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		07FD2B802997FDB2000E5088 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				074178092996F9A30002984B /* SnapKit in Frameworks */,
+				07FD2B8429981664000E5088 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +68,7 @@
 		071D8E892996DE9E001B3E71 /* Bbiyong-Biyong */ = {
 			isa = PBXGroup;
 			children = (
+				07FD2B7D2997FA9F000E5088 /* ViewModel */,
 				071D8EA02996E133001B3E71 /* Model */,
 				071D8E9F2996E12C001B3E71 /* View */,
 				071D8E9E2996E11B001B3E71 /* Controller */,
@@ -74,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				071D8E8E2996DE9E001B3E71 /* MainViewController.swift */,
+				07FD2B782997F505000E5088 /* RegistrationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -82,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				071D8EA12996E797001B3E71 /* MainView.swift */,
+				07FD2B802997FDB2000E5088 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -89,8 +102,17 @@
 		071D8EA02996E133001B3E71 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				07FD2B7E2997FAE8000E5088 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		07FD2B7D2997FA9F000E5088 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				07FD2B7B2997F733000E5088 /* RegistrainViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,6 +133,7 @@
 			name = "Bbiyong-Biyong";
 			packageProductDependencies = (
 				074178082996F9A30002984B /* SnapKit */,
+				07FD2B8329981664000E5088 /* IQKeyboardManagerSwift */,
 			);
 			productName = "Bbiyong-Biyong";
 			productReference = 071D8E872996DE9E001B3E71 /* Bbiyong-Biyong.app */;
@@ -142,6 +165,7 @@
 			mainGroup = 071D8E7E2996DE9E001B3E71;
 			packageReferences = (
 				074178072996F9A30002984B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				07FD2B8229981664000E5088 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 071D8E882996DE9E001B3E71 /* Products */;
 			projectDirPath = "";
@@ -171,8 +195,12 @@
 			files = (
 				071D8E8F2996DE9E001B3E71 /* MainViewController.swift in Sources */,
 				071D8EA22996E797001B3E71 /* MainView.swift in Sources */,
+				07FD2B7C2997F733000E5088 /* RegistrainViewModel.swift in Sources */,
 				071D8E8B2996DE9E001B3E71 /* AppDelegate.swift in Sources */,
+				07FD2B812997FDB2000E5088 /* CustomTextField.swift in Sources */,
 				071D8E8D2996DE9E001B3E71 /* SceneDelegate.swift in Sources */,
+				07FD2B792997F505000E5088 /* RegistrationViewController.swift in Sources */,
+				07FD2B7F2997FAE8000E5088 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +426,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		07FD2B8229981664000E5088 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -405,6 +441,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 074178072996F9A30002984B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		07FD2B8329981664000E5088 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07FD2B8229981664000E5088 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
