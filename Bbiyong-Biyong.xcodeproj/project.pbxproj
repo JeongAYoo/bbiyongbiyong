@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		071D8E8B2996DE9E001B3E71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8E8A2996DE9E001B3E71 /* AppDelegate.swift */; };
 		071D8E8D2996DE9E001B3E71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8E8C2996DE9E001B3E71 /* SceneDelegate.swift */; };
-		071D8E8F2996DE9E001B3E71 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8E8E2996DE9E001B3E71 /* MainViewController.swift */; };
+		071D8E8F2996DE9E001B3E71 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8E8E2996DE9E001B3E71 /* HomeViewController.swift */; };
 		071D8E942996DE9F001B3E71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 071D8E932996DE9F001B3E71 /* Assets.xcassets */; };
 		071D8E972996DE9F001B3E71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071D8E952996DE9F001B3E71 /* LaunchScreen.storyboard */; };
 		071D8EA22996E797001B3E71 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8EA12996E797001B3E71 /* MainView.swift */; };
@@ -19,13 +19,17 @@
 		07FD2B7F2997FAE8000E5088 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7E2997FAE8000E5088 /* User.swift */; };
 		07FD2B812997FDB2000E5088 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B802997FDB2000E5088 /* CustomTextField.swift */; };
 		07FD2B8429981664000E5088 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 07FD2B8329981664000E5088 /* IQKeyboardManagerSwift */; };
+		07FD2BB7299CBE0A000E5088 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2BB6299CBE0A000E5088 /* MainTabBarController.swift */; };
+		07FD2BB9299CC434000E5088 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2BB8299CC434000E5088 /* CalendarViewController.swift */; };
+		07FD2BBB299CC440000E5088 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2BBA299CC440000E5088 /* SettingViewController.swift */; };
+		07FD2BBD299D222E000E5088 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2BBC299D222E000E5088 /* ComposeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		071D8E872996DE9E001B3E71 /* Bbiyong-Biyong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bbiyong-Biyong.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		071D8E8A2996DE9E001B3E71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		071D8E8C2996DE9E001B3E71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		071D8E8E2996DE9E001B3E71 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		071D8E8E2996DE9E001B3E71 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		071D8E932996DE9F001B3E71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		071D8E962996DE9F001B3E71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		071D8E982996DE9F001B3E71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,6 +38,10 @@
 		07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		07FD2B7E2997FAE8000E5088 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		07FD2B802997FDB2000E5088 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		07FD2BB6299CBE0A000E5088 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		07FD2BB8299CC434000E5088 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		07FD2BBA299CC440000E5088 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		07FD2BBC299D222E000E5088 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +92,12 @@
 		071D8E9E2996E11B001B3E71 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				071D8E8E2996DE9E001B3E71 /* MainViewController.swift */,
 				07FD2B782997F505000E5088 /* RegistrationViewController.swift */,
+				07FD2BB6299CBE0A000E5088 /* MainTabBarController.swift */,
+				071D8E8E2996DE9E001B3E71 /* HomeViewController.swift */,
+				07FD2BB8299CC434000E5088 /* CalendarViewController.swift */,
+				07FD2BBA299CC440000E5088 /* SettingViewController.swift */,
+				07FD2BBC299D222E000E5088 /* ComposeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -193,8 +205,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				071D8E8F2996DE9E001B3E71 /* MainViewController.swift in Sources */,
+				07FD2BB9299CC434000E5088 /* CalendarViewController.swift in Sources */,
+				07FD2BBB299CC440000E5088 /* SettingViewController.swift in Sources */,
+				071D8E8F2996DE9E001B3E71 /* HomeViewController.swift in Sources */,
+				07FD2BBD299D222E000E5088 /* ComposeViewController.swift in Sources */,
 				071D8EA22996E797001B3E71 /* MainView.swift in Sources */,
+				07FD2BB7299CBE0A000E5088 /* MainTabBarController.swift in Sources */,
 				07FD2B7C2997F733000E5088 /* RegistrationViewModel.swift in Sources */,
 				071D8E8B2996DE9E001B3E71 /* AppDelegate.swift in Sources */,
 				07FD2B812997FDB2000E5088 /* CustomTextField.swift in Sources */,

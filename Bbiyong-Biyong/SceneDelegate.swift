@@ -17,8 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
+//        window.rootViewController = RegistrationViewController()
         if UserDefaults.standard.bool(forKey: "launchedBefore") {
-            window.rootViewController = UINavigationController(rootViewController: MainViewController())
+            window.rootViewController = MainTabBarController()
         } else {
             window.rootViewController = RegistrationViewController()
         }

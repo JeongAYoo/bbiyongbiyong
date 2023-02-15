@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class MainViewController: UIViewController {
+final class HomeViewController: UIViewController {
     // MARK: - Properties
     var scrollView = UIScrollView()
     var contentView = MainView()
@@ -19,6 +19,12 @@ final class MainViewController: UIViewController {
         
         configureUI()
     
+    }
+    
+    // MARK: - Actions
+    
+    @objc func addButtonTapped() {
+        navigationController?.pushViewController(ComposeViewController(), animated: true)
     }
     
     // MARK: - Helpers
@@ -36,6 +42,15 @@ final class MainViewController: UIViewController {
             make.width.centerX.equalTo(scrollView.frameLayoutGuide)
             make.top.bottom.equalTo(scrollView.contentLayoutGuide)
         }
+        
+        // configure NavigationBar
+        navigationItem.title = "삐용비용"
+        
+        let boldLargeConfig = UIImage.SymbolConfiguration(pointSize: UIFont.buttonFontSize, weight: .bold, scale: .large)
+        let plusImage = UIImage(systemName: "plus", withConfiguration: boldLargeConfig)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: plusImage, style: .plain, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem?.tintColor = .systemGreen
     }
 
 }

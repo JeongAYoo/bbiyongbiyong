@@ -113,8 +113,9 @@ final class RegistrationViewController: UIViewController {
     @objc func handleSignUp() {
         UserDefaults.standard.setValue(true, forKey: "launchedBefore")
         UserDefaults.standard.setValue(Date(), forKey: "firstRegisteredDate")
+        UserDefaults.standard.setValue(usernameTextField.text!, forKey: "username")
         
-        let navVC = UINavigationController(rootViewController: MainViewController())
+        let navVC = UINavigationController(rootViewController: HomeViewController())
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
     }

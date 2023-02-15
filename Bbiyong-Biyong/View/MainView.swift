@@ -10,6 +10,8 @@ import SnapKit
 
 class MainView: UIView {
     // MARK: - Properties
+    private let username: String = UserDefaults.standard.string(forKey: "username") ?? ""
+    
     private let bbiyongImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "testImage")
@@ -28,9 +30,9 @@ class MainView: UIView {
         return label
     }()
 
-    private let statisticsTitleLabel: UILabel = {
+    private lazy var statisticsTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "사용자님의 통계"
+        label.text = username + "님의 통계"
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 28)
@@ -38,9 +40,9 @@ class MainView: UIView {
         return label
     }()
 
-    private let achievementTitleLabel: UILabel = {
+    private lazy var achievementTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "사용자님의 업적"
+        label.text = username + "님의 업적"
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 28)
