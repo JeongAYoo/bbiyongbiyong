@@ -16,7 +16,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = RegistrationViewController()
+        
+        if UserDefaults.standard.bool(forKey: "launchedBefore") {
+            window.rootViewController = UINavigationController(rootViewController: MainViewController())
+        } else {
+            window.rootViewController = RegistrationViewController()
+        }
+        
         window.makeKeyAndVisible()
         self.window = window
     }

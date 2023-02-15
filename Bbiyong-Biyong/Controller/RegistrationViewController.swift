@@ -10,7 +10,7 @@ import UIKit
 final class RegistrationViewController: UIViewController {
     // MARK: - Properties
     
-    private var viewModel = RegistrainViewModel()
+    private var viewModel = RegistrationViewModel()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -26,7 +26,7 @@ final class RegistrationViewController: UIViewController {
         let label = UILabel()
         label.text = "이름"
         label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = .boldSystemFont(ofSize: 17)
         label.textColor = UIColor(named: "BoldGreen")
 
         return label
@@ -40,29 +40,38 @@ final class RegistrationViewController: UIViewController {
         return tf
     }()
     
+    private let usernameValidationLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textAlignment = .left
+        label.font = .boldSystemFont(ofSize: 12)
+        label.textColor = .systemRed
+
+        return label
+    }()
+    
     private let maximumCostLabel: UILabel = {
         let label = UILabel()
         label.text = "이번 달 삐용비용"
         label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = .boldSystemFont(ofSize: 17)
         label.textColor = UIColor(named: "BoldGreen")
 
         return label
     }()
     
     private let maximumCostTextField: CustomTextField = {
-        let tf = CustomTextField(placeholder: "이번 달 최대 한도 금액")
+        let tf = CustomTextField(placeholder: "이번 달 감정소비 금액 최대 한도")
         tf.keyboardType = .numberPad
         return tf
     }()
     
-    private let detailLabel: UILabel = {
+    private let costValidationLabel: UILabel = {
         let label = UILabel()
-        label.text = "* 이번 달 감정소비 비용으로 쓸 최대 금액 한도를 입력해주세요."
-        label.numberOfLines = 0
+        label.text = ""
         label.textAlignment = .left
-        label.textColor = .darkGray
-        label.font = .systemFont(ofSize: 14)
+        label.font = .boldSystemFont(ofSize: 12)
+        label.textColor = .systemRed
 
         return label
     }()
@@ -80,12 +89,14 @@ final class RegistrationViewController: UIViewController {
     }()
     
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, usernameLabel, usernameTextField, maximumCostLabel, maximumCostTextField, detailLabel, signUpButton])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, usernameLabel, usernameTextField, usernameValidationLabel, maximumCostLabel, maximumCostTextField, costValidationLabel, signUpButton])
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.setCustomSpacing(20, after: titleLabel)
-        stackView.setCustomSpacing(40, after: detailLabel)
+        stackView.distribution = .fill
+        stackView.spacing = 10
+        stackView.setCustomSpacing(30, after: titleLabel)
+        stackView.setCustomSpacing(20, after: usernameValidationLabel)
+        stackView.setCustomSpacing(40, after: costValidationLabel)
         
         return stackView
     }()
@@ -100,23 +111,36 @@ final class RegistrationViewController: UIViewController {
     
     // MARK: - Action
     @objc func handleSignUp() {
+        UserDefaults.standard.setValue(true, forKey: "launchedBefore")
+        UserDefaults.standard.setValue(Date(), forKey: "firstRegisteredDate")
+        
         let navVC = UINavigationController(rootViewController: MainViewController())
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
     }
     
     @objc func textDidChange(sender: UITextField) {
+        // 첫글자로 공백이 입력되면 지우기
+        if sender.text?.count == 1 {
+            if sender.text?.first == " " {
+                sender.text = ""
+                return
+            }
+        }
+        
         if sender == usernameTextField {
             viewModel.username = sender.text
+            usernameValidationLabel.text = viewModel.usernameValidationLabelText
         } else {
             viewModel.maximumCostString = sender.text
+            costValidationLabel.text = viewModel.costValidationLabelText
         }
         
         updateForm()
     }
     // MARK: - Helpers
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(stackView)
         
         signUpButton.snp.makeConstraints { make in
@@ -125,7 +149,7 @@ final class RegistrationViewController: UIViewController {
         
         stackView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-100)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
             make.leading.trailing.equalToSuperview().inset(30)
         }
     }

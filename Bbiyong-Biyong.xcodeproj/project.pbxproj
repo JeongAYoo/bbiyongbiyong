@@ -15,7 +15,7 @@
 		071D8EA22996E797001B3E71 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8EA12996E797001B3E71 /* MainView.swift */; };
 		074178092996F9A30002984B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 074178082996F9A30002984B /* SnapKit */; };
 		07FD2B792997F505000E5088 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B782997F505000E5088 /* RegistrationViewController.swift */; };
-		07FD2B7C2997F733000E5088 /* RegistrainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7B2997F733000E5088 /* RegistrainViewModel.swift */; };
+		07FD2B7C2997F733000E5088 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */; };
 		07FD2B7F2997FAE8000E5088 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7E2997FAE8000E5088 /* User.swift */; };
 		07FD2B812997FDB2000E5088 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B802997FDB2000E5088 /* CustomTextField.swift */; };
 		07FD2B8429981664000E5088 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 07FD2B8329981664000E5088 /* IQKeyboardManagerSwift */; };
@@ -31,7 +31,7 @@
 		071D8E982996DE9F001B3E71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		071D8EA12996E797001B3E71 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		07FD2B782997F505000E5088 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		07FD2B7B2997F733000E5088 /* RegistrainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrainViewModel.swift; sourceTree = "<group>"; };
+		07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		07FD2B7E2997FAE8000E5088 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		07FD2B802997FDB2000E5088 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,7 +110,7 @@
 		07FD2B7D2997FA9F000E5088 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				07FD2B7B2997F733000E5088 /* RegistrainViewModel.swift */,
+				07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -195,7 +195,7 @@
 			files = (
 				071D8E8F2996DE9E001B3E71 /* MainViewController.swift in Sources */,
 				071D8EA22996E797001B3E71 /* MainView.swift in Sources */,
-				07FD2B7C2997F733000E5088 /* RegistrainViewModel.swift in Sources */,
+				07FD2B7C2997F733000E5088 /* RegistrationViewModel.swift in Sources */,
 				071D8E8B2996DE9E001B3E71 /* AppDelegate.swift in Sources */,
 				07FD2B812997FDB2000E5088 /* CustomTextField.swift in Sources */,
 				071D8E8D2996DE9E001B3E71 /* SceneDelegate.swift in Sources */,
