@@ -24,7 +24,9 @@ final class HomeViewController: UIViewController {
     // MARK: - Actions
     
     @objc func addButtonTapped() {
-        navigationController?.pushViewController(ComposeViewController(), animated: true)
+        let composeVC = UINavigationController(rootViewController: ComposeViewController())
+        composeVC.modalPresentationStyle = .fullScreen
+        present(composeVC, animated: true)
     }
     
     // MARK: - Helpers

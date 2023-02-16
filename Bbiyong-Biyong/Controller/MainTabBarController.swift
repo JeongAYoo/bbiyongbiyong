@@ -45,10 +45,11 @@ class MainTabBarController: UITabBarController {
         nav.tabBarItem.image = unselectedImage
         nav.tabBarItem.selectedImage = selectedImage
         nav.navigationBar.tintColor = UIColor(named: "BoldGreen")
-        nav.navigationBar.backgroundColor = .white
         
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.backgroundColor = .clear
+        navigationBarAppearance.shadowColor = nil
         nav.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         navigationItem.scrollEdgeAppearance = navigationBarAppearance
         navigationController?.setNeedsStatusBarAppearanceUpdate()
