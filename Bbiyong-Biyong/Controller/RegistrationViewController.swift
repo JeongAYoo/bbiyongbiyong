@@ -109,7 +109,7 @@ final class RegistrationViewController: UIViewController {
         configureNotificationObservers()
     }
     
-    // MARK: - Action
+    // MARK: - Actions
     @objc func handleSignUp() {
         UserDefaults.standard.setValue(true, forKey: "launchedBefore")
         UserDefaults.standard.setValue(Date(), forKey: "firstRegisteredDate")

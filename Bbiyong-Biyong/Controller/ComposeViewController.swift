@@ -8,20 +8,13 @@
 import UIKit
 
 final class ComposeViewController: UIViewController {
-
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
     }
     
-    func configureUI() {
-        view.backgroundColor = .systemBackground
-        
-        navigationItem.title = "새 소비 작성"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
-    }
-    
+    // MARK: - Actions
     @objc func cancel() {
         dismiss(animated: true)
     }
@@ -29,4 +22,14 @@ final class ComposeViewController: UIViewController {
     @objc func save() {
         
     }
+    
+    // MARK: - Helpers
+    func configureUI() {
+        view.backgroundColor = .systemBackground
+        
+        navigationItem.title = "새 소비 작성"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+    }
+
 }

@@ -14,6 +14,7 @@
 		071D8E972996DE9F001B3E71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071D8E952996DE9F001B3E71 /* LaunchScreen.storyboard */; };
 		071D8EA22996E797001B3E71 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8EA12996E797001B3E71 /* MainView.swift */; };
 		074178092996F9A30002984B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 074178082996F9A30002984B /* SnapKit */; };
+		07865FF3299E7DD700C482AB /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 07865FF2299E7DD700C482AB /* FSCalendar */; };
 		07FD2B792997F505000E5088 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B782997F505000E5088 /* RegistrationViewController.swift */; };
 		07FD2B7C2997F733000E5088 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */; };
 		07FD2B7F2997FAE8000E5088 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7E2997FAE8000E5088 /* User.swift */; };
@@ -50,6 +51,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				074178092996F9A30002984B /* SnapKit in Frameworks */,
+				07865FF3299E7DD700C482AB /* FSCalendar in Frameworks */,
 				07FD2B8429981664000E5088 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +148,7 @@
 			packageProductDependencies = (
 				074178082996F9A30002984B /* SnapKit */,
 				07FD2B8329981664000E5088 /* IQKeyboardManagerSwift */,
+				07865FF2299E7DD700C482AB /* FSCalendar */,
 			);
 			productName = "Bbiyong-Biyong";
 			productReference = 071D8E872996DE9E001B3E71 /* Bbiyong-Biyong.app */;
@@ -178,6 +181,7 @@
 			packageReferences = (
 				074178072996F9A30002984B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				07FD2B8229981664000E5088 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				07865FF1299E7DD700C482AB /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 071D8E882996DE9E001B3E71 /* Products */;
 			projectDirPath = "";
@@ -442,6 +446,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		07865FF1299E7DD700C482AB /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		07FD2B8229981664000E5088 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
@@ -457,6 +469,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 074178072996F9A30002984B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		07865FF2299E7DD700C482AB /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07865FF1299E7DD700C482AB /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 		07FD2B8329981664000E5088 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
