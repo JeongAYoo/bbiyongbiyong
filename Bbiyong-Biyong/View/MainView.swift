@@ -22,7 +22,7 @@ class MainView: UIView {
 
     private let monthlyCostTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "이번 달 소비"
+        label.text = "💸 이번 달 소비"
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 20)
@@ -32,7 +32,7 @@ class MainView: UIView {
 
     private lazy var statisticsTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = username + "님의 통계"
+        label.text = "📊 \(username)님의 통계"
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 20)
@@ -42,7 +42,7 @@ class MainView: UIView {
 
     private lazy var achievementTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = username + "님의 업적"
+        label.text = "🏆 \(username)님의 업적"
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 20)
@@ -51,6 +51,15 @@ class MainView: UIView {
     }()
 
     private let monthlyCostBackgroundView = UIView()
+    
+    private let totalConsumptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "123,456원"
+        label.font = .boldSystemFont(ofSize: 25)
+        label.textAlignment = .right
+        return label
+    }()
+    
     private let statisticsBackgroundView = UIView()
     private let achievementBackgroundView = UIView()
 
@@ -60,6 +69,7 @@ class MainView: UIView {
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
         stackView.spacing = 10
+        stackView.setCustomSpacing(30, after: bbiyongImageView)
 
         return stackView
     }()
@@ -77,16 +87,20 @@ class MainView: UIView {
     // MARK: - Helpers
     func configure() {
         addSubview(stackView)
+        monthlyCostBackgroundView.addSubview(totalConsumptionLabel)
 
         stackView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
+            make.top.equalToSuperview().offset(30)
+            make.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(20)
         }
 
         [monthlyCostBackgroundView, statisticsBackgroundView, achievementBackgroundView].forEach {
-            $0.backgroundColor = .sageGreen.withAlphaComponent(0.7)
+            $0.backgroundColor = .secondarySystemGroupedBackground
             $0.layer.cornerRadius = 10
-            $0.layer.masksToBounds = true
+            $0.layer.shadowOffset = CGSize(width: 0, height: 5)
+            $0.layer.shadowRadius = 10
+            $0.layer.shadowOpacity = 0.2
         }
         
         [monthlyCostTitleLabel, statisticsTitleLabel, achievementTitleLabel].forEach {
@@ -100,7 +114,12 @@ class MainView: UIView {
         }
 
         monthlyCostBackgroundView.snp.makeConstraints { make in
-            make.height.equalTo(100)
+            make.height.equalTo(80)
+        }
+        
+        totalConsumptionLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(20)
         }
 
         statisticsBackgroundView.snp.makeConstraints { make in

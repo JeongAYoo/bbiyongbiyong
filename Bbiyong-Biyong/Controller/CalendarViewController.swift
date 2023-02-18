@@ -19,7 +19,12 @@ final class CalendarViewController: UIViewController {
         calendar.scrollDirection = .horizontal
         
         calendar.placeholderType = .fillHeadTail
+        calendar.backgroundColor = .systemBackground
         calendar.layer.cornerRadius = 10
+        // shadow
+        calendar.layer.shadowOffset = CGSize(width: 0, height: 5)
+        calendar.layer.shadowRadius = 10
+        calendar.layer.shadowOpacity = 0.2
         
         // calendar header
         calendar.appearance.headerDateFormat = "YYYY년 M월"
@@ -45,7 +50,8 @@ final class CalendarViewController: UIViewController {
     private var tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(DayTableViewCell.self, forCellReuseIdentifier: DayTableViewCell.identifier)
-        table.backgroundColor = .systemBackground
+        table.backgroundColor = .clear
+        table.layer.cornerRadius = 10
         return table
     }()
         
@@ -69,15 +75,15 @@ final class CalendarViewController: UIViewController {
         // calendarView
         view.addSubview(calendarView)
         calendarView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.leading.trailing.equalToSuperview().inset(10)
             make.bottom.equalTo(view.snp.centerY).offset(50)
         }
         
         // tableView
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.bottom)
+            make.top.equalTo(calendarView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(10)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
@@ -100,8 +106,9 @@ final class CalendarViewController: UIViewController {
         let addButton = AddNewButton(frame: .zero)
         footer.addSubview(addButton)
         addButton.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().inset(10)
+            make.width.height.equalTo(50)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(10)
         }
         
         tableView.tableFooterView = footer

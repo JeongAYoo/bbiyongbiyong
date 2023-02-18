@@ -19,12 +19,13 @@ class AddNewButton: UIButton {
     }
     
     func configure() {
-        layer.cornerRadius = 10
+        layer.cornerRadius = 25
         clipsToBounds = true
-        backgroundColor = .boldGreen
-        tintColor = .white
-        setTitle("추가하기", for: .normal)
-        setTitleColor(.systemGray, for: .highlighted)
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.lightGray.cgColor
+        tintColor = .lightGray
+        backgroundColor = .systemBackground
+        //setTitle("추가하기", for: .normal)
         setImage(UIImage(systemName: "plus"), for: .normal)
         
     }
