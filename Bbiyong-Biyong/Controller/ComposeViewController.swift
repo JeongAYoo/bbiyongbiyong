@@ -28,6 +28,7 @@ final class ComposeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         navigationItem.title = "새 소비 작성"
+        navigationController?.navigationBar.tintColor = .boldGreen
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
     }

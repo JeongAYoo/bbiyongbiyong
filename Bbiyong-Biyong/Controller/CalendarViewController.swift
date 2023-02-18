@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 import SnapKit
 
-class CalendarViewController: UIViewController {
+final class CalendarViewController: UIViewController {
     // MARK: - Properties
     private var calendarView: FSCalendar = {
         let calendar = FSCalendar(frame: .zero)
@@ -28,11 +28,10 @@ class CalendarViewController: UIViewController {
         calendar.headerHeight = 40.0
         
         // color
-        calendar.backgroundColor = UIColor(red: 255/255, green: 251/255, blue: 245/255, alpha: 1)
-        calendar.appearance.titleWeekendColor = UIColor(red: 121/255, green: 135/255, blue: 119/255, alpha: 1)
-        calendar.appearance.weekdayTextColor = UIColor(red: 162/255, green: 178/255, blue: 159/255, alpha: 1)
-        calendar.appearance.todayColor = UIColor(named: "BoldGreen")
-        calendar.appearance.selectionColor = UIColor(red: 189/255, green: 210/255, blue: 182/255, alpha: 1)
+        calendar.appearance.titleWeekendColor = .lightOrange
+        calendar.appearance.weekdayTextColor = .darkGreen
+        calendar.appearance.todayColor = .boldGreen
+        calendar.appearance.selectionColor = .sageGreen
         
         return calendar
     }()

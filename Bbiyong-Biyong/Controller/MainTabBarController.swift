@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController {
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class MainTabBarController: UITabBarController {
         home.title = "Home"
         calendar.title = "달력"
         setting.title = "설정"
-        tabBar.tintColor = UIColor(named: "BoldGreen")
+        tabBar.tintColor = .boldGreen
         tabBar.backgroundColor = .white.withAlphaComponent(0.1)
     }
     
@@ -44,14 +44,16 @@ class MainTabBarController: UITabBarController {
         let nav = UINavigationController(rootViewController: rootViewController)
         nav.tabBarItem.image = unselectedImage
         nav.tabBarItem.selectedImage = selectedImage
-        nav.navigationBar.tintColor = UIColor(named: "BoldGreen")
+        nav.navigationBar.tintColor = .boldGreen
         
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.backgroundColor = .clear
         navigationBarAppearance.shadowColor = nil
         nav.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        nav.navigationBar.standardAppearance = navigationBarAppearance
         navigationItem.scrollEdgeAppearance = navigationBarAppearance
+        navigationItem.standardAppearance = navigationBarAppearance
         navigationController?.setNeedsStatusBarAppearanceUpdate()
         
         return nav

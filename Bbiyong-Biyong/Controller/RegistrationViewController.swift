@@ -27,7 +27,7 @@ final class RegistrationViewController: UIViewController {
         label.text = "이름"
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 17)
-        label.textColor = UIColor(named: "BoldGreen")
+        label.textColor = .boldGreen
 
         return label
     }()
@@ -55,7 +55,7 @@ final class RegistrationViewController: UIViewController {
         label.text = "이번 달 삐용비용"
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 17)
-        label.textColor = UIColor(named: "BoldGreen")
+        label.textColor = .boldGreen
 
         return label
     }()
@@ -80,7 +80,7 @@ final class RegistrationViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("시작하기", for: .normal)
         button.setTitleColor(UIColor(white: 1, alpha: 0.67), for: .normal)
-        button.backgroundColor = UIColor(named: "BoldGreen")!.withAlphaComponent(0.5)
+        button.backgroundColor = .boldGreen!.withAlphaComponent(0.5)
         button.layer.cornerRadius = 25
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.isEnabled = false
