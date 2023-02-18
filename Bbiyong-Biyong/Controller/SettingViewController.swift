@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+// MARK: - Model
 struct Section {
     let title: String
     let options: [SettingsOptionType]
@@ -55,16 +56,15 @@ final class SettingViewController: UIViewController {
     }
     
     func configureUI() {
-        title = "설정"
-        view.backgroundColor = .systemBackground
+        navigationItem.title = "설정"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+        //tableView.backgroundColor = .sageGreen
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
-    //(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray)
+
     func configureData() {
         self.model.append(Section(title: "시스템", options: [
             .switchCell(model: SettingSwitchOption(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray, isOn: true) {
@@ -102,6 +102,7 @@ final class SettingViewController: UIViewController {
     
 }
 
+// MARK: - UITableViewDataSource
 extension SettingViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -135,6 +136,7 @@ extension SettingViewController: UITableViewDataSource {
     
 }
 
+// MARK: - UITableViewDelegate
 extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

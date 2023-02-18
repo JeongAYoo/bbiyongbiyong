@@ -33,11 +33,9 @@ final class MainTabBarController: UITabBarController {
                                                    rootViewController: SettingViewController())
         
         viewControllers = [home, calendar, setting]
-        home.title = "Home"
-        calendar.title = "달력"
-        setting.title = "설정"
         tabBar.tintColor = .boldGreen
-        tabBar.backgroundColor = .white.withAlphaComponent(0.1)
+        tabBar.backgroundColor = .white.withAlphaComponent(0.7)
+        //tabBar.layer.cornerRadius = tabBar.frame.height * 0.41
     }
     
     func templateNavigationController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController) -> UINavigationController {

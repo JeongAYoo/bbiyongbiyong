@@ -31,7 +31,7 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Helpers
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(scrollView)
 
         scrollView.snp.makeConstraints { make in
@@ -47,7 +47,6 @@ final class HomeViewController: UIViewController {
         
         // configure NavigationBar
         navigationItem.title = "삐용비용"
-        
         let boldLargeConfig = UIImage.SymbolConfiguration(pointSize: UIFont.buttonFontSize, weight: .bold, scale: .large)
         let plusImage = UIImage(systemName: "plus", withConfiguration: boldLargeConfig)
         

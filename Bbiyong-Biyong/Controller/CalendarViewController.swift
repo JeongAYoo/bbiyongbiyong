@@ -21,13 +21,19 @@ final class CalendarViewController: UIViewController {
         calendar.placeholderType = .fillHeadTail
         calendar.layer.cornerRadius = 10
         
-        // header
+        // calendar header
         calendar.appearance.headerDateFormat = "YYYY년 M월"
         calendar.appearance.headerTitleColor = .label
         calendar.appearance.headerTitleAlignment = .center
+        calendar.appearance.headerTitleFont = .systemFont(ofSize: 18)
         calendar.headerHeight = 40.0
         
+        // weekdays, numbers Font
+        calendar.appearance.weekdayFont = .systemFont(ofSize: 15)
+        calendar.appearance.titleFont = .systemFont(ofSize: 16)
+        
         // color
+        calendar.appearance.titleDefaultColor = .label
         calendar.appearance.titleWeekendColor = .lightOrange
         calendar.appearance.weekdayTextColor = .darkGreen
         calendar.appearance.todayColor = .boldGreen
@@ -36,34 +42,99 @@ final class CalendarViewController: UIViewController {
         return calendar
     }()
     
+    private var tableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .grouped)
+        table.register(DayTableViewCell.self, forCellReuseIdentifier: DayTableViewCell.identifier)
+        table.backgroundColor = .systemBackground
+        return table
+    }()
+        
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCalendar()
+        calendarView.delegate = self
+        calendarView.dataSource = self
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         configureUI()
     }
     
     // MARK: - Helpers
     func configureUI() {
         view.backgroundColor = .systemBackground
+        navigationItem.title = "기록"
         
-    }
-    
-    func configureCalendar() {
-        calendarView.delegate = self
-        calendarView.dataSource = self
-        
+        // calendarView
         view.addSubview(calendarView)
-        
         calendarView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalTo(view.snp.centerY)
+            make.bottom.equalTo(view.snp.centerY).offset(50)
         }
+        
+        // tableView
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(calendarView.snp.bottom)
+            make.leading.trailing.equalToSuperview().inset(10)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+                
+        // tableView header
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let headerLabel = UILabel()
+        headerLabel.text = "19일 일요일"
+        headerLabel.font = .boldSystemFont(ofSize: 18)
+        header.addSubview(headerLabel)
+        headerLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.bottom.equalToSuperview()
+        }
+        
+        tableView.tableHeaderView = header
+        
+        //tableView footer
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60))
+        let addButton = AddNewButton(frame: .zero)
+        footer.addSubview(addButton)
+        addButton.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().inset(10)
+        }
+        
+        tableView.tableFooterView = footer
     }
     
 }
 
+// MARK: - UITableViewDataSource
+extension CalendarViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DayTableViewCell.identifier, for: indexPath) as? DayTableViewCell else { return UITableViewCell() }
+        return cell
+    }
+    
+}
+
+// MARK: - UITableViewDelegate
+extension CalendarViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - FSCalendarDelegate
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
@@ -73,5 +144,17 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             make.bottom.equalTo(view.snp.centerY).offset(10)
         }
         self.view.layoutIfNeeded()
+    }
+    
+    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-DD"
+        
+        switch dateFormatter.string(from: date) {
+        case dateFormatter.string(from: Date()):
+            return "오늘"
+        default:
+            return nil
+        }
     }
 }

@@ -25,7 +25,7 @@ class MainView: UIView {
         label.text = "이번 달 소비"
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: 28)
+        label.font = .boldSystemFont(ofSize: 20)
 
         return label
     }()
@@ -35,7 +35,7 @@ class MainView: UIView {
         label.text = username + "님의 통계"
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: 28)
+        label.font = .boldSystemFont(ofSize: 20)
 
         return label
     }()
@@ -45,7 +45,7 @@ class MainView: UIView {
         label.text = username + "님의 업적"
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: 28)
+        label.font = .boldSystemFont(ofSize: 20)
 
         return label
     }()
@@ -84,7 +84,7 @@ class MainView: UIView {
         }
 
         [monthlyCostBackgroundView, statisticsBackgroundView, achievementBackgroundView].forEach {
-            $0.backgroundColor = .lightGray
+            $0.backgroundColor = .sageGreen.withAlphaComponent(0.7)
             $0.layer.cornerRadius = 10
             $0.layer.masksToBounds = true
         }
