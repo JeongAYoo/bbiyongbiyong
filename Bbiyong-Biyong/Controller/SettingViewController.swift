@@ -57,7 +57,7 @@ final class SettingViewController: UIViewController {
     
     func configureUI() {
         navigationItem.title = "설정"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationBar.prefersLargeTitles = true
         //tableView.backgroundColor = .sageGreen
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in

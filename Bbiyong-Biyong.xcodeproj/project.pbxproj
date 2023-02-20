@@ -12,9 +12,12 @@
 		071D8E8F2996DE9E001B3E71 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8E8E2996DE9E001B3E71 /* HomeViewController.swift */; };
 		071D8E942996DE9F001B3E71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 071D8E932996DE9F001B3E71 /* Assets.xcassets */; };
 		071D8E972996DE9F001B3E71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071D8E952996DE9F001B3E71 /* LaunchScreen.storyboard */; };
-		071D8EA22996E797001B3E71 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8EA12996E797001B3E71 /* MainView.swift */; };
+		071D8EA22996E797001B3E71 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8EA12996E797001B3E71 /* HomeView.swift */; };
 		074178092996F9A30002984B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 074178082996F9A30002984B /* SnapKit */; };
 		076486B129A1575D006BC5C2 /* AddNewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B029A1575D006BC5C2 /* AddNewButton.swift */; };
+		076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B229A38AD6006BC5C2 /* ComposeView.swift */; };
+		076486B529A3927F006BC5C2 /* ConsumptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */; };
+		076486B729A39920006BC5C2 /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B629A39920006BC5C2 /* Consumption.swift */; };
 		07865FF3299E7DD700C482AB /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 07865FF2299E7DD700C482AB /* FSCalendar */; };
 		07865FF529A0BF4300C482AB /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07865FF429A0BF4300C482AB /* SettingTableViewCell.swift */; };
 		07865FF729A0C61500C482AB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07865FF629A0C61500C482AB /* Extensions.swift */; };
@@ -39,8 +42,11 @@
 		071D8E932996DE9F001B3E71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		071D8E962996DE9F001B3E71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		071D8E982996DE9F001B3E71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		071D8EA12996E797001B3E71 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		071D8EA12996E797001B3E71 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		076486B029A1575D006BC5C2 /* AddNewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewButton.swift; sourceTree = "<group>"; };
+		076486B229A38AD6006BC5C2 /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
+		076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionViewModel.swift; sourceTree = "<group>"; };
+		076486B629A39920006BC5C2 /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
 		07865FF429A0BF4300C482AB /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		07865FF629A0C61500C482AB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		07865FF829A0F08500C482AB /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -118,12 +124,13 @@
 		071D8E9F2996E12C001B3E71 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				071D8EA12996E797001B3E71 /* MainView.swift */,
+				071D8EA12996E797001B3E71 /* HomeView.swift */,
 				07FD2B802997FDB2000E5088 /* CustomTextField.swift */,
 				07865FF429A0BF4300C482AB /* SettingTableViewCell.swift */,
 				07865FF829A0F08500C482AB /* SwitchTableViewCell.swift */,
 				07865FFA29A1131B00C482AB /* DayTableViewCell.swift */,
 				076486B029A1575D006BC5C2 /* AddNewButton.swift */,
+				076486B229A38AD6006BC5C2 /* ComposeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -132,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				07FD2B7E2997FAE8000E5088 /* User.swift */,
+				076486B629A39920006BC5C2 /* Consumption.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */,
+				076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -227,10 +236,12 @@
 				07FD2BB9299CC434000E5088 /* CalendarViewController.swift in Sources */,
 				07FD2BBB299CC440000E5088 /* SettingViewController.swift in Sources */,
 				07865FFB29A1131B00C482AB /* DayTableViewCell.swift in Sources */,
+				076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */,
 				07865FF929A0F08500C482AB /* SwitchTableViewCell.swift in Sources */,
 				071D8E8F2996DE9E001B3E71 /* HomeViewController.swift in Sources */,
 				07FD2BBD299D222E000E5088 /* ComposeViewController.swift in Sources */,
-				071D8EA22996E797001B3E71 /* MainView.swift in Sources */,
+				076486B729A39920006BC5C2 /* Consumption.swift in Sources */,
+				071D8EA22996E797001B3E71 /* HomeView.swift in Sources */,
 				07FD2BB7299CBE0A000E5088 /* MainTabBarController.swift in Sources */,
 				07FD2B7C2997F733000E5088 /* RegistrationViewModel.swift in Sources */,
 				071D8E8B2996DE9E001B3E71 /* AppDelegate.swift in Sources */,
@@ -238,6 +249,7 @@
 				07FD2B812997FDB2000E5088 /* CustomTextField.swift in Sources */,
 				071D8E8D2996DE9E001B3E71 /* SceneDelegate.swift in Sources */,
 				07FD2B792997F505000E5088 /* RegistrationViewController.swift in Sources */,
+				076486B529A3927F006BC5C2 /* ConsumptionViewModel.swift in Sources */,
 				076486B129A1575D006BC5C2 /* AddNewButton.swift in Sources */,
 				07FD2B7F2997FAE8000E5088 /* User.swift in Sources */,
 				07865FF729A0C61500C482AB /* Extensions.swift in Sources */,

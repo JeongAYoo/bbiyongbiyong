@@ -11,7 +11,7 @@ import SnapKit
 final class HomeViewController: UIViewController {
     // MARK: - Properties
     var scrollView = UIScrollView()
-    var contentView = MainView()
+    var contentView = HomeView()
 
     // MARK: - Life cycle
     override func viewDidLoad() {

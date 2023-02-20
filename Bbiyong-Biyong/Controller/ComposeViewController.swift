@@ -9,9 +9,12 @@ import UIKit
 
 final class ComposeViewController: UIViewController {
     // MARK: - Life cycle
+    override func loadView() {
+        view = ComposeView()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        configure()
     }
     
     // MARK: - Actions
@@ -24,13 +27,21 @@ final class ComposeViewController: UIViewController {
     }
     
     // MARK: - Helpers
-    func configureUI() {
-        view.backgroundColor = .systemBackground
-        
+    func configure() {
         navigationItem.title = "새 소비 작성"
         navigationController?.navigationBar.tintColor = .systemGreen
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.backgroundColor = .systemBackground
+        navigationBarAppearance.shadowColor = nil
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationItem.scrollEdgeAppearance = navigationBarAppearance
+        navigationItem.standardAppearance = navigationBarAppearance
+        navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
-
+    
 }

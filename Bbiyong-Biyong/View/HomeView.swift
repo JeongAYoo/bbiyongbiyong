@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MainView: UIView {
+class HomeView: UIView {
     // MARK: - Properties
     private let username: String = UserDefaults.standard.string(forKey: "username") ?? ""
     

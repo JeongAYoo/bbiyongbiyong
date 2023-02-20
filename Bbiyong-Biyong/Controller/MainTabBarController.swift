@@ -46,7 +46,7 @@ final class MainTabBarController: UITabBarController {
         
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
-        navigationBarAppearance.backgroundColor = .clear
+        navigationBarAppearance.backgroundColor = .systemBackground
         navigationBarAppearance.shadowColor = nil
         nav.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         nav.navigationBar.standardAppearance = navigationBarAppearance
