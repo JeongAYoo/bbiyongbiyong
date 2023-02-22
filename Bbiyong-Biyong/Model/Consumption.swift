@@ -8,8 +8,8 @@
 import Foundation
 
 struct Consumption {
-    var date: Date?
-    var title: String?
-    var cost: Int?
+    var date: Date
+    var title: String
+    var cost: Int
     var content: String?
 }

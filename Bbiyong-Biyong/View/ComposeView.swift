@@ -11,12 +11,13 @@ import SnapKit
 class ComposeView: UIView {
 
     // MARK: - Properties
-    private let datePicker: UIDatePicker = {
+    let datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.date = Date()
         picker.datePickerMode = .date
         picker.locale = Locale(identifier: "ko_KR")
+        picker.timeZone = .autoupdatingCurrent
         picker.tintColor = .boldGreen
         picker.contentHorizontalAlignment = .leading
         return picker
@@ -32,7 +33,7 @@ class ComposeView: UIView {
         return label
     }()
     
-    private let titleTextField: CustomTextField = {
+    let titleTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "제목을 입력해주세요.")
         tf.backgroundColor = .darkGreen
         return tf
@@ -48,7 +49,7 @@ class ComposeView: UIView {
         return label
     }()
     
-    private let costTextField: CustomTextField = {
+    let costTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "금액을 입력해주세요.")
         tf.backgroundColor = .darkGreen
         return tf
@@ -65,7 +66,7 @@ class ComposeView: UIView {
         return label
     }()
     
-    private let contentTextView: UITextView = {
+    let contentTextView: UITextView = {
         let tv = UITextView()
         tv.layer.borderWidth = 1
         tv.layer.borderColor = UIColor.darkGreen.cgColor

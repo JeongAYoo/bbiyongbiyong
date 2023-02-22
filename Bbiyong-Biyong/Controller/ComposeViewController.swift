@@ -8,9 +8,13 @@
 import UIKit
 
 final class ComposeViewController: UIViewController {
+    // MARK: - Properties
+    private let composeView = ComposeView()
+    private var viewModel = ConsumptionViewModel()
+    
     // MARK: - Life cycle
     override func loadView() {
-        view = ComposeView()
+        view = composeView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +30,18 @@ final class ComposeViewController: UIViewController {
         
     }
     
+    @objc func handleDatePicker(_ sender: UIDatePicker) {
+        
+    }
+    
     // MARK: - Helpers
     func configure() {
+        // navigation
         navigationItem.title = "새 소비 작성"
         navigationController?.navigationBar.tintColor = .systemGreen
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        navigationItem.rightBarButtonItem?.isEnabled = false
         
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
@@ -42,6 +52,8 @@ final class ComposeViewController: UIViewController {
         navigationItem.scrollEdgeAppearance = navigationBarAppearance
         navigationItem.standardAppearance = navigationBarAppearance
         navigationController?.setNeedsStatusBarAppearanceUpdate()
+        
+        composeView.datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
     }
-    
+
 }
