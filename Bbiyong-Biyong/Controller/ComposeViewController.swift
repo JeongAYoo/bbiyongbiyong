@@ -9,7 +9,7 @@ import UIKit
 
 final class ComposeViewController: UIViewController {
     // MARK: - Properties
-    private let saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+    private lazy var saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
     private let composeView = ComposeView()
     private var viewModel = ConsumptionViewModel()
     
@@ -30,7 +30,8 @@ final class ComposeViewController: UIViewController {
     }
     
     @objc func save() {
-        
+        viewModel.add()
+        dismiss(animated: true)
     }
     
     @objc func handleDatePicker(_ sender: UIDatePicker) {
@@ -38,7 +39,6 @@ final class ComposeViewController: UIViewController {
     }
     
     @objc func titleTextFieldDidChange(_ sender: UITextField) {
-        // 첫글자로 공백이 입력되면 지우기
         if sender.text?.count == 1 {
             if sender.text?.first == " " {
                 sender.text = ""
@@ -79,7 +79,7 @@ final class ComposeViewController: UIViewController {
         composeView.datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
         composeView.titleTextField.addTarget(self, action: #selector(titleTextFieldDidChange(_:)), for: .editingChanged)
         composeView.costTextField.addTarget(self, action: #selector(costTextFieldDidChange(_:)), for: .editingChanged)
-        // TODO: - 텍스트뷰
+        composeView.contentTextView.delegate = self
     }
     
     func bind() {
@@ -93,6 +93,7 @@ final class ComposeViewController: UIViewController {
         }
         
         viewModel.cost.bind { text in
+            print(text)
             self.composeView.costTextField.text = text
         }
         
@@ -103,7 +104,18 @@ final class ComposeViewController: UIViewController {
     }
     
     func updateForm() {
-        saveBarButton.isEnabled = viewModel.formIsValid
+        let titleIsValid = viewModel.titleIsValid
+        let costIsValid = viewModel.costIsValid
+        saveBarButton.isEnabled = titleIsValid && costIsValid
     }
 
+}
+
+extension ComposeViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        viewModel.content.value = textView.text ?? ""
+        if textView.text.count > 150 {
+            textView.deleteBackward()
+        }
+    }
 }

@@ -9,6 +9,8 @@ import Foundation
 import RealmSwift
 
 class Consumption: Object {
+    @Persisted(primaryKey: true) var _id: ObjectId
+
     @Persisted var date: Date = Date()
     @Persisted var title: String = ""
     @Persisted var cost: Int = 0
@@ -19,6 +21,8 @@ extension Consumption {
     private static var realm = try! Realm()
     
     static func findAll() -> Results<Consumption> {
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+
         return realm.objects(Consumption.self)
     }
     
