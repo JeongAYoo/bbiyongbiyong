@@ -18,7 +18,9 @@ final class ComposeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        configureUI()
+        setTarget()
+        bind()
     }
     
     // MARK: - Actions
@@ -31,11 +33,26 @@ final class ComposeViewController: UIViewController {
     }
     
     @objc func handleDatePicker(_ sender: UIDatePicker) {
-        
+        viewModel.date.value = sender.date
+    }
+    
+    @objc func titleTextFieldDidChange(_ sender: UITextField) {
+        // 첫글자로 공백이 입력되면 지우기
+        if sender.text?.count == 1 {
+            if sender.text?.first == " " {
+                sender.text = ""
+                return
+            }
+        }
+        viewModel.title.value = sender.text ?? ""
+    }
+    
+    @objc func costTextFieldDidChange(_ sender: UITextField) {
+        viewModel.cost.value = sender.text ?? ""
     }
     
     // MARK: - Helpers
-    func configure() {
+    func configureUI() {
         // navigation
         navigationItem.title = "새 소비 작성"
         navigationController?.navigationBar.tintColor = .systemGreen
@@ -53,7 +70,33 @@ final class ComposeViewController: UIViewController {
         navigationItem.standardAppearance = navigationBarAppearance
         navigationController?.setNeedsStatusBarAppearanceUpdate()
         
+    }
+    
+    func setTarget() {
         composeView.datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
+        composeView.titleTextField.addTarget(self, action: #selector(titleTextFieldDidChange(_:)), for: .editingChanged)
+        composeView.costTextField.addTarget(self, action: #selector(costTextFieldDidChange(_:)), for: .editingChanged)
+        // TODO: - 텍스트뷰
+    }
+    
+    func bind() {
+        viewModel.date.bind { date in
+            self.composeView.datePicker.date = date
+        }
+        
+        viewModel.title.bind { text in
+            print(text)
+            self.composeView.titleTextField.text = text
+        }
+        
+        viewModel.cost.bind { text in
+            self.composeView.costTextField.text = text
+        }
+        
+        viewModel.content.bind { text in
+            self.composeView.contentTextView.text = text
+        }
+        
     }
 
 }

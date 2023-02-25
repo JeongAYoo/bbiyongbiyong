@@ -130,7 +130,7 @@ final class RegistrationViewController: UIViewController {
         }
         
         if sender == usernameTextField {
-            viewModel.username = sender.text
+            viewModel.username = sender.text ?? ""
             usernameValidationLabel.text = viewModel.usernameValidationLabelText
         } else {
             viewModel.maximumCostString = sender.text

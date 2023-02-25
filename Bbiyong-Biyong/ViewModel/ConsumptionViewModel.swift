@@ -8,17 +8,17 @@
 import Foundation
 
 struct ConsumptionViewModel {
-    var date: Date?
-    var title: String?
-    var cost: String?
-    var content: String?
+    var date: Observable<Date> = Observable(Date())
+    var title: Observable<String> = Observable("")
+    var cost: Observable<String> = Observable("")
+    var content: Observable<String> = Observable("")
     
     var titleIsValid: Bool {
-        return title?.isEmpty == false && title!.count <= 10
+        return title.value.isEmpty == false && title.value.count <= 10
     }
     
     var costIsValid: Bool {
-        guard let str = cost else { return false }
+        let str = cost.value
         
         if let _ = Int(str) {
             return true
