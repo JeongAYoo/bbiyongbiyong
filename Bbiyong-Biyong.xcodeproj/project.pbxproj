@@ -19,6 +19,8 @@
 		076486B529A3927F006BC5C2 /* ConsumptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */; };
 		076486B729A39920006BC5C2 /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B629A39920006BC5C2 /* Consumption.swift */; };
 		077FDDAA29A874CC00B15E3E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077FDDA929A874CC00B15E3E /* Observable.swift */; };
+		077FDDAD29A990BA00B15E3E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 077FDDAC29A990BA00B15E3E /* Realm */; };
+		077FDDAF29A990BA00B15E3E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 077FDDAE29A990BA00B15E3E /* RealmSwift */; };
 		07865FF3299E7DD700C482AB /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 07865FF2299E7DD700C482AB /* FSCalendar */; };
 		07865FF529A0BF4300C482AB /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07865FF429A0BF4300C482AB /* SettingTableViewCell.swift */; };
 		07865FF729A0C61500C482AB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07865FF629A0C61500C482AB /* Extensions.swift */; };
@@ -70,6 +72,8 @@
 			files = (
 				074178092996F9A30002984B /* SnapKit in Frameworks */,
 				07865FF3299E7DD700C482AB /* FSCalendar in Frameworks */,
+				077FDDAD29A990BA00B15E3E /* Realm in Frameworks */,
+				077FDDAF29A990BA00B15E3E /* RealmSwift in Frameworks */,
 				07FD2B8429981664000E5088 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,8 +100,9 @@
 		071D8E892996DE9E001B3E71 /* Bbiyong-Biyong */ = {
 			isa = PBXGroup;
 			children = (
-				07FD2B7D2997FA9F000E5088 /* ViewModel */,
+				077FDDB029A990F800B15E3E /* Helper */,
 				071D8EA02996E133001B3E71 /* Model */,
+				07FD2B7D2997FA9F000E5088 /* ViewModel */,
 				071D8E9F2996E12C001B3E71 /* View */,
 				071D8E9E2996E11B001B3E71 /* Controller */,
 				071D8E8A2996DE9E001B3E71 /* AppDelegate.swift */,
@@ -105,8 +110,6 @@
 				071D8E932996DE9F001B3E71 /* Assets.xcassets */,
 				071D8E952996DE9F001B3E71 /* LaunchScreen.storyboard */,
 				071D8E982996DE9F001B3E71 /* Info.plist */,
-				07865FF629A0C61500C482AB /* Extensions.swift */,
-				077FDDA929A874CC00B15E3E /* Observable.swift */,
 			);
 			path = "Bbiyong-Biyong";
 			sourceTree = "<group>";
@@ -147,6 +150,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		077FDDB029A990F800B15E3E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				077FDDA929A874CC00B15E3E /* Observable.swift */,
+				07865FF629A0C61500C482AB /* Extensions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		07FD2B7D2997FA9F000E5088 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +188,8 @@
 				074178082996F9A30002984B /* SnapKit */,
 				07FD2B8329981664000E5088 /* IQKeyboardManagerSwift */,
 				07865FF2299E7DD700C482AB /* FSCalendar */,
+				077FDDAC29A990BA00B15E3E /* Realm */,
+				077FDDAE29A990BA00B15E3E /* RealmSwift */,
 			);
 			productName = "Bbiyong-Biyong";
 			productReference = 071D8E872996DE9E001B3E71 /* Bbiyong-Biyong.app */;
@@ -209,6 +223,7 @@
 				074178072996F9A30002984B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				07FD2B8229981664000E5088 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				07865FF1299E7DD700C482AB /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				077FDDAB29A990BA00B15E3E /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 071D8E882996DE9E001B3E71 /* Products */;
 			projectDirPath = "";
@@ -482,6 +497,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		077FDDAB29A990BA00B15E3E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		07865FF1299E7DD700C482AB /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
@@ -505,6 +528,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 074178072996F9A30002984B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		077FDDAC29A990BA00B15E3E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 077FDDAB29A990BA00B15E3E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		077FDDAE29A990BA00B15E3E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 077FDDAB29A990BA00B15E3E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		07865FF2299E7DD700C482AB /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;

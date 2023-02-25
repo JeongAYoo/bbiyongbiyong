@@ -9,6 +9,7 @@ import UIKit
 
 final class ComposeViewController: UIViewController {
     // MARK: - Properties
+    private let saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
     private let composeView = ComposeView()
     private var viewModel = ConsumptionViewModel()
     
@@ -45,10 +46,12 @@ final class ComposeViewController: UIViewController {
             }
         }
         viewModel.title.value = sender.text ?? ""
+        updateForm()
     }
     
     @objc func costTextFieldDidChange(_ sender: UITextField) {
         viewModel.cost.value = sender.text ?? ""
+        updateForm()
     }
     
     // MARK: - Helpers
@@ -57,7 +60,7 @@ final class ComposeViewController: UIViewController {
         navigationItem.title = "새 소비 작성"
         navigationController?.navigationBar.tintColor = .systemGreen
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        navigationItem.rightBarButtonItem = saveBarButton
         navigationItem.rightBarButtonItem?.isEnabled = false
         
         let navigationBarAppearance = UINavigationBarAppearance()
@@ -97,6 +100,10 @@ final class ComposeViewController: UIViewController {
             self.composeView.contentTextView.text = text
         }
         
+    }
+    
+    func updateForm() {
+        saveBarButton.isEnabled = viewModel.formIsValid
     }
 
 }

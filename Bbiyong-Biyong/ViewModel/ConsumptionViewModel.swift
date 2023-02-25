@@ -8,6 +8,8 @@
 import Foundation
 
 struct ConsumptionViewModel {
+    var consumptions: [Consumption] = Array(Consumption.findAll())
+    
     var date: Observable<Date> = Observable(Date())
     var title: Observable<String> = Observable("")
     var cost: Observable<String> = Observable("")
@@ -29,6 +31,14 @@ struct ConsumptionViewModel {
     
     var formIsValid: Bool {
         return titleIsValid && costIsValid
+    }
+    
+    func add() {
+        let new = Consumption()
+        new.date = date.value
+        new.title = title.value
+        new.cost = Int(cost.value)!
+        new.content = content.value
     }
 }
 

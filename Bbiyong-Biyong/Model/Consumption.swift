@@ -6,10 +6,40 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Consumption {
-    var date: Date
-    var title: String
-    var cost: Int
-    var content: String?
+class Consumption: Object {
+    @Persisted var date: Date = Date()
+    @Persisted var title: String = ""
+    @Persisted var cost: Int = 0
+    @Persisted var content: String = ""
+}
+
+extension Consumption {
+    private static var realm = try! Realm()
+    
+    static func findAll() -> Results<Consumption> {
+        return realm.objects(Consumption.self)
+    }
+    
+    static func addConsumption(_ consumption: Consumption) {
+        try! realm.write {
+            realm.add(consumption)
+        }
+    }
+    
+    static func deleteConsumption(_ consumption: Consumption) {
+        try! realm.write {
+            realm.delete(consumption)
+        }
+    }
+    
+    static func editConsumption(consumption: Consumption, date: Date, title: String, cost: Int, content: String) {
+        try! realm.write {
+            consumption.date = date
+            consumption.title = title
+            consumption.cost = cost
+            consumption.content = content
+        }
+    }
 }
