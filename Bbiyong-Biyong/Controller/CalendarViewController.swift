@@ -103,7 +103,7 @@ final class CalendarViewController: UIViewController {
         
         //tableView footer
         let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60))
-        let addButton = AddNewButton(frame: .zero)
+        let addButton = AddNewButton(frame: .zero, type: .detail)
         footer.addSubview(addButton)
         addButton.snp.makeConstraints { make in
             make.width.height.equalTo(50)

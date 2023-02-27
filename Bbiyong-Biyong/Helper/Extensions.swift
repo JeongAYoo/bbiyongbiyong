@@ -14,3 +14,17 @@ extension UIColor {
     static let lightOrange = UIColor(red: 255/255, green: 192/255, blue: 144/255, alpha: 1)
     static let yellowBeige = UIColor(red: 255/255, green: 251/255, blue: 245/255, alpha: 1)
 }
+
+extension Date {
+    public var year: Int {
+        return Calendar.current.component(.year, from: self)
+    }
+    
+    public var month: Int {
+         return Calendar.current.component(.month, from: self)
+    }
+    
+    public var day: Int {
+         return Calendar.current.component(.day, from: self)
+    }
+}

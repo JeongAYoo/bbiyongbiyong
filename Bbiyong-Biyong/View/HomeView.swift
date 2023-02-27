@@ -52,9 +52,9 @@ class HomeView: UIView {
 
     private let monthlyCostBackgroundView = UIView()
     
-    private let totalConsumptionLabel: UILabel = {
+    let totalConsumptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "123,456원"
+        label.text = "원"
         label.font = .boldSystemFont(ofSize: 25)
         label.textAlignment = .right
         return label

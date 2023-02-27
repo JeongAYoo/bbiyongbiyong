@@ -7,18 +7,22 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 final class HomeViewController: UIViewController {
     // MARK: - Properties
     var scrollView = UIScrollView()
     var contentView = HomeView()
+    
+    let tasks = Consumption.findAll()
+    var monthlyTotalCost = 0
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-    
+        calculateMonthlyTotal()
     }
     
     // MARK: - Actions
@@ -52,6 +56,19 @@ final class HomeViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: plusImage, style: .plain, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItem?.tintColor = .systemGreen
+    }
+    
+    func calculateMonthlyTotal() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM"
+        let thisMonth = dateFormatter.string(from: Date())
+        let monthlyTotal: () = tasks.filter {
+            return dateFormatter.string(from: $0.date) == thisMonth
+        }.forEach {
+            monthlyTotalCost += $0.cost
+        }
+        
+        contentView.totalConsumptionLabel.text = "\(monthlyTotalCost) 원"
     }
 
 }

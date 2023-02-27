@@ -8,25 +8,33 @@
 import UIKit
 
 class AddNewButton: UIButton {
+    enum ButtonType {
+        case home
+        case detail
+    }
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, type: ButtonType) {
         super.init(frame: frame)
-        configure()
+        configure(type: type)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure() {
-        layer.cornerRadius = 25
-        clipsToBounds = true
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.lightGray.cgColor
-        tintColor = .lightGray
-        backgroundColor = .systemBackground
-        //setTitle("추가하기", for: .normal)
-        setImage(UIImage(systemName: "plus"), for: .normal)
-        
+    func configure(type: ButtonType) {
+        switch type {
+        case .home:
+            break
+        case .detail:
+            layer.cornerRadius = 25
+            clipsToBounds = true
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.lightGray.cgColor
+            tintColor = .lightGray
+            backgroundColor = .systemBackground
+            //setTitle("추가하기", for: .normal)
+            setImage(UIImage(systemName: "plus"), for: .normal)
+        }
     }
 }
