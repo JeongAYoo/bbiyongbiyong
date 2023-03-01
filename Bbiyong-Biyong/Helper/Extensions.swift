@@ -28,3 +28,13 @@ extension Date {
          return Calendar.current.component(.day, from: self)
     }
 }
+
+extension UIViewController {
+    func numberFormatter(number: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        return numberFormatter.string(from: NSNumber(value: number))! + "원"
+    }
+
+}

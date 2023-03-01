@@ -18,7 +18,7 @@ class Consumption: Object {
 }
 
 extension Consumption {
-    private static var realm = try! Realm()
+    static var realm = try! Realm()
     
     static func findAll() -> Results<Consumption> {
         print(Realm.Configuration.defaultConfiguration.fileURL!)

@@ -14,15 +14,35 @@ final class HomeViewController: UIViewController {
     var scrollView = UIScrollView()
     var contentView = HomeView()
     
-    let tasks = Consumption.findAll()
-    var monthlyTotalCost = 0
-
+    var tasks = Consumption.realm.objects(Consumption.self)
+    var notificationToken: NotificationToken?
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        calculateMonthlyTotal()
+        
+        notificationToken = tasks.observe { [unowned self] changes in
+            switch changes {
+                
+            case .initial(let tasks):
+                print("Initial count: \(tasks.count)")
+                //self.tableView.reloadData()
+                calculateMonthlyTotal()
+            
+            case .update(let tasks, let deletions, let insertions, let modifications):
+                print("Update count: \(tasks.count)")
+                print("Delete count: \(deletions.count)")
+                print("Insert count: \(insertions.count)")
+                print("Modification count: \(modifications.count)")
+                calculateMonthlyTotal()
+                
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
+        
     }
     
     // MARK: - Actions
@@ -37,7 +57,7 @@ final class HomeViewController: UIViewController {
     func configureUI() {
         view.backgroundColor = .systemBackground
         view.addSubview(scrollView)
-
+        
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -62,14 +82,15 @@ final class HomeViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"
         let thisMonth = dateFormatter.string(from: Date())
-        let monthlyTotal: () = tasks.filter {
+        var monthlyTotalCost = 0
+        
+        let _: () = tasks.filter {
             return dateFormatter.string(from: $0.date) == thisMonth
         }.forEach {
             monthlyTotalCost += $0.cost
         }
-        
-        contentView.totalConsumptionLabel.text = "\(monthlyTotalCost) 원"
+        contentView.totalConsumptionLabel.text = numberFormatter(number: monthlyTotalCost)
     }
-
+    
 }
 
