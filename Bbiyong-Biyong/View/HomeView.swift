@@ -20,9 +20,9 @@ class HomeView: UIView {
         return iv
     }()
 
-    private let monthlyCostTitleLabel: UILabel = {
+    private lazy var monthlyCostTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "💸 이번 달 소비"
+        label.text = "💸 \(username)님의 이번 달 소비"
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 20)

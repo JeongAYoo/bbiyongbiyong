@@ -46,4 +46,8 @@ extension Consumption {
             consumption.content = content
         }
     }
+    
+    static func fetchDate(date: Date) -> Results<Consumption> {
+        return realm.objects(Consumption.self).filter("date >= %@ AND date <= %@", date, Date(timeInterval: 86400, since: date))
+    }
 }

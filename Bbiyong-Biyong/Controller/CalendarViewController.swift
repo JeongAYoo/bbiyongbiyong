@@ -8,6 +8,7 @@
 import UIKit
 import FSCalendar
 import SnapKit
+import RealmSwift
 
 final class CalendarViewController: UIViewController {
     // MARK: - Properties
@@ -23,7 +24,7 @@ final class CalendarViewController: UIViewController {
         calendar.layer.cornerRadius = 10
         // shadow
         calendar.layer.shadowOffset = CGSize(width: 0, height: 5)
-        calendar.layer.shadowRadius = 10
+        calendar.layer.shadowRadius = 8
         calendar.layer.shadowOpacity = 0.2
         
         // calendar header
@@ -43,18 +44,29 @@ final class CalendarViewController: UIViewController {
         calendar.appearance.weekdayTextColor = .darkGreen
         calendar.appearance.todayColor = .boldGreen
         calendar.appearance.selectionColor = .sageGreen
+        calendar.appearance.eventDefaultColor = .systemGreen
         
         return calendar
+    }()
+    
+    private lazy var header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+    private let headerLabel = UILabel()
+    private let headerDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "d일 EEEE"
+        return formatter
     }()
     
     private var tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(DayTableViewCell.self, forCellReuseIdentifier: DayTableViewCell.identifier)
         table.backgroundColor = .clear
-        table.layer.cornerRadius = 10
+        table.separatorStyle = .none
         return table
     }()
-        
+    
+    var tasks: Results<Consumption>!
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,13 +75,16 @@ final class CalendarViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.rowHeight = 70
+        
+        tasks = Consumption.fetchDate(date: Date())
         
         configureUI()
     }
     
     // MARK: - Helpers
     func configureUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .sageGreen
         navigationItem.title = "기록"
         
         // calendarView
@@ -89,9 +104,7 @@ final class CalendarViewController: UIViewController {
         }
                 
         // tableView header
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
-        let headerLabel = UILabel()
-        headerLabel.text = "19일 일요일"
+        headerLabel.text = headerDateFormatter.string(from: Date())
         headerLabel.font = .boldSystemFont(ofSize: 18)
         header.addSubview(headerLabel)
         headerLabel.snp.makeConstraints { make in
@@ -124,11 +137,14 @@ extension CalendarViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DayTableViewCell.identifier, for: indexPath) as? DayTableViewCell else { return UITableViewCell() }
+        cell.costLabel.text = numberFormatter(number: tasks[indexPath.row].cost)
+        cell.titleLabel.text = tasks[indexPath.row].title
+        cell.contentLabel.text = tasks[indexPath.row].content
         return cell
     }
     
@@ -138,6 +154,10 @@ extension CalendarViewController: UITableViewDataSource {
 extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 
@@ -163,5 +183,15 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         default:
             return nil
         }
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        headerLabel.text = headerDateFormatter.string(from: date)
+        tasks = Consumption.fetchDate(date: date)
+        tableView.reloadData()
+    }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        return Consumption.fetchDate(date: date).count
     }
 }
