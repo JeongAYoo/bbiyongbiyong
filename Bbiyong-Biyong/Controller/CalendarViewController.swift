@@ -18,6 +18,7 @@ final class CalendarViewController: UIViewController {
         calendar.locale = Locale(identifier: "ko_KR")
         calendar.scrollEnabled = true
         calendar.scrollDirection = .horizontal
+        calendar.scope = .month
         
         calendar.placeholderType = .fillHeadTail
         calendar.backgroundColor = .systemBackground
@@ -66,8 +67,18 @@ final class CalendarViewController: UIViewController {
         return table
     }()
     
-    var tasks: Results<Consumption>!
+    var tasks: Results<Consumption>! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     // MARK: - Life cycle
+    override func viewWillAppear(_ animated: Bool) {
+        let defaultDate = calendarView.selectedDate ?? calendarView.today!
+        tasks = Consumption.fetchDate(date: defaultDate)
+        print(#function)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calendarView.delegate = self
@@ -80,6 +91,32 @@ final class CalendarViewController: UIViewController {
         tasks = Consumption.fetchDate(date: Date())
         
         configureUI()
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeEvent(_:)))
+        swipeUp.direction = .up
+        self.view.addGestureRecognizer(swipeUp)
+
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeEvent(_:)))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    // MARK: - Actions
+    @objc func addButtonTapped() {
+        let vc = ComposeViewController()
+        vc.viewModel.date.value = calendarView.selectedDate ?? Date()
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
+    }
+    
+    @objc func swipeEvent(_ swipe: UISwipeGestureRecognizer) {
+        if swipe.direction == .up {
+            calendarView.scope = .week
+        }
+        else if swipe.direction == .down {
+            calendarView.scope = .month
+        }
     }
     
     // MARK: - Helpers
@@ -92,7 +129,9 @@ final class CalendarViewController: UIViewController {
         calendarView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             make.leading.trailing.equalToSuperview().inset(10)
-            make.bottom.equalTo(view.snp.centerY).offset(50)
+//            make.height.equalToSuperview().multipliedBy(0.45)
+//            make.bottom.equalTo(view.snp.centerY).offset(50)
+            make.height.equalTo(view.frame.height / 2.3)
         }
         
         // tableView
@@ -108,7 +147,7 @@ final class CalendarViewController: UIViewController {
         headerLabel.font = .boldSystemFont(ofSize: 18)
         header.addSubview(headerLabel)
         headerLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(20)
             make.top.bottom.equalToSuperview()
         }
         
@@ -117,6 +156,7 @@ final class CalendarViewController: UIViewController {
         //tableView footer
         let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60))
         let addButton = AddNewButton(frame: .zero, type: .detail)
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         footer.addSubview(addButton)
         addButton.snp.makeConstraints { make in
             make.width.height.equalTo(50)
@@ -142,6 +182,7 @@ extension CalendarViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DayTableViewCell.identifier, for: indexPath) as? DayTableViewCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
         cell.costLabel.text = numberFormatter(number: tasks[indexPath.row].cost)
         cell.titleLabel.text = tasks[indexPath.row].title
         cell.contentLabel.text = tasks[indexPath.row].content
@@ -153,7 +194,7 @@ extension CalendarViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        //tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -165,11 +206,10 @@ extension CalendarViewController: UITableViewDelegate {
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        calendar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalTo(view.snp.centerY).offset(10)
+        calendarView.snp.updateConstraints { make in
+            make.height.equalTo(bounds.height)
         }
+
         self.view.layoutIfNeeded()
     }
     
@@ -188,7 +228,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         headerLabel.text = headerDateFormatter.string(from: date)
         tasks = Consumption.fetchDate(date: date)
-        tableView.reloadData()
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {

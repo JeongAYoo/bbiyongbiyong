@@ -11,7 +11,7 @@ final class ComposeViewController: UIViewController {
     // MARK: - Properties
     private lazy var saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
     private let composeView = ComposeView()
-    private var viewModel = ConsumptionViewModel()
+    var viewModel = ConsumptionViewModel()
     
     // MARK: - Life cycle
     override func loadView() {

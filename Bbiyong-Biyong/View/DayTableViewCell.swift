@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class DayTableViewCell: UITableViewCell {
+    // MARK: - Properties
     static let identifier = "DayTableViewCell"
     
     private let emotionImageView: UIImageView = {
@@ -64,18 +65,30 @@ class DayTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    // MARK: - Life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
         contentView.addSubview(emotionImageView)
         contentView.addSubview(rootStackView)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemBackground
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 10
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        if selected {
+                contentView.layer.borderWidth = 1
+                contentView.layer.borderColor = UIColor.boldGreen?.cgColor
+            } else {
+                contentView.layer.borderWidth = 0
+            }
     }
     
     override func layoutSubviews() {
@@ -85,7 +98,7 @@ class DayTableViewCell: UITableViewCell {
         
         rootStackView.snp.makeConstraints { make in
             make.leading.equalTo(emotionImageView.snp.trailing).offset(20)
-            make.top.bottom.equalToSuperview().inset(5)
+            make.top.bottom.equalToSuperview().inset(10)
             make.trailing.equalToSuperview().inset(20)
         }
         

@@ -37,7 +37,7 @@ class AddNewButton: UIButton {
             layer.borderWidth = 1
             layer.borderColor = UIColor.lightGray.cgColor
             tintColor = .lightGray
-            backgroundColor = .systemBackground
+            backgroundColor = .clear
             setImage(UIImage(systemName: "plus"), for: .normal)
         }
     }
