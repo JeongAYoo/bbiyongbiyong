@@ -130,5 +130,4 @@ class HomeView: UIView {
             make.height.equalTo(200)
         }
     }
-
 }

@@ -54,5 +54,4 @@ extension UIViewController {
         
         return numberFormatter.string(from: NSNumber(value: number))! + "원"
     }
-    
 }

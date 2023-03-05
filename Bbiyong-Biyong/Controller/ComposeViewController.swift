@@ -150,12 +150,10 @@ final class ComposeViewController: UIViewController {
         }
         
         viewModel.title.bind { text in
-            print(text)
             self.composeView.titleTextField.text = text
         }
         
         viewModel.cost.bind { text in
-            print(text)
             self.composeView.costTextField.text = text
         }
         
@@ -173,6 +171,7 @@ final class ComposeViewController: UIViewController {
 
 }
 
+// MARK: - UITextViewDelegate
 extension ComposeViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         viewModel.content.value = textView.text ?? ""

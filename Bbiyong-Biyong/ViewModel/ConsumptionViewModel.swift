@@ -47,10 +47,6 @@ class ConsumptionViewModel {
         return true
     }
     
-//    var formIsValid: Bool {
-//        return titleIsValid && costIsValid
-//    }
-    
     func add() {
         let new = Consumption()
         new.date = date.value

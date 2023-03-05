@@ -79,7 +79,6 @@ final class CalendarViewController: UIViewController {
         let defaultDate = calendarView.selectedDate ?? calendarView.today!
         tasks = Consumption.fetchDate(date: defaultDate)
         calendarView.reloadData()
-        print(#function)
     }
     
     override func viewDidLoad() {
@@ -212,7 +211,6 @@ extension CalendarViewController: UITableViewDelegate {
 extension CalendarViewController: UIScrollViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if velocity.y <= 0 {
-            print(velocity)
             calendarView.scope = .month
         } else {
             calendarView.scope = .week
