@@ -202,6 +202,18 @@ extension CalendarViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UIScrollViewDelegate
+extension CalendarViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if velocity.y <= 0 {
+            print(velocity)
+            calendarView.scope = .month
+        } else {
+            calendarView.scope = .week
+        }
+    }
+}
+
 // MARK: - FSCalendarDelegate
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
