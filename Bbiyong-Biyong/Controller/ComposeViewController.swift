@@ -12,6 +12,10 @@ final class ComposeViewController: UIViewController {
     private lazy var saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
     private let composeView = ComposeView()
     var viewModel = ConsumptionViewModel()
+    // 읽기 모드
+    var originalTarget: Consumption?
+    // 편집 모드
+    var editTarget: Consumption?
     
     // MARK: - Life cycle
     override func loadView() {
@@ -19,9 +23,11 @@ final class ComposeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureUI()
-        setTarget()
+        setTargetActions()
         bind()
+        checkMode()
     }
     
     // MARK: - Actions
@@ -32,6 +38,34 @@ final class ComposeViewController: UIViewController {
     @objc func save() {
         viewModel.add()
         dismiss(animated: true)
+    }
+    
+    @objc func cancelEdit() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func edit() {
+        composeView.isUserInteractionEnabled = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdit))
+        navigationItem.rightBarButtonItems = [saveBarButton]
+        navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+    
+    @objc func deleteConsumption() {
+        guard let target = originalTarget else { return }
+        let alert = UIAlertController(title: "\(target.title)", message: "삐용비용을 삭제할까요?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "삭제", style: .destructive) { [weak self] action in
+            Consumption.deleteConsumption(target)
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
     }
     
     @objc func handleDatePicker(_ sender: UIDatePicker) {
@@ -55,14 +89,33 @@ final class ComposeViewController: UIViewController {
     }
     
     // MARK: - Helpers
+    func checkMode() {
+        if let consumption = originalTarget {
+            navigationItem.title = "삐용비용"
+            navigationItem.rightBarButtonItems = [
+                UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(edit)),
+                UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteConsumption))
+                                                  ]
+            
+            viewModel.date.value = consumption.date
+            viewModel.title.value = consumption.title
+            viewModel.cost.value = String(consumption.cost)
+            viewModel.content.value = consumption.content
+            
+            composeView.isUserInteractionEnabled = false
+            
+        } else {
+            navigationItem.title = "새 소비 작성"
+            navigationItem.rightBarButtonItem = saveBarButton
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        }
+    }
+    
     func configureUI() {
         // navigation
-        navigationItem.title = "새 소비 작성"
         navigationController?.navigationBar.tintColor = .systemGreen
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-        navigationItem.rightBarButtonItem = saveBarButton
-        navigationItem.rightBarButtonItem?.isEnabled = false
-        
+
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.backgroundColor = .systemBackground
@@ -75,7 +128,7 @@ final class ComposeViewController: UIViewController {
         
     }
     
-    func setTarget() {
+    func setTargetActions() {
         composeView.datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
         composeView.titleTextField.addTarget(self, action: #selector(titleTextFieldDidChange(_:)), for: .editingChanged)
         composeView.costTextField.addTarget(self, action: #selector(costTextFieldDidChange(_:)), for: .editingChanged)

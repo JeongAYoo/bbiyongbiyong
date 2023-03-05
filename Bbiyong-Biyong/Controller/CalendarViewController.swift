@@ -33,6 +33,7 @@ final class CalendarViewController: UIViewController {
         calendar.appearance.headerTitleColor = .label
         calendar.appearance.headerTitleAlignment = .center
         calendar.appearance.headerTitleFont = .systemFont(ofSize: 18)
+        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.headerHeight = 40.0
         
         // weekdays, numbers Font
@@ -45,7 +46,8 @@ final class CalendarViewController: UIViewController {
         calendar.appearance.weekdayTextColor = .darkGreen
         calendar.appearance.todayColor = .boldGreen
         calendar.appearance.selectionColor = .sageGreen
-        calendar.appearance.eventDefaultColor = .systemGreen
+        calendar.appearance.eventDefaultColor = .boldGreen
+        calendar.appearance.eventSelectionColor = .sageGreen
         
         return calendar
     }()
@@ -76,6 +78,7 @@ final class CalendarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let defaultDate = calendarView.selectedDate ?? calendarView.today!
         tasks = Consumption.fetchDate(date: defaultDate)
+        calendarView.reloadData()
         print(#function)
     }
     
@@ -194,7 +197,10 @@ extension CalendarViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //tableView.deselectRow(at: indexPath, animated: true)
+        let vc = ComposeViewController()
+        vc.originalTarget = tasks[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

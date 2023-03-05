@@ -21,13 +21,31 @@ extension Date {
     }
     
     public var month: Int {
-         return Calendar.current.component(.month, from: self)
+        return Calendar.current.component(.month, from: self)
     }
     
     public var day: Int {
-         return Calendar.current.component(.day, from: self)
+        return Calendar.current.component(.day, from: self)
     }
+    
+//    func toString() -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+//        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+//        dateFormatter.locale = Locale.current
+//        return dateFormatter.string(from: self)
+//    }
 }
+
+//extension String {
+//    func toDate() -> Date {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+//        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+//        dateFormatter.locale = Locale.current
+//        return dateFormatter.date(from: self)!
+//    }
+//}
 
 extension UIViewController {
     func numberFormatter(number: Int) -> String {
@@ -36,5 +54,5 @@ extension UIViewController {
         
         return numberFormatter.string(from: NSNumber(value: number))! + "원"
     }
-
+    
 }
