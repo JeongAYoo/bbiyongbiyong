@@ -52,6 +52,7 @@ class ComposeView: UIView {
     let costTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "금액을 입력해주세요.")
         tf.backgroundColor = .darkGreen
+        tf.keyboardType = .numberPad
         return tf
     }()
     

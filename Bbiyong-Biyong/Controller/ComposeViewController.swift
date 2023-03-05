@@ -36,8 +36,14 @@ final class ComposeViewController: UIViewController {
     }
     
     @objc func save() {
-        viewModel.add()
-        dismiss(animated: true)
+        // 수정할 내용이 있을 때
+        if let target = editTarget {
+            viewModel.edit(old: target)
+            navigationController?.popViewController(animated: true)
+        } else {
+            viewModel.add()
+            dismiss(animated: true)
+        }
     }
     
     @objc func cancelEdit() {
@@ -49,6 +55,9 @@ final class ComposeViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdit))
         navigationItem.rightBarButtonItems = [saveBarButton]
         navigationItem.rightBarButtonItem?.isEnabled = false
+        
+        editTarget = originalTarget
+        updateForm()
     }
     
     @objc func deleteConsumption() {

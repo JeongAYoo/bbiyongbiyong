@@ -61,5 +61,9 @@ class ConsumptionViewModel {
         self.consumptions.append(new)
         Consumption.addConsumption(new)
     }
+    
+    func edit(old: Consumption) {
+        Consumption.editConsumption(consumption: old, date: date.value, title: title.value, cost: Int(cost.value)!, content: content.value)
+    }
 }
 
