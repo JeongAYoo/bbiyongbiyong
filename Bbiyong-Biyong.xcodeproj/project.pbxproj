@@ -14,6 +14,7 @@
 		071D8E972996DE9F001B3E71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071D8E952996DE9F001B3E71 /* LaunchScreen.storyboard */; };
 		071D8EA22996E797001B3E71 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8EA12996E797001B3E71 /* HomeView.swift */; };
 		074178092996F9A30002984B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 074178082996F9A30002984B /* SnapKit */; };
+		075A2FAD29B628FB0021262B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FAC29B628FB0021262B /* Utils.swift */; };
 		076486B129A1575D006BC5C2 /* AddNewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B029A1575D006BC5C2 /* AddNewButton.swift */; };
 		076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B229A38AD6006BC5C2 /* ComposeView.swift */; };
 		076486B529A3927F006BC5C2 /* ConsumptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */; };
@@ -46,6 +47,7 @@
 		071D8E962996DE9F001B3E71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		071D8E982996DE9F001B3E71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		071D8EA12996E797001B3E71 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		075A2FAC29B628FB0021262B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		076486B029A1575D006BC5C2 /* AddNewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewButton.swift; sourceTree = "<group>"; };
 		076486B229A38AD6006BC5C2 /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
 		076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionViewModel.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				077FDDA929A874CC00B15E3E /* Observable.swift */,
 				07865FF629A0C61500C482AB /* Extensions.swift */,
+				075A2FAC29B628FB0021262B /* Utils.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				07865FF929A0F08500C482AB /* SwitchTableViewCell.swift in Sources */,
 				071D8E8F2996DE9E001B3E71 /* HomeViewController.swift in Sources */,
 				07FD2BBD299D222E000E5088 /* ComposeViewController.swift in Sources */,
+				075A2FAD29B628FB0021262B /* Utils.swift in Sources */,
 				076486B729A39920006BC5C2 /* Consumption.swift in Sources */,
 				071D8EA22996E797001B3E71 /* HomeView.swift in Sources */,
 				07FD2BB7299CBE0A000E5088 /* MainTabBarController.swift in Sources */,
@@ -420,12 +424,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jade.Bbiyong-Biyong";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -451,12 +455,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jade.Bbiyong-Biyong";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
