@@ -23,6 +23,12 @@ class ComposeView: UIView {
         return picker
     }()
     
+    let emotionButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "photo"), for: .normal)
+        return button
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "제목"
@@ -79,9 +85,17 @@ class ComposeView: UIView {
         return tv
     }()
     
+    private lazy var upperStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [datePicker, emotionButton])
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        return stackView
+    }()
+    
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
-            datePicker,
+            upperStackView,
             titleLabel, titleTextField,
             costLabel, costTextField,
             contentLabel, contentTextView])
@@ -109,9 +123,9 @@ class ComposeView: UIView {
     func configure() {
         backgroundColor = .sageGreen
         
-        datePicker.snp.makeConstraints { make in
-            make.leading.equalTo(stackView)
-        }
+//        datePicker.snp.makeConstraints { make in
+//            make.leading.equalTo(stackView)
+//        }
         addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)

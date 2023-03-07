@@ -15,6 +15,8 @@
 		071D8EA22996E797001B3E71 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8EA12996E797001B3E71 /* HomeView.swift */; };
 		074178092996F9A30002984B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 074178082996F9A30002984B /* SnapKit */; };
 		075A2FAD29B628FB0021262B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FAC29B628FB0021262B /* Utils.swift */; };
+		075A2FAF29B72A920021262B /* EmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FAE29B72A920021262B /* EmotionViewController.swift */; };
+		075A2FB129B72BA20021262B /* EmotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FB029B72BA20021262B /* EmotionCell.swift */; };
 		076486B129A1575D006BC5C2 /* AddNewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B029A1575D006BC5C2 /* AddNewButton.swift */; };
 		076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B229A38AD6006BC5C2 /* ComposeView.swift */; };
 		076486B529A3927F006BC5C2 /* ConsumptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */; };
@@ -48,6 +50,8 @@
 		071D8E982996DE9F001B3E71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		071D8EA12996E797001B3E71 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		075A2FAC29B628FB0021262B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		075A2FAE29B72A920021262B /* EmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewController.swift; sourceTree = "<group>"; };
+		075A2FB029B72BA20021262B /* EmotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCell.swift; sourceTree = "<group>"; };
 		076486B029A1575D006BC5C2 /* AddNewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewButton.swift; sourceTree = "<group>"; };
 		076486B229A38AD6006BC5C2 /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
 		076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionViewModel.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 				07FD2BB8299CC434000E5088 /* CalendarViewController.swift */,
 				07FD2BBA299CC440000E5088 /* SettingViewController.swift */,
 				07FD2BBC299D222E000E5088 /* ComposeViewController.swift */,
+				075A2FAE29B72A920021262B /* EmotionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 				07865FFA29A1131B00C482AB /* DayTableViewCell.swift */,
 				076486B029A1575D006BC5C2 /* AddNewButton.swift */,
 				076486B229A38AD6006BC5C2 /* ComposeView.swift */,
+				075A2FB029B72BA20021262B /* EmotionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -260,12 +266,14 @@
 				076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */,
 				07865FF929A0F08500C482AB /* SwitchTableViewCell.swift in Sources */,
 				071D8E8F2996DE9E001B3E71 /* HomeViewController.swift in Sources */,
+				075A2FB129B72BA20021262B /* EmotionCell.swift in Sources */,
 				07FD2BBD299D222E000E5088 /* ComposeViewController.swift in Sources */,
 				075A2FAD29B628FB0021262B /* Utils.swift in Sources */,
 				076486B729A39920006BC5C2 /* Consumption.swift in Sources */,
 				071D8EA22996E797001B3E71 /* HomeView.swift in Sources */,
 				07FD2BB7299CBE0A000E5088 /* MainTabBarController.swift in Sources */,
 				077FDDAA29A874CC00B15E3E /* Observable.swift in Sources */,
+				075A2FAF29B72A920021262B /* EmotionViewController.swift in Sources */,
 				07FD2B7C2997F733000E5088 /* RegistrationViewModel.swift in Sources */,
 				071D8E8B2996DE9E001B3E71 /* AppDelegate.swift in Sources */,
 				07865FF529A0BF4300C482AB /* SettingTableViewCell.swift in Sources */,

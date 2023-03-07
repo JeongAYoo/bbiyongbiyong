@@ -81,6 +81,14 @@ final class ComposeViewController: UIViewController {
         viewModel.date.value = sender.date
     }
     
+    @objc func showEmotionSelector(_ sender: UIButton) {
+        let vc = EmotionViewController()
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        self.present(vc, animated: true)
+    }
+    
     @objc func titleTextFieldDidChange(_ sender: UITextField) {
         if sender.text?.count == 1 {
             if sender.text?.first == " " {
@@ -139,6 +147,7 @@ final class ComposeViewController: UIViewController {
     
     func setTargetActions() {
         composeView.datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
+        composeView.emotionButton.addTarget(self, action: #selector(showEmotionSelector), for: .touchUpInside)
         composeView.titleTextField.addTarget(self, action: #selector(titleTextFieldDidChange(_:)), for: .editingChanged)
         composeView.costTextField.addTarget(self, action: #selector(costTextFieldDidChange(_:)), for: .editingChanged)
         composeView.contentTextView.delegate = self
