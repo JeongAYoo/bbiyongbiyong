@@ -17,6 +17,7 @@
 		075A2FAD29B628FB0021262B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FAC29B628FB0021262B /* Utils.swift */; };
 		075A2FAF29B72A920021262B /* EmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FAE29B72A920021262B /* EmotionViewController.swift */; };
 		075A2FB129B72BA20021262B /* EmotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FB029B72BA20021262B /* EmotionCell.swift */; };
+		075A2FB329B8CB1C0021262B /* EmotionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FB229B8CB1C0021262B /* EmotionImage.swift */; };
 		076486B129A1575D006BC5C2 /* AddNewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B029A1575D006BC5C2 /* AddNewButton.swift */; };
 		076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B229A38AD6006BC5C2 /* ComposeView.swift */; };
 		076486B529A3927F006BC5C2 /* ConsumptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */; };
@@ -52,6 +53,7 @@
 		075A2FAC29B628FB0021262B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		075A2FAE29B72A920021262B /* EmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewController.swift; sourceTree = "<group>"; };
 		075A2FB029B72BA20021262B /* EmotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCell.swift; sourceTree = "<group>"; };
+		075A2FB229B8CB1C0021262B /* EmotionImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionImage.swift; sourceTree = "<group>"; };
 		076486B029A1575D006BC5C2 /* AddNewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewButton.swift; sourceTree = "<group>"; };
 		076486B229A38AD6006BC5C2 /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
 		076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionViewModel.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				07FD2B7E2997FAE8000E5088 /* User.swift */,
 				076486B629A39920006BC5C2 /* Consumption.swift */,
+				075A2FB229B8CB1C0021262B /* EmotionImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */,
 				07865FF929A0F08500C482AB /* SwitchTableViewCell.swift in Sources */,
 				071D8E8F2996DE9E001B3E71 /* HomeViewController.swift in Sources */,
+				075A2FB329B8CB1C0021262B /* EmotionImage.swift in Sources */,
 				075A2FB129B72BA20021262B /* EmotionCell.swift in Sources */,
 				07FD2BBD299D222E000E5088 /* ComposeViewController.swift in Sources */,
 				075A2FAD29B628FB0021262B /* Utils.swift in Sources */,
