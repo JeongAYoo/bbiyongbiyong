@@ -24,9 +24,9 @@ final class CalendarViewController: UIViewController {
         calendar.backgroundColor = .systemBackground
         calendar.layer.cornerRadius = 10
         // shadow
-        calendar.layer.shadowOffset = CGSize(width: 0, height: 5)
-        calendar.layer.shadowRadius = 8
-        calendar.layer.shadowOpacity = 0.2
+//        calendar.layer.shadowOffset = CGSize(width: 0, height: 5)
+//        calendar.layer.shadowRadius = 8
+//        calendar.layer.shadowOpacity = 0.2
         
         // calendar header
         calendar.appearance.headerDateFormat = "YYYY년 M월"
@@ -131,8 +131,6 @@ final class CalendarViewController: UIViewController {
         calendarView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             make.leading.trailing.equalToSuperview().inset(10)
-//            make.height.equalToSuperview().multipliedBy(0.45)
-//            make.bottom.equalTo(view.snp.centerY).offset(50)
             make.height.equalTo(view.frame.height / 2.3)
         }
         
@@ -185,9 +183,10 @@ extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DayTableViewCell.identifier, for: indexPath) as? DayTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        cell.costLabel.text = numberFormatter(number: tasks[indexPath.row].cost)
+        cell.costLabel.text = tasks[indexPath.row].cost.numberToCurrency()
         cell.titleLabel.text = tasks[indexPath.row].title
         cell.contentLabel.text = tasks[indexPath.row].content
+        cell.emotionImageView.image = UIImage(named: tasks[indexPath.row].emotion)
         return cell
     }
     

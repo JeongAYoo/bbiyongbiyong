@@ -51,7 +51,13 @@ final class ComposeViewController: UIViewController {
     }
     
     @objc func edit() {
-        composeView.isUserInteractionEnabled = true
+        //composeView.isUserInteractionEnabled = true
+        composeView.datePicker.isUserInteractionEnabled = true
+        composeView.emotionButton.isUserInteractionEnabled = true
+        composeView.titleTextField.isUserInteractionEnabled = true
+        composeView.costTextField.isUserInteractionEnabled = true
+        composeView.contentTextView.isEditable = true
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdit))
         navigationItem.rightBarButtonItems = [saveBarButton]
         navigationItem.rightBarButtonItem?.isEnabled = false
@@ -121,7 +127,13 @@ final class ComposeViewController: UIViewController {
             viewModel.cost.value = String(consumption.cost)
             viewModel.content.value = consumption.content
             
-            composeView.isUserInteractionEnabled = false
+//            composeView.isUserInteractionEnabled = false
+            composeView.datePicker.isUserInteractionEnabled = false
+            composeView.emotionButton.isUserInteractionEnabled = false
+            composeView.titleTextField.isUserInteractionEnabled = false
+            composeView.costTextField.isUserInteractionEnabled = false
+            composeView.contentTextView.isEditable = false
+            composeView.contentTextView.isScrollEnabled = true
             
         } else {
             navigationItem.title = "새 소비 작성"
@@ -190,7 +202,7 @@ final class ComposeViewController: UIViewController {
 extension ComposeViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         viewModel.content.value = textView.text ?? ""
-        if textView.text.count > 150 {
+        if textView.text.count > 200 {
             textView.deleteBackward()
         }
     }

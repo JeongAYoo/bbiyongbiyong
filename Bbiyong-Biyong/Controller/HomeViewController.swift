@@ -28,7 +28,6 @@ final class HomeViewController: UIViewController {
                 
             case .initial(let tasks):
                 print("Initial count: \(tasks.count)")
-                //self.tableView.reloadData()
                 calculateMonthlyTotal()
             
             case .update(let tasks, let deletions, let insertions, let modifications):
@@ -66,7 +65,7 @@ final class HomeViewController: UIViewController {
         
         contentView.snp.makeConstraints { make in
             make.width.centerX.equalTo(scrollView.frameLayoutGuide)
-            make.top.bottom.equalTo(scrollView.contentLayoutGuide)
+            make.top.bottom.equalTo(scrollView.contentLayoutGuide).inset(30)
         }
         
         // configure NavigationBar
@@ -89,7 +88,7 @@ final class HomeViewController: UIViewController {
         }.forEach {
             monthlyTotalCost += $0.cost
         }
-        contentView.totalConsumptionLabel.text = numberFormatter(number: monthlyTotalCost)
+        contentView.total = monthlyTotalCost
     }
     
 }

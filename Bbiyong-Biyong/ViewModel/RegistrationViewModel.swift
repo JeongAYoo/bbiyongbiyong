@@ -44,4 +44,11 @@ struct RegistrationViewModel {
     var costValidationLabelText: String {
         return numberIsValid ? "" : "숫자만 입력해주세요."
     }
+    
+    func signUp() {
+        UserDefaults.standard.setValue(true, forKey: "launchedBefore")
+        UserDefaults.standard.setValue(Date(), forKey: "firstRegisteredDate")
+        UserDefaults.standard.setValue(username!, forKey: "username")
+        UserDefaults.standard.setValue(Int(maximumCostString!)!, forKey: "maximum")
+    }
 }

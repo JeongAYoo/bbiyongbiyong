@@ -47,11 +47,11 @@ extension Date {
 //    }
 //}
 
-extension UIViewController {
-    func numberFormatter(number: Int) -> String {
+extension Int {
+    func numberToCurrency() -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         
-        return numberFormatter.string(from: NSNumber(value: number))! + "원"
+        return numberFormatter.string(from: NSNumber(value: self))! + "원"
     }
 }

@@ -111,9 +111,7 @@ final class RegistrationViewController: UIViewController {
     
     // MARK: - Actions
     @objc func handleSignUp() {
-        UserDefaults.standard.setValue(true, forKey: "launchedBefore")
-        UserDefaults.standard.setValue(Date(), forKey: "firstRegisteredDate")
-        UserDefaults.standard.setValue(usernameTextField.text!, forKey: "username")
+        viewModel.signUp()
         
         let vc = MainTabBarController()
         vc.modalPresentationStyle = .fullScreen

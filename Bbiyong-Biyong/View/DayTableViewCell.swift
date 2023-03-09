@@ -12,10 +12,9 @@ class DayTableViewCell: UITableViewCell {
     // MARK: - Properties
     static let identifier = "DayTableViewCell"
     
-    private let emotionImageView: UIImageView = {
+    let emotionImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(systemName: "heart")
-        iv.tintColor = .boldGreen
+        iv.image = UIImage(named: EmotionImage[0])
         iv.contentMode = .scaleAspectFit
         return iv
     }()

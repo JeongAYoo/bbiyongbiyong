@@ -82,7 +82,7 @@ class ComposeView: UIView {
         tv.layer.borderColor = UIColor.darkGreen.cgColor
         tv.layer.cornerRadius = 8
         tv.font = .systemFont(ofSize: 17)
-        tv.contentInset = .init(top: 15, left: 20, bottom: 20, right: 20)
+        tv.textContainerInset = .init(top: 15, left: 15, bottom: 15, right: 15)
         // 스택의 남은 세로로 남은 공간을 채우도록
         tv.setContentHuggingPriority(.defaultLow, for: .vertical)
         return tv
