@@ -38,12 +38,11 @@ final class EmotionCell: UICollectionViewCell {
         addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.top.leading.trailing.bottom.equalToSuperview().inset(5)
         }
     }
     
     func setImage(imageName: String) {
-        // String -> enum
-        // imageView.image = UIImage(name: .imageName)
+        imageView.image = UIImage(named: imageName)
     }
 }

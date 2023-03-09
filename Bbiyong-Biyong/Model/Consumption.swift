@@ -15,6 +15,7 @@ class Consumption: Object {
     @Persisted var title: String = ""
     @Persisted var cost: Int = 0
     @Persisted var content: String = ""
+    @Persisted var emotion: String = ""
 }
 
 extension Consumption {
@@ -38,12 +39,13 @@ extension Consumption {
         }
     }
     
-    static func editConsumption(consumption: Consumption, date: Date, title: String, cost: Int, content: String) {
+    static func editConsumption(consumption: Consumption, date: Date, title: String, cost: Int, content: String, emotion: String) {
         try! realm.write {
             consumption.date = date
             consumption.title = title
             consumption.cost = cost
             consumption.content = content
+            consumption.emotion = emotion
         }
     }
     

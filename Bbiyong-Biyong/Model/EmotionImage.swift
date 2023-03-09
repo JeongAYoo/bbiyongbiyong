@@ -9,14 +9,14 @@ import UIKit
 
 enum EmotionImage {
     private static let imageIds: [String] = [
+        "joy",
+        "sadness",
+        "love",
         "anger",
         "shame",
         "depress",
-        "sadness",
-        "fear",
-        "joy",
-        "love",
-        "pride"
+        "pride",
+        "fear"
     ]
     
     static subscript(index: Int) -> String {

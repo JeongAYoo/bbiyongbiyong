@@ -115,9 +115,9 @@ final class RegistrationViewController: UIViewController {
         UserDefaults.standard.setValue(Date(), forKey: "firstRegisteredDate")
         UserDefaults.standard.setValue(usernameTextField.text!, forKey: "username")
         
-        let navVC = UINavigationController(rootViewController: HomeViewController())
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
+        let vc = MainTabBarController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     @objc func textDidChange(sender: UITextField) {

@@ -23,9 +23,12 @@ class ComposeView: UIView {
         return picker
     }()
     
-    let emotionButton: UIButton = {
+    lazy var emotionButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "photo"), for: .normal)
+        button.setBackgroundImage(UIImage(named: EmotionImage[0]), for: .normal)
+        button.setTitle(EmotionImage[0], for: .normal)
+        button.setTitleColor(.clear, for: .normal)
+        
         return button
     }()
     
@@ -126,6 +129,9 @@ class ComposeView: UIView {
 //        datePicker.snp.makeConstraints { make in
 //            make.leading.equalTo(stackView)
 //        }
+        emotionButton.snp.makeConstraints { make in
+            make.width.height.equalTo(50)
+        }
         addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
