@@ -89,12 +89,14 @@ final class ComposeViewController: UIViewController {
     
     @objc func showEmotionSheet(_ sender: UIButton) {
         let vc = EmotionViewController()
+        vc.delegate = self
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.medium()]
+            sheet.prefersGrabberVisible = true
         }
         self.present(vc, animated: true)
         
-        viewModel.emotion.value = sender.currentTitle ?? EmotionImage[0]
+//        viewModel.emotion.value = sender.currentTitle ?? EmotionImage[0]
     }
     
     @objc func titleTextFieldDidChange(_ sender: UITextField) {
@@ -126,6 +128,7 @@ final class ComposeViewController: UIViewController {
             viewModel.title.value = consumption.title
             viewModel.cost.value = String(consumption.cost)
             viewModel.content.value = consumption.content
+            viewModel.emotion.value = consumption.emotion
             
 //            composeView.isUserInteractionEnabled = false
             composeView.datePicker.isUserInteractionEnabled = false
@@ -205,5 +208,16 @@ extension ComposeViewController: UITextViewDelegate {
         if textView.text.count > 200 {
             textView.deleteBackward()
         }
+    }
+}
+
+// MARK: - SendDataDelegate
+protocol SendDataDelegate {
+    func reciveData(response: Int) -> Void
+}
+
+extension ComposeViewController: SendDataDelegate {
+    func reciveData(response: Int) {
+        viewModel.emotion.value = EmotionImage[response]
     }
 }

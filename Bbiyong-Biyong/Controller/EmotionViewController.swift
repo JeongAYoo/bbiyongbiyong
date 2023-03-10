@@ -49,7 +49,8 @@ class EmotionViewController: UIViewController {
         layout.minimumInteritemSpacing = 1.0
         return layout
       }()
-
+    
+    var delegate: SendDataDelegate?
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +109,18 @@ extension EmotionViewController: UICollectionViewDataSource {
 //        }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.reciveData(response: indexPath.row)
+        dismiss(animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        cell.layer.borderWidth = 2.0
+        cell.layer.cornerRadius = cell.layer.frame.height / 2
+        cell.layer.borderColor = UIColor.systemGreen.cgColor
     }
     
 }

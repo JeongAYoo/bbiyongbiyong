@@ -24,11 +24,7 @@ class ComposeView: UIView {
     }()
     
     lazy var emotionButton: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(named: EmotionImage[0]), for: .normal)
-        button.setTitle(EmotionImage[0], for: .normal)
-        button.setTitleColor(.clear, for: .normal)
-        
+        let button = UIButton()        
         return button
     }()
     
