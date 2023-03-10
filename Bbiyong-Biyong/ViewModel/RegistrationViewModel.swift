@@ -51,4 +51,9 @@ struct RegistrationViewModel {
         UserDefaults.standard.setValue(username!, forKey: "username")
         UserDefaults.standard.setValue(Int(maximumCostString!)!, forKey: "maximum")
     }
+    
+    func update() {
+        UserDefaults.standard.setValue(username!, forKey: "username")
+        UserDefaults.standard.setValue(Int(maximumCostString!)!, forKey: "maximum")
+    }
 }

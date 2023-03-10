@@ -10,9 +10,18 @@ import SnapKit
 
 class HomeView: UIView {
     // MARK: - Properties
-    private let username: String = UserDefaults.standard.string(forKey: "username") ?? ""
+    var username: String = UserDefaults.standard.string(forKey: "username") ?? "" {
+        didSet {
+            monthlyCostTitleLabel.text = "💸 \(username)님의 이번 달 소비"
+            statisticsTitleLabel.text = "📊 \(username)님의 통계"
+        }
+    }
     
-    private let maximum: Int = UserDefaults.standard.integer(forKey: "maximum")
+    var maximum: Int = UserDefaults.standard.integer(forKey: "maximum") {
+        didSet {
+            remain = maximum - total
+        }
+    }
     
     var total: Int = 0 {
         didSet {

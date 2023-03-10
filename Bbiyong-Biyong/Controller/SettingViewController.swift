@@ -44,7 +44,18 @@ final class SettingViewController: UIViewController {
         return table
     }()
     
+    private lazy var headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height / 4))
+    
     var model: [Section] = []
+    
+    var token: NSObjectProtocol?
+
+    // MARK: - Life cycle
+    deinit {
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +64,17 @@ final class SettingViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableHeaderView = headerView
+        
+        headerView.editButton.addTarget(self, action: #selector(showEditProfile), for: .touchUpInside)
+        
+        token = NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: OperationQueue.main, using: { noti in
+            self.updateUserInfo()
+        })
+    }
+    
+    @objc func showEditProfile(_ sender: UIButton) {
+        navigationController?.pushViewController(RegistrationViewController(), animated: true)
     }
     
     func configureUI() {
@@ -66,17 +88,17 @@ final class SettingViewController: UIViewController {
     }
 
     func configureData() {
-        self.model.append(Section(title: "시스템", options: [
-            .switchCell(model: SettingSwitchOption(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray, isOn: true) {
-                
-            }),
-            .staticCell(model: SettingsOption(title: "알림", icon: UIImage(systemName: "bell.fill"), iconBackgroundColor: .systemPink) {
-                
-            }),
-            .staticCell(model: SettingsOption(title: "언어설정", icon: UIImage(systemName: "textformat"), iconBackgroundColor: .systemYellow) {
-            
-            })
-        ]))
+//        self.model.append(Section(title: "시스템", options: [
+//            .switchCell(model: SettingSwitchOption(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray, isOn: true) {
+//
+//            }),
+//            .staticCell(model: SettingsOption(title: "알림", icon: UIImage(systemName: "bell.fill"), iconBackgroundColor: .systemPink) {
+//
+//            }),
+//            .staticCell(model: SettingsOption(title: "언어설정", icon: UIImage(systemName: "textformat"), iconBackgroundColor: .systemYellow) {
+//
+//            })
+//        ]))
         
         self.model.append(Section(title: "데이터", options: [
             .staticCell(model: SettingsOption(title: "백업 / 복구", icon: UIImage(systemName: "cloud"), iconBackgroundColor: .systemBlue) {
@@ -85,9 +107,9 @@ final class SettingViewController: UIViewController {
         ]))
         
         self.model.append(Section(title: "정보", options: [
-            .staticCell(model: SettingsOption(title: "개인정보처리방침", icon: UIImage(systemName: "shield.fill"), iconBackgroundColor: .black) {
-                
-            }),
+//            .staticCell(model: SettingsOption(title: "개인정보처리방침", icon: UIImage(systemName: "shield.fill"), iconBackgroundColor: .black) {
+//                
+//            }),
             .staticCell(model: SettingsOption(title: "오픈소스 라이브러리", icon: UIImage(systemName: "books.vertical.fill"), iconBackgroundColor: .systemGreen) {
                 
             }),
@@ -98,6 +120,11 @@ final class SettingViewController: UIViewController {
                 
             })
         ]))
+    }
+    
+    func updateUserInfo() {
+        headerView.username = UserDefaults.standard.string(forKey: "username")!
+        headerView.maximum = UserDefaults.standard.integer(forKey: "maximum")
     }
     
 }

@@ -76,7 +76,7 @@ final class RegistrationViewController: UIViewController {
         return label
     }()
     
-    private let signUpButton: UIButton = {
+    private let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("시작하기", for: .normal)
         button.setTitleColor(UIColor(white: 1, alpha: 0.67), for: .normal)
@@ -84,12 +84,12 @@ final class RegistrationViewController: UIViewController {
         button.layer.cornerRadius = 25
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.isEnabled = false
-        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
         return button
     }()
     
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, usernameLabel, usernameTextField, usernameValidationLabel, maximumCostLabel, maximumCostTextField, costValidationLabel, signUpButton])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, usernameLabel, usernameTextField, usernameValidationLabel, maximumCostLabel, maximumCostTextField, costValidationLabel, saveButton])
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -107,15 +107,31 @@ final class RegistrationViewController: UIViewController {
         
         configureUI()
         configureNotificationObservers()
+        
+        if UserDefaults.standard.bool(forKey: "launchedBefore") {
+            titleLabel.text = "Profile"
+            saveButton.setTitle("수정하기", for: .normal)
+            let username = UserDefaults.standard.string(forKey: "username")
+            viewModel.username = username
+            usernameTextField.text = username
+            let maximum = String(UserDefaults.standard.integer(forKey: "maximum"))
+            viewModel.maximumCostString = maximum
+            maximumCostTextField.text = maximum
+        }
     }
     
     // MARK: - Actions
-    @objc func handleSignUp() {
-        viewModel.signUp()
-        
-        let vc = MainTabBarController()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+    @objc func handleSave() {
+        if UserDefaults.standard.bool(forKey: "launchedBefore") {
+            viewModel.update()
+            navigationController?.popViewController(animated: true)
+        } else {
+            viewModel.signUp()
+            
+            let vc = MainTabBarController()
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        }
     }
     
     @objc func textDidChange(sender: UITextField) {
@@ -142,7 +158,7 @@ final class RegistrationViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(stackView)
         
-        signUpButton.snp.makeConstraints { make in
+        saveButton.snp.makeConstraints { make in
             make.height.equalTo(50)
         }
         
@@ -159,9 +175,9 @@ final class RegistrationViewController: UIViewController {
     }
     
     func updateForm() {
-        signUpButton.backgroundColor = viewModel.buttonBackgroundColor
-        signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
-        signUpButton.isEnabled = viewModel.formIsValid
+        saveButton.backgroundColor = viewModel.buttonBackgroundColor
+        saveButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        saveButton.isEnabled = viewModel.formIsValid
     }
 
 }

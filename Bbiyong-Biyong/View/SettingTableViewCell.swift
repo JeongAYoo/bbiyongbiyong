@@ -27,11 +27,19 @@ class SettingTableViewCell: UITableViewCell {
         return iv
     }()
     
-    private let label: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         return label
     }()
+    
+//    private let detailLabel: UILabel = {
+//        let label = UILabel()
+//        label.numberOfLines = 1
+//        label.textColor = .darkGray
+//        label.textAlignment = .right
+//        return label
+//    }()
     
     // MARK: - Life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -40,7 +48,8 @@ class SettingTableViewCell: UITableViewCell {
         
         contentView.addSubview(iconContainer)
         iconContainer.addSubview(iconImageView)
-        contentView.addSubview(label)
+        contentView.addSubview(titleLabel)
+//        contentView.addSubview(detailLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -63,23 +72,28 @@ class SettingTableViewCell: UITableViewCell {
             make.width.height.equalTo(imageSize)
         }
 
-        label.snp.makeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
             make.centerY.height.equalToSuperview()
             make.leading.equalTo(iconContainer.snp.trailing).offset(20)
-            make.trailing.equalToSuperview().offset(10)
+            //make.trailing.equalToSuperview().offset(10)
         }
+        
+//        detailLabel.snp.makeConstraints { make in
+//            make.centerY.height.equalToSuperview()
+//            make.trailing.equalTo(contentView).inset(10)
+//        }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         // reset
         iconImageView.image = nil
-        label.text = nil
+        titleLabel.text = nil
         iconContainer.backgroundColor = nil
     }
     
     public func configure(with model: SettingsOption) {
-        label.text = model.title
+        titleLabel.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
 

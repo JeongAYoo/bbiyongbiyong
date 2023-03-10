@@ -16,8 +16,14 @@ final class HomeViewController: UIViewController {
     
     var tasks = Consumption.realm.objects(Consumption.self)
     var notificationToken: NotificationToken?
+    var token: NSObjectProtocol?
     
     // MARK: - Life cycle
+    deinit {
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +47,10 @@ final class HomeViewController: UIViewController {
                 fatalError("\(error)")
             }
         }
+        
+        token = NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: OperationQueue.main, using: { noti in
+            self.updateUserInfo()
+        })
         
     }
     
@@ -91,5 +101,9 @@ final class HomeViewController: UIViewController {
         contentView.total = monthlyTotalCost
     }
     
+    func updateUserInfo() {
+        contentView.username = UserDefaults.standard.string(forKey: "username")!
+        contentView.maximum = UserDefaults.standard.integer(forKey: "maximum")
+    }
 }
 
