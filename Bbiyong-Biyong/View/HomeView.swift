@@ -7,13 +7,14 @@
 //
 import UIKit
 import SnapKit
+//import Charts
 
 class HomeView: UIView {
     // MARK: - Properties
     var username: String = UserDefaults.standard.string(forKey: "username") ?? "" {
         didSet {
             monthlyCostTitleLabel.text = "💸 \(username)님의 이번 달 소비"
-            statisticsTitleLabel.text = "📊 \(username)님의 통계"
+//            statisticsTitleLabel.text = "📊 \(username)님의 통계"
         }
     }
     
@@ -55,15 +56,15 @@ class HomeView: UIView {
         return label
     }()
 
-    private lazy var statisticsTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "📊 \(username)님의 통계"
-        label.numberOfLines = 1
-        label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: 20)
-
-        return label
-    }()
+//    private lazy var statisticsTitleLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "📊 \(username)님의 통계"
+//        label.numberOfLines = 1
+//        label.textAlignment = .left
+//        label.font = .boldSystemFont(ofSize: 20)
+//
+//        return label
+//    }()
 
 //    private lazy var achievementTitleLabel: UILabel = {
 //        let label = UILabel()
@@ -93,11 +94,15 @@ class HomeView: UIView {
         return label
     }()
     
-    private let statisticsBackgroundView = UIView()
+//    private let pieChart: PieChartView = {
+//        let chart = PieChartView()
+//        chart.noDataText = "데이터 없음"
+//        return chart
+//    }()
 //    private let achievementBackgroundView = UIView()
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [bbiyongImageView, monthlyCostTitleLabel, monthlyCostBackgroundView, remainAmountLabel, statisticsTitleLabel, statisticsBackgroundView])
+        let stackView = UIStackView(arrangedSubviews: [bbiyongImageView, monthlyCostTitleLabel, monthlyCostBackgroundView, remainAmountLabel])
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -129,7 +134,7 @@ class HomeView: UIView {
             make.leading.trailing.equalToSuperview().inset(20)
         }
 
-        [monthlyCostBackgroundView, statisticsBackgroundView].forEach {
+        [monthlyCostBackgroundView].forEach {
             $0.backgroundColor = .secondarySystemGroupedBackground
             $0.layer.cornerRadius = 10
             $0.layer.shadowOffset = CGSize(width: 0, height: 5)
@@ -137,7 +142,7 @@ class HomeView: UIView {
             $0.layer.shadowOpacity = 0.2
         }
         
-        [monthlyCostTitleLabel, statisticsTitleLabel].forEach {
+        [monthlyCostTitleLabel].forEach {
             $0.snp.makeConstraints { make in
                 make.height.lessThanOrEqualTo(60)
             }
@@ -156,8 +161,8 @@ class HomeView: UIView {
             make.trailing.equalTo(monthlyCostBackgroundView).inset(20)
         }
 
-        statisticsBackgroundView.snp.makeConstraints { make in
-            make.height.equalTo(300)
-        }
+//        pieChart.snp.makeConstraints { make in
+//            make.height.equalTo(300)
+//        }
     }
 }

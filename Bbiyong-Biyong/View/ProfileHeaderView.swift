@@ -66,6 +66,7 @@ class ProfileHeaderView: UIView {
     
     let editButton: UIButton = {
         let button = UIButton()
+        button.tintColor = .boldGreen
         button.setImage(UIImage(systemName: "highlighter"), for: .normal)
         button.contentHorizontalAlignment = .trailing
         button.setContentHuggingPriority(.defaultHigh, for: .vertical)

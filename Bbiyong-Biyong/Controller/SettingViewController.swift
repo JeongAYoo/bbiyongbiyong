@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import AcknowList
+import MessageUI
 
 // MARK: - Model
 struct Section {
@@ -50,7 +51,7 @@ final class SettingViewController: UIViewController {
     var model: [Section] = []
     
     var token: NSObjectProtocol?
-
+    
     // MARK: - Life cycle
     deinit {
         if let token = token {
@@ -87,37 +88,66 @@ final class SettingViewController: UIViewController {
             make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
-
+    
     func configureData() {
-//        self.model.append(Section(title: "시스템", options: [
-//            .switchCell(model: SettingSwitchOption(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray, isOn: true) {
-//
-//            }),
-//            .staticCell(model: SettingsOption(title: "알림", icon: UIImage(systemName: "bell.fill"), iconBackgroundColor: .systemPink) {
-//
-//            }),
-//            .staticCell(model: SettingsOption(title: "언어설정", icon: UIImage(systemName: "textformat"), iconBackgroundColor: .systemYellow) {
-//
-//            })
-//        ]))
+        //        self.model.append(Section(title: "시스템", options: [
+        //            .switchCell(model: SettingSwitchOption(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray, isOn: true) {
+        //
+        //            }),
+        //            .staticCell(model: SettingsOption(title: "알림", icon: UIImage(systemName: "bell.fill"), iconBackgroundColor: .systemPink) {
+        //
+        //            }),
+        //            .staticCell(model: SettingsOption(title: "언어설정", icon: UIImage(systemName: "textformat"), iconBackgroundColor: .systemYellow) {
+        //
+        //            })
+        //        ]))
         
-//        self.model.append(Section(title: "데이터", options: [
-//            .staticCell(model: SettingsOption(title: "백업 / 복구", icon: UIImage(systemName: "cloud"), iconBackgroundColor: .systemBlue) {
-//
-//            })
-//        ]))
+        //        self.model.append(Section(title: "데이터", options: [
+        //            .staticCell(model: SettingsOption(title: "백업 / 복구", icon: UIImage(systemName: "cloud"), iconBackgroundColor: .systemBlue) {
+        //
+        //            })
+        //        ]))
         
         self.model.append(Section(title: "정보", options: [
-//            .staticCell(model: SettingsOption(title: "개인정보처리방침", icon: UIImage(systemName: "shield.fill"), iconBackgroundColor: .black) {
-//                
-//            }),
+            //            .staticCell(model: SettingsOption(title: "개인정보처리방침", icon: UIImage(systemName: "shield.fill"), iconBackgroundColor: .black) {
+            //
+            //            }),
             .staticCell(model: SettingsOption(title: "오픈소스 라이브러리", icon: UIImage(systemName: "books.vertical.fill"), iconBackgroundColor: .systemGreen) {
                 let vc = AcknowListViewController()
                 vc.navigationItem.title = "오픈소스 라이브러리"
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
             .staticCell(model: SettingsOption(title: "문의하기", icon: UIImage(systemName: "questionmark.circle.fill"), iconBackgroundColor: .systemBlue) {
-                
+                if MFMailComposeViewController.canSendMail() {
+                    let vc = MFMailComposeViewController()
+                    vc.mailComposeDelegate = self
+                    
+                    let bodyString = """
+                                         문의 사항 및 의견을 작성해주세요.
+                                         
+                                         
+                                         
+                                         
+                                         -------------------
+                                         
+                                         Device Model : \(Utils.getDeviceModelName())
+                                         Device OS : \(UIDevice.current.systemVersion)
+                                         App Version : \(Utils.getAppVersion())
+                                         
+                                         -------------------
+                                         """
+                    
+                    vc.setToRecipients(["jadeyoo.ios@gmail.com"])
+                    vc.setSubject("[삐용비용] 문의")
+                    vc.setMessageBody(bodyString, isHTML: false)
+                    
+                    self.present(vc, animated: true, completion: nil)
+                } else {
+                    let sendMailErrorAlert = UIAlertController(title: "메일 전송 실패", message: "'Mail' 앱을 찾을 수 없습니다.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+                    sendMailErrorAlert.addAction(okAction)
+                    self.present(sendMailErrorAlert, animated: true, completion: nil)
+                }
             }),
             .staticCell(model: SettingsOption(title: "버전", icon: UIImage(systemName: "wand.and.rays.inverse"), iconBackgroundColor: .lightGray) {
                 
@@ -151,7 +181,7 @@ extension SettingViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
             cell.configure(with: data)
             return cell
-
+            
         case .switchCell(let data):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.identifier, for: indexPath) as? SwitchTableViewCell else { return UITableViewCell() }
             cell.configure(with: data)
@@ -180,5 +210,11 @@ extension SettingViewController: UITableViewDelegate {
             data.handler()
             
         }
+    }
+}
+
+extension SettingViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
