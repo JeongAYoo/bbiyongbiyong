@@ -19,6 +19,8 @@
 		075A2FB129B72BA20021262B /* EmotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FB029B72BA20021262B /* EmotionCell.swift */; };
 		075A2FB329B8CB1C0021262B /* EmotionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FB229B8CB1C0021262B /* EmotionImage.swift */; };
 		075A2FB529BB045C0021262B /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FB429BB045C0021262B /* ProfileHeaderView.swift */; };
+		075A2FB829BB359B0021262B /* AcknowList in Frameworks */ = {isa = PBXBuildFile; productRef = 075A2FB729BB359B0021262B /* AcknowList */; };
+		075A2FBA29BB3A000021262B /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 075A2FB929BB3A000021262B /* Package.resolved */; };
 		076486B129A1575D006BC5C2 /* AddNewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B029A1575D006BC5C2 /* AddNewButton.swift */; };
 		076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B229A38AD6006BC5C2 /* ComposeView.swift */; };
 		076486B529A3927F006BC5C2 /* ConsumptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */; };
@@ -56,6 +58,7 @@
 		075A2FB029B72BA20021262B /* EmotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCell.swift; sourceTree = "<group>"; };
 		075A2FB229B8CB1C0021262B /* EmotionImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionImage.swift; sourceTree = "<group>"; };
 		075A2FB429BB045C0021262B /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		075A2FB929BB3A000021262B /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = file; name = Package.resolved; path = "Bbiyong-Biyong.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved"; sourceTree = SOURCE_ROOT; };
 		076486B029A1575D006BC5C2 /* AddNewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewButton.swift; sourceTree = "<group>"; };
 		076486B229A38AD6006BC5C2 /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
 		076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionViewModel.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				074178092996F9A30002984B /* SnapKit in Frameworks */,
+				075A2FB829BB359B0021262B /* AcknowList in Frameworks */,
 				07865FF3299E7DD700C482AB /* FSCalendar in Frameworks */,
 				077FDDAD29A990BA00B15E3E /* Realm in Frameworks */,
 				077FDDAF29A990BA00B15E3E /* RealmSwift in Frameworks */,
@@ -110,6 +114,7 @@
 		071D8E892996DE9E001B3E71 /* Bbiyong-Biyong */ = {
 			isa = PBXGroup;
 			children = (
+				075A2FB929BB3A000021262B /* Package.resolved */,
 				077FDDB029A990F800B15E3E /* Helper */,
 				071D8EA02996E133001B3E71 /* Model */,
 				07FD2B7D2997FA9F000E5088 /* ViewModel */,
@@ -205,6 +210,7 @@
 				07865FF2299E7DD700C482AB /* FSCalendar */,
 				077FDDAC29A990BA00B15E3E /* Realm */,
 				077FDDAE29A990BA00B15E3E /* RealmSwift */,
+				075A2FB729BB359B0021262B /* AcknowList */,
 			);
 			productName = "Bbiyong-Biyong";
 			productReference = 071D8E872996DE9E001B3E71 /* Bbiyong-Biyong.app */;
@@ -239,6 +245,7 @@
 				07FD2B8229981664000E5088 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				07865FF1299E7DD700C482AB /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				077FDDAB29A990BA00B15E3E /* XCRemoteSwiftPackageReference "realm-swift" */,
+				075A2FB629BB359B0021262B /* XCRemoteSwiftPackageReference "AcknowList" */,
 			);
 			productRefGroup = 071D8E882996DE9E001B3E71 /* Products */;
 			projectDirPath = "";
@@ -255,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071D8E972996DE9F001B3E71 /* LaunchScreen.storyboard in Resources */,
+				075A2FBA29BB3A000021262B /* Package.resolved in Resources */,
 				071D8E942996DE9F001B3E71 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +525,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		075A2FB629BB359B0021262B /* XCRemoteSwiftPackageReference "AcknowList" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vtourraine/AcknowList";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		077FDDAB29A990BA00B15E3E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -548,6 +564,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 074178072996F9A30002984B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		075A2FB729BB359B0021262B /* AcknowList */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 075A2FB629BB359B0021262B /* XCRemoteSwiftPackageReference "AcknowList" */;
+			productName = AcknowList;
 		};
 		077FDDAC29A990BA00B15E3E /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import AcknowList
 
 // MARK: - Model
 struct Section {
@@ -111,7 +112,9 @@ final class SettingViewController: UIViewController {
 //                
 //            }),
             .staticCell(model: SettingsOption(title: "오픈소스 라이브러리", icon: UIImage(systemName: "books.vertical.fill"), iconBackgroundColor: .systemGreen) {
-                
+                let vc = AcknowListViewController()
+                vc.navigationItem.title = "오픈소스 라이브러리"
+                self.navigationController?.pushViewController(vc, animated: true)
             }),
             .staticCell(model: SettingsOption(title: "문의하기", icon: UIImage(systemName: "questionmark.circle.fill"), iconBackgroundColor: .systemBlue) {
                 
