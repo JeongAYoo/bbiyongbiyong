@@ -28,6 +28,12 @@ class HomeView: UIView {
         didSet {
             totalConsumptionLabel.text = total.numberToCurrency()
             remain = maximum - total
+            
+            if Double(total) / Double(maximum) > 0.5 {
+                bbiyongImageView.image = UIImage(named: "eatingDino")
+            } else {
+                bbiyongImageView.image = UIImage(named: "basicDino")
+            }
         }
     }
     
@@ -38,9 +44,9 @@ class HomeView: UIView {
         }
     }
     
-    private let bbiyongImageView: UIImageView = {
+    let bbiyongImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "testImage")
+        iv.image = UIImage(named: "basicDino")
         iv.contentMode = .scaleAspectFit
         
         return iv
