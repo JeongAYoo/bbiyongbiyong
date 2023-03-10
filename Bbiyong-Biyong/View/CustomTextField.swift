@@ -22,15 +22,16 @@ class CustomTextField: UITextField {
         leftView = spacer
         leftViewMode = .always
         borderStyle = .roundedRect
-        textColor = .black
+        textColor = .label
         keyboardType = .default
-        backgroundColor = UIColor.lightGray
+        backgroundColor = UIColor.secondarySystemBackground
         
         self.snp.makeConstraints { make in
             make.height.equalTo(50)
         }
         
-        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+//        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.gray])
     }
     
     required init?(coder: NSCoder) {

@@ -21,7 +21,7 @@ final class CalendarViewController: UIViewController {
         calendar.scope = .month
         
         calendar.placeholderType = .fillHeadTail
-        calendar.backgroundColor = .systemBackground
+        calendar.backgroundColor = .secondarySystemGroupedBackground
         calendar.layer.cornerRadius = 10
         // shadow
 //        calendar.layer.shadowOffset = CGSize(width: 0, height: 5)

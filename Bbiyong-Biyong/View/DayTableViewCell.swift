@@ -70,7 +70,7 @@ class DayTableViewCell: UITableViewCell {
         backgroundColor = .clear
         contentView.addSubview(emotionImageView)
         contentView.addSubview(rootStackView)
-        contentView.backgroundColor = .systemBackground
+        contentView.backgroundColor = .secondarySystemGroupedBackground
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 10
     }

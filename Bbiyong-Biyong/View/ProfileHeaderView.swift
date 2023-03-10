@@ -66,7 +66,7 @@ class ProfileHeaderView: UIView {
     
     let editButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
+        button.setImage(UIImage(systemName: "highlighter"), for: .normal)
         button.contentHorizontalAlignment = .trailing
         button.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return button
@@ -114,7 +114,7 @@ class ProfileHeaderView: UIView {
         }
         rootStack.layer.cornerRadius = 10
         rootStack.layer.masksToBounds = true
-        rootStack.backgroundColor = .systemBackground
+        rootStack.backgroundColor = .secondarySystemGroupedBackground
         rootStack.isLayoutMarginsRelativeArrangement = true
         rootStack.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
     }

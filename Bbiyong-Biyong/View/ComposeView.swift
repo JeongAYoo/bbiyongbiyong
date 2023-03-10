@@ -44,7 +44,10 @@ class ComposeView: UIView {
     
     let titleTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "제목을 입력해주세요.")
-        tf.backgroundColor = .darkGreen
+        tf.layer.borderWidth = 1.0
+        tf.layer.borderColor = UIColor.darkGreen.cgColor
+        tf.layer.cornerRadius = 8
+        tf.layer.masksToBounds = true
         return tf
     }()
     
@@ -60,8 +63,11 @@ class ComposeView: UIView {
     
     let costTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "금액을 입력해주세요.")
-        tf.backgroundColor = .darkGreen
         tf.keyboardType = .numberPad
+        tf.layer.borderWidth = 1.0
+        tf.layer.borderColor = UIColor.darkGreen.cgColor
+        tf.layer.cornerRadius = 8
+        tf.layer.masksToBounds = true
         return tf
     }()
     
