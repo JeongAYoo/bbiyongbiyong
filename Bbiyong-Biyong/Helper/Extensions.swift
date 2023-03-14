@@ -9,8 +9,9 @@ import UIKit
 
 extension UIColor {
     static let boldGreen = UIColor(named: "BoldGreen")
-    static let sageGreen = UIColor(red: 189/255, green: 210/255, blue: 182/255, alpha: 1)
-    static let darkGreen = UIColor(red: 60/255, green: 98/255, blue: 85/255, alpha: 1)
+    static let sageGreen = UIColor(named: "SageGreen")
+    static let darkGreen = UIColor(named: "DarkGreen")
+    static let selectionColor = UIColor(red: 3/255, green: 201/255, blue: 136/255, alpha: 1)
     static let lightOrange = UIColor(red: 255/255, green: 192/255, blue: 144/255, alpha: 1)
     static let yellowBeige = UIColor(red: 255/255, green: 251/255, blue: 245/255, alpha: 1)
 }

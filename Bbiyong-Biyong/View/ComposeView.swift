@@ -41,7 +41,7 @@ class ComposeView: UIView {
     let titleTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "제목을 입력해주세요.")
         tf.layer.borderWidth = 1.0
-        tf.layer.borderColor = UIColor.darkGreen.cgColor
+        tf.layer.borderColor = UIColor.darkGreen?.cgColor
         tf.layer.cornerRadius = 8
         tf.layer.masksToBounds = true
         return tf
@@ -61,7 +61,7 @@ class ComposeView: UIView {
         let tf = CustomTextField(placeholder: "금액을 입력해주세요.")
         tf.keyboardType = .numberPad
         tf.layer.borderWidth = 1.0
-        tf.layer.borderColor = UIColor.darkGreen.cgColor
+        tf.layer.borderColor = UIColor.darkGreen?.cgColor
         tf.layer.cornerRadius = 8
         tf.layer.masksToBounds = true
         return tf
@@ -81,12 +81,13 @@ class ComposeView: UIView {
     let contentTextView: UITextView = {
         let tv = UITextView()
         tv.layer.borderWidth = 1
-        tv.layer.borderColor = UIColor.darkGreen.cgColor
+        tv.layer.borderColor = UIColor.darkGreen?.cgColor
         tv.layer.cornerRadius = 8
         tv.font = .systemFont(ofSize: 17)
         tv.textContainerInset = .init(top: 15, left: 15, bottom: 15, right: 15)
         // 스택의 남은 세로로 남은 공간을 채우도록
         tv.setContentHuggingPriority(.defaultLow, for: .vertical)
+        tv.backgroundColor = .secondarySystemGroupedBackground
         return tv
     }()
     

@@ -23,10 +23,6 @@ final class CalendarViewController: UIViewController {
         calendar.placeholderType = .fillHeadTail
         calendar.backgroundColor = .secondarySystemGroupedBackground
         calendar.layer.cornerRadius = 10
-        // shadow
-//        calendar.layer.shadowOffset = CGSize(width: 0, height: 5)
-//        calendar.layer.shadowRadius = 8
-//        calendar.layer.shadowOpacity = 0.2
         
         // calendar header
         calendar.appearance.headerDateFormat = "YYYY년 M월"
@@ -45,9 +41,10 @@ final class CalendarViewController: UIViewController {
         calendar.appearance.titleWeekendColor = .lightOrange
         calendar.appearance.weekdayTextColor = .darkGreen
         calendar.appearance.todayColor = .boldGreen
-        calendar.appearance.selectionColor = .sageGreen
+        
+        calendar.appearance.selectionColor = .selectionColor
         calendar.appearance.eventDefaultColor = .boldGreen
-        calendar.appearance.eventSelectionColor = .sageGreen
+        calendar.appearance.eventSelectionColor = .selectionColor
         
         return calendar
     }()
