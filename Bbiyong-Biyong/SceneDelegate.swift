@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = RegistrationViewController()
         }
         
+        window.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: "isDarkMode") ? .dark : .light
         window.makeKeyAndVisible()
         self.window = window
     }

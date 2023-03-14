@@ -47,6 +47,7 @@ final class SettingViewController: UIViewController {
     }()
     
     private lazy var headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height / 4))
+    private var isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     
     var model: [Section] = []
     
@@ -90,23 +91,22 @@ final class SettingViewController: UIViewController {
     }
     
     func configureData() {
-        //        self.model.append(Section(title: "시스템", options: [
-        //            .switchCell(model: SettingSwitchOption(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray, isOn: true) {
-        //
-        //            }),
-        //            .staticCell(model: SettingsOption(title: "알림", icon: UIImage(systemName: "bell.fill"), iconBackgroundColor: .systemPink) {
-        //
-        //            }),
-        //            .staticCell(model: SettingsOption(title: "언어설정", icon: UIImage(systemName: "textformat"), iconBackgroundColor: .systemYellow) {
-        //
-        //            })
-        //        ]))
+        self.model.append(Section(title: "시스템", options: [
+            .switchCell(model: SettingSwitchOption(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray, isOn: isDarkMode) {
+            })
+//            .staticCell(model: SettingsOption(title: "알림", icon: UIImage(systemName: "bell.fill"), iconBackgroundColor: .systemPink) {
+//
+//            }),
+//            .staticCell(model: SettingsOption(title: "언어설정", icon: UIImage(systemName: "textformat"), iconBackgroundColor: .systemYellow) {
+//
+//            })
+        ]))
         
-        //        self.model.append(Section(title: "데이터", options: [
-        //            .staticCell(model: SettingsOption(title: "백업 / 복구", icon: UIImage(systemName: "cloud"), iconBackgroundColor: .systemBlue) {
-        //
-        //            })
-        //        ]))
+        self.model.append(Section(title: "데이터", options: [
+            .staticCell(model: SettingsOption(title: "백업 / 복구", icon: UIImage(systemName: "cloud"), iconBackgroundColor: .systemBlue) {
+                
+            })
+        ]))
         
         self.model.append(Section(title: "정보", options: [
             //            .staticCell(model: SettingsOption(title: "개인정보처리방침", icon: UIImage(systemName: "shield.fill"), iconBackgroundColor: .black) {

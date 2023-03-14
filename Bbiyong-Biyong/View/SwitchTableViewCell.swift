@@ -33,21 +33,23 @@ class SwitchTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let mySwitch: UISwitch = {
-        let mySwitch = UISwitch()
-        mySwitch.onTintColor = .systemGreen
-        return mySwitch
+    private let modeSwitch: UISwitch = {
+        let modeSwitch = UISwitch()
+        modeSwitch.onTintColor = .systemGreen
+        return modeSwitch
     }()
     
     // MARK: - Life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         self.accessoryType = .none
         
         contentView.addSubview(iconContainer)
         iconContainer.addSubview(iconImageView)
-        contentView.addSubview(mySwitch)
+        contentView.addSubview(modeSwitch)
         contentView.addSubview(label)
+        modeSwitch.addTarget(self, action: #selector(updateAppearance), for: .valueChanged)
     }
     
     required init?(coder: NSCoder) {
@@ -76,8 +78,8 @@ class SwitchTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(10)
         }
         
-        mySwitch.sizeToFit()
-        mySwitch.snp.makeConstraints { make in
+        modeSwitch.sizeToFit()
+        modeSwitch.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-20)
             make.centerY.equalToSuperview()
         }
@@ -89,14 +91,23 @@ class SwitchTableViewCell: UITableViewCell {
         iconImageView.image = nil
         label.text = nil
         iconContainer.backgroundColor = nil
-        mySwitch.isOn = false
+        modeSwitch.isOn = false
     }
     
+    // MARK: - Helpers
     public func configure(with model: SettingSwitchOption) {
         label.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
-        mySwitch.isOn = model.isOn
+        modeSwitch.isOn = model.isOn
+    }
+    
+    @objc func updateAppearance(_ sender: UISwitch) {
+        guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        
+        let windows = window.windows.first
+        windows?.overrideUserInterfaceStyle = sender.isOn == true ? .dark : .light
+        UserDefaults.standard.set(sender.isOn, forKey: "isDarkMode")
     }
 
 }
