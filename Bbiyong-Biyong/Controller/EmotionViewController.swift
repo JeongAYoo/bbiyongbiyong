@@ -98,15 +98,6 @@ extension EmotionViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmotionCell.identifier, for: indexPath) as! EmotionCell
         
         cell.setImage(imageName: EmotionImage[indexPath.row])
-
-//        switch indexPath.section {
-//        case 0:
-//            cell.setImage(imageName: EmotionImage[indexPath.row])
-//        case 1:
-//            cell.setImage(imageName: EmotionImage[indexPath.row + 4])
-//        default:
-//            break
-//        }
         
         return cell
     }

@@ -51,7 +51,6 @@ final class ComposeViewController: UIViewController {
     }
     
     @objc func edit() {
-        //composeView.isUserInteractionEnabled = true
         composeView.datePicker.isUserInteractionEnabled = true
         composeView.emotionButton.isUserInteractionEnabled = true
         composeView.titleTextField.isUserInteractionEnabled = true
@@ -130,7 +129,6 @@ final class ComposeViewController: UIViewController {
             viewModel.content.value = consumption.content
             viewModel.emotion.value = consumption.emotion
             
-//            composeView.isUserInteractionEnabled = false
             composeView.datePicker.isUserInteractionEnabled = false
             composeView.emotionButton.isUserInteractionEnabled = false
             composeView.titleTextField.isUserInteractionEnabled = false

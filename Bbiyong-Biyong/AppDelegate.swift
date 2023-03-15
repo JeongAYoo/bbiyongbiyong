@@ -19,13 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
-//        if #available(iOS 13.0, *) {
-//            return true
-//        }
-        
         window = UIWindow()
         window?.rootViewController = MainTabBarController()
         window?.makeKeyAndVisible()
+        sleep(1)
         return true
     }
 

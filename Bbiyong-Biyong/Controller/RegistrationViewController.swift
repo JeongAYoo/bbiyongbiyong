@@ -76,7 +76,7 @@ final class RegistrationViewController: UIViewController {
         return label
     }()
     
-    private let saveButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("시작하기", for: .normal)
         button.setTitleColor(UIColor(white: 1, alpha: 0.67), for: .normal)

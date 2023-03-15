@@ -109,9 +109,6 @@ final class SettingViewController: UIViewController {
         ]))
         
         self.model.append(Section(title: "정보", options: [
-            //            .staticCell(model: SettingsOption(title: "개인정보처리방침", icon: UIImage(systemName: "shield.fill"), iconBackgroundColor: .black) {
-            //
-            //            }),
             .staticCell(model: SettingsOption(title: "오픈소스 라이브러리", icon: UIImage(systemName: "books.vertical.fill"), iconBackgroundColor: .systemGreen) {
                 let vc = AcknowListViewController()
                 vc.navigationItem.title = "오픈소스 라이브러리"

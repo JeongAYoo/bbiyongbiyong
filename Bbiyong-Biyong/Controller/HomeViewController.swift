@@ -55,7 +55,6 @@ final class HomeViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
     @objc func addButtonTapped() {
         let composeVC = UINavigationController(rootViewController: ComposeViewController())
         composeVC.modalPresentationStyle = .fullScreen
