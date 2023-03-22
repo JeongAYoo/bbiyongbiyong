@@ -102,11 +102,11 @@ final class SettingViewController: UIViewController {
 //            })
         ]))
         
-        self.model.append(Section(title: "데이터", options: [
-            .staticCell(model: SettingsOption(title: "백업 / 복구", icon: UIImage(systemName: "cloud"), iconBackgroundColor: .systemBlue) {
-                
-            })
-        ]))
+//        self.model.append(Section(title: "데이터", options: [
+//            .staticCell(model: SettingsOption(title: "백업 / 복구", icon: UIImage(systemName: "cloud"), iconBackgroundColor: .systemBlue) {
+//
+//            })
+//        ]))
         
         self.model.append(Section(title: "정보", options: [
             .staticCell(model: SettingsOption(title: "오픈소스 라이브러리", icon: UIImage(systemName: "books.vertical.fill"), iconBackgroundColor: .systemGreen) {

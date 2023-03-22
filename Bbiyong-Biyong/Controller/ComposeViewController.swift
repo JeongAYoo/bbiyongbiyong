@@ -119,7 +119,7 @@ final class ComposeViewController: UIViewController {
         if let consumption = originalTarget {
             navigationItem.title = "삐용비용"
             navigationItem.rightBarButtonItems = [
-                UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(edit)),
+                UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(edit)),
                 UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteConsumption))
                                                   ]
             

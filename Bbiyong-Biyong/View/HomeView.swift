@@ -39,7 +39,7 @@ class HomeView: UIView {
     
     private var remain: Int = 0 {
         didSet {
-            remainAmountLabel.text = "남은 금액 : \(remain.numberToCurrency())"
+            remainAmountLabel.text = remain < 0 ? "초과 금액 : \((-remain).numberToCurrency())" : "남은 금액 : \(remain.numberToCurrency())"
             remainAmountLabel.textColor = remain < 0 ? .systemRed : .darkGray
         }
     }
