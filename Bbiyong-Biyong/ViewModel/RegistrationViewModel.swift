@@ -18,8 +18,8 @@ struct RegistrationViewModel {
     var numberIsValid: Bool {
         guard let str = maximumCostString else { return false }
         
-        if let _ = Int(str) {
-            return true
+        if let num = Int(str) {
+            return num > 0 ? true : false
         } else {
             return false
         }

@@ -24,3 +24,20 @@ enum EmotionImage {
         return id
     }
 }
+
+enum MainImage {
+    private static let imageIds: [String] = [
+        "main1_basic",
+        "main2_eating1",
+        "main3_eating2",
+        "main4_eating3",
+        "main5_done",
+        "main6_over1",
+        "main7_over2"
+    ]
+    
+    static subscript(index: Int) -> String {
+        let id = imageIds[index]
+        return id
+    }
+}

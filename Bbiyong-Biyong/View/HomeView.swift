@@ -21,6 +21,7 @@ class HomeView: UIView {
     var maximum: Int = UserDefaults.standard.integer(forKey: "maximum") {
         didSet {
             remain = maximum - total
+            updateImage(propotion: Double(total) / Double(maximum))
         }
     }
     
@@ -29,11 +30,7 @@ class HomeView: UIView {
             totalConsumptionLabel.text = total.numberToCurrency()
             remain = maximum - total
             
-            if Double(total) / Double(maximum) > 0.5 {
-                bbiyongImageView.image = UIImage(named: "eatingDino")
-            } else {
-                bbiyongImageView.image = UIImage(named: "basicDino")
-            }
+            updateImage(propotion: Double(total) / Double(maximum))
         }
     }
     
@@ -170,5 +167,28 @@ class HomeView: UIView {
 //        pieChart.snp.makeConstraints { make in
 //            make.height.equalTo(300)
 //        }
+    }
+    
+    func updateImage(propotion: Double) {
+        var imageName: String = MainImage[0]
+        
+        switch propotion {
+        case 0..<0.2:
+            imageName = MainImage[0]
+        case 0.2..<0.4:
+            imageName = MainImage[1]
+        case 0.4..<0.6:
+            imageName = MainImage[2]
+        case 0.6..<0.8:
+            imageName = MainImage[3]
+        case 0.8..<1:
+            imageName = MainImage[4]
+        case 1..<1.5:
+            imageName = MainImage[5]
+        default:
+            imageName = MainImage[6]
+        }
+        
+        bbiyongImageView.image = UIImage(named: imageName)
     }
 }
