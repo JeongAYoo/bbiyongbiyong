@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>나눔손글씨 꽃내음.ttf</string>
+		<string>나눔손글씨 무진장체.ttf</string>
+		<string>나눔손글씨 백의의 천사.ttf</string>
+		<string>나눔손글씨 성실체.ttf</string>
+	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>UIApplicationSceneManifest</key>

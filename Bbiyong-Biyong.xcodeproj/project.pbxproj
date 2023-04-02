@@ -33,6 +33,11 @@
 		07865FF729A0C61500C482AB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07865FF629A0C61500C482AB /* Extensions.swift */; };
 		07865FF929A0F08500C482AB /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07865FF829A0F08500C482AB /* SwitchTableViewCell.swift */; };
 		07865FFB29A1131B00C482AB /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07865FFA29A1131B00C482AB /* DayTableViewCell.swift */; };
+		07C1E65D29D99DB200E17CEF /* 나눔손글씨 성실체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07C1E65929D99DB100E17CEF /* 나눔손글씨 성실체.ttf */; };
+		07C1E65E29D99DB200E17CEF /* 나눔손글씨 무진장체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07C1E65A29D99DB100E17CEF /* 나눔손글씨 무진장체.ttf */; };
+		07C1E65F29D99DB200E17CEF /* 나눔손글씨 백의의 천사.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07C1E65B29D99DB100E17CEF /* 나눔손글씨 백의의 천사.ttf */; };
+		07C1E66029D99DB200E17CEF /* 나눔손글씨 꽃내음.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07C1E65C29D99DB200E17CEF /* 나눔손글씨 꽃내음.ttf */; };
+		07C1E66229D99EE200E17CEF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1E66129D99EE200E17CEF /* UIFont+Extension.swift */; };
 		07FD2B792997F505000E5088 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B782997F505000E5088 /* RegistrationViewController.swift */; };
 		07FD2B7C2997F733000E5088 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */; };
 		07FD2B7F2997FAE8000E5088 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7E2997FAE8000E5088 /* User.swift */; };
@@ -68,6 +73,11 @@
 		07865FF629A0C61500C482AB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		07865FF829A0F08500C482AB /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		07865FFA29A1131B00C482AB /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
+		07C1E65929D99DB100E17CEF /* 나눔손글씨 성실체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 성실체.ttf"; sourceTree = "<group>"; };
+		07C1E65A29D99DB100E17CEF /* 나눔손글씨 무진장체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 무진장체.ttf"; sourceTree = "<group>"; };
+		07C1E65B29D99DB100E17CEF /* 나눔손글씨 백의의 천사.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 백의의 천사.ttf"; sourceTree = "<group>"; };
+		07C1E65C29D99DB200E17CEF /* 나눔손글씨 꽃내음.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 꽃내음.ttf"; sourceTree = "<group>"; };
+		07C1E66129D99EE200E17CEF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		07FD2B782997F505000E5088 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		07FD2B7E2997FAE8000E5088 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -115,6 +125,7 @@
 		071D8E892996DE9E001B3E71 /* Bbiyong-Biyong */ = {
 			isa = PBXGroup;
 			children = (
+				07C1E65829D99D9C00E17CEF /* Font */,
 				075A2FB929BB3A000021262B /* Package.resolved */,
 				077FDDB029A990F800B15E3E /* Helper */,
 				071D8EA02996E133001B3E71 /* Model */,
@@ -183,8 +194,20 @@
 				077FDDA929A874CC00B15E3E /* Observable.swift */,
 				07865FF629A0C61500C482AB /* Extensions.swift */,
 				075A2FAC29B628FB0021262B /* Utils.swift */,
+				07C1E66129D99EE200E17CEF /* UIFont+Extension.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		07C1E65829D99D9C00E17CEF /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				07C1E65C29D99DB200E17CEF /* 나눔손글씨 꽃내음.ttf */,
+				07C1E65A29D99DB100E17CEF /* 나눔손글씨 무진장체.ttf */,
+				07C1E65B29D99DB100E17CEF /* 나눔손글씨 백의의 천사.ttf */,
+				07C1E65929D99DB100E17CEF /* 나눔손글씨 성실체.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		07FD2B7D2997FA9F000E5088 /* ViewModel */ = {
@@ -270,7 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				071D8E972996DE9F001B3E71 /* LaunchScreen.storyboard in Resources */,
+				07C1E66029D99DB200E17CEF /* 나눔손글씨 꽃내음.ttf in Resources */,
+				07C1E65D29D99DB200E17CEF /* 나눔손글씨 성실체.ttf in Resources */,
+				07C1E65E29D99DB200E17CEF /* 나눔손글씨 무진장체.ttf in Resources */,
 				075A2FBA29BB3A000021262B /* Package.resolved in Resources */,
+				07C1E65F29D99DB200E17CEF /* 나눔손글씨 백의의 천사.ttf in Resources */,
 				071D8E942996DE9F001B3E71 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +315,7 @@
 				076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */,
 				07865FF929A0F08500C482AB /* SwitchTableViewCell.swift in Sources */,
 				071D8E8F2996DE9E001B3E71 /* HomeViewController.swift in Sources */,
+				07C1E66229D99EE200E17CEF /* UIFont+Extension.swift in Sources */,
 				075A2FB329B8CB1C0021262B /* ImageId.swift in Sources */,
 				075A2FB129B72BA20021262B /* EmotionCell.swift in Sources */,
 				07FD2BBD299D222E000E5088 /* ComposeViewController.swift in Sources */,
@@ -375,7 +403,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -429,7 +457,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

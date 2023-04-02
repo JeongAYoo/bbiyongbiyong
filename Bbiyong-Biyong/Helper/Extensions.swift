@@ -28,25 +28,8 @@ extension Date {
     public var day: Int {
         return Calendar.current.component(.day, from: self)
     }
-    
-//    func toString() -> String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-//        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
-//        dateFormatter.locale = Locale.current
-//        return dateFormatter.string(from: self)
-//    }
-}
 
-//extension String {
-//    func toDate() -> Date {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-//        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
-//        dateFormatter.locale = Locale.current
-//        return dateFormatter.date(from: self)!
-//    }
-//}
+}
 
 extension Int {
     func numberToCurrency() -> String {
