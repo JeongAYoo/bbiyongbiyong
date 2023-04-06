@@ -38,6 +38,9 @@
 		07C1E65F29D99DB200E17CEF /* 나눔손글씨 백의의 천사.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07C1E65B29D99DB100E17CEF /* 나눔손글씨 백의의 천사.ttf */; };
 		07C1E66029D99DB200E17CEF /* 나눔손글씨 꽃내음.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07C1E65C29D99DB200E17CEF /* 나눔손글씨 꽃내음.ttf */; };
 		07C1E66229D99EE200E17CEF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1E66129D99EE200E17CEF /* UIFont+Extension.swift */; };
+		07C1E66429D9A33D00E17CEF /* FontTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1E66329D9A33D00E17CEF /* FontTableViewController.swift */; };
+		07C1E66629DEF05A00E17CEF /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1E66529DEF05A00E17CEF /* FontTableViewCell.swift */; };
+		07C1E66829DEF8EE00E17CEF /* FontExampleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1E66729DEF8EE00E17CEF /* FontExampleHeaderView.swift */; };
 		07FD2B792997F505000E5088 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B782997F505000E5088 /* RegistrationViewController.swift */; };
 		07FD2B7C2997F733000E5088 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */; };
 		07FD2B7F2997FAE8000E5088 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7E2997FAE8000E5088 /* User.swift */; };
@@ -78,6 +81,9 @@
 		07C1E65B29D99DB100E17CEF /* 나눔손글씨 백의의 천사.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 백의의 천사.ttf"; sourceTree = "<group>"; };
 		07C1E65C29D99DB200E17CEF /* 나눔손글씨 꽃내음.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 꽃내음.ttf"; sourceTree = "<group>"; };
 		07C1E66129D99EE200E17CEF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		07C1E66329D9A33D00E17CEF /* FontTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewController.swift; sourceTree = "<group>"; };
+		07C1E66529DEF05A00E17CEF /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
+		07C1E66729DEF8EE00E17CEF /* FontExampleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExampleHeaderView.swift; sourceTree = "<group>"; };
 		07FD2B782997F505000E5088 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		07FD2B7E2997FAE8000E5088 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -151,6 +157,7 @@
 				07FD2BBA299CC440000E5088 /* SettingViewController.swift */,
 				07FD2BBC299D222E000E5088 /* ComposeViewController.swift */,
 				075A2FAE29B72A920021262B /* EmotionViewController.swift */,
+				07C1E66329D9A33D00E17CEF /* FontTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -167,6 +174,8 @@
 				076486B229A38AD6006BC5C2 /* ComposeView.swift */,
 				075A2FB029B72BA20021262B /* EmotionCell.swift */,
 				075A2FB429BB045C0021262B /* ProfileHeaderView.swift */,
+				07C1E66729DEF8EE00E17CEF /* FontExampleHeaderView.swift */,
+				07C1E66529DEF05A00E17CEF /* FontTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -319,6 +328,7 @@
 				075A2FB329B8CB1C0021262B /* ImageId.swift in Sources */,
 				075A2FB129B72BA20021262B /* EmotionCell.swift in Sources */,
 				07FD2BBD299D222E000E5088 /* ComposeViewController.swift in Sources */,
+				07C1E66429D9A33D00E17CEF /* FontTableViewController.swift in Sources */,
 				075A2FAD29B628FB0021262B /* Utils.swift in Sources */,
 				076486B729A39920006BC5C2 /* Consumption.swift in Sources */,
 				071D8EA22996E797001B3E71 /* HomeView.swift in Sources */,
@@ -332,6 +342,8 @@
 				075A2FB529BB045C0021262B /* ProfileHeaderView.swift in Sources */,
 				071D8E8D2996DE9E001B3E71 /* SceneDelegate.swift in Sources */,
 				07FD2B792997F505000E5088 /* RegistrationViewController.swift in Sources */,
+				07C1E66629DEF05A00E17CEF /* FontTableViewCell.swift in Sources */,
+				07C1E66829DEF8EE00E17CEF /* FontExampleHeaderView.swift in Sources */,
 				076486B529A3927F006BC5C2 /* ConsumptionViewModel.swift in Sources */,
 				076486B129A1575D006BC5C2 /* AddNewButton.swift in Sources */,
 				07FD2B7F2997FAE8000E5088 /* User.swift in Sources */,
