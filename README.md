@@ -37,16 +37,6 @@
 
 <br>
 
-## 🏴‍☠️ Issue & Solution
-
-### 같은 화면을 읽기모드, 편집모드로 나누기
-
-### tableview의 스크롤을 감지해 달력을 접고 펴기
-
-### 스크린 높이의 1/2 크기인 bottom sheet 사용하기
-
-<br>
-
 ## 📚 Library
 
 ### SnapKit
