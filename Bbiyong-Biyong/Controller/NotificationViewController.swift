@@ -101,6 +101,7 @@ class NotificationViewController: UIViewController {
     }
 
     func configure() {
+        view.backgroundColor = .systemBackground
         [titleLabel, descriptionLabel, upperStackView, secondTitleLabel, lowerStackView].forEach {
             view.addSubview($0)
         }

@@ -25,7 +25,6 @@ class ProfileHeaderView: UIView {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "person.crop.circle")
         iv.tintColor = .boldGreen
-        iv.setContentHuggingPriority(.defaultLow, for: .vertical)
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -68,7 +67,7 @@ class ProfileHeaderView: UIView {
         let button = UIButton()
         button.tintColor = .boldGreen
         button.setImage(UIImage(systemName: "highlighter"), for: .normal)
-        button.contentHorizontalAlignment = .trailing
+        //button.contentHorizontalAlignment = .trailing
         button.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return button
     }()
@@ -89,13 +88,18 @@ class ProfileHeaderView: UIView {
     }()
     
     private lazy var rootStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [editButton, profileIconImageView, upperLabelStack, lowerLabelStack])
+        let stack = UIStackView(arrangedSubviews: [profileIconImageView, upperLabelStack, lowerLabelStack])
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .fill
         stack.spacing = 10
+//        stack.isLayoutMarginsRelativeArrangement = true
+//        stack.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+
         return stack
     }()
+    
+    private var contentView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -107,17 +111,28 @@ class ProfileHeaderView: UIView {
     }
     
     func configure() {
-        addSubview(rootStack)
-
-        rootStack.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(self.layer.frame.size).inset(20)
-            make.bottom.equalToSuperview()
+        contentView.backgroundColor = .secondarySystemGroupedBackground
+        contentView.layer.cornerRadius = 10
+        contentView.layer.masksToBounds = true
+        
+        addSubview(contentView)
+        contentView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(self).inset(20).priority(.high)
+            make.bottom.equalTo(self)
         }
-        rootStack.layer.cornerRadius = 10
-        rootStack.layer.masksToBounds = true
-        rootStack.backgroundColor = .secondarySystemGroupedBackground
-        rootStack.isLayoutMarginsRelativeArrangement = true
-        rootStack.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        
+        contentView.addSubview(editButton)
+        editButton.snp.makeConstraints { make in
+            make.top.equalTo(contentView).inset(10)
+            make.trailing.equalTo(contentView).inset(20)
+        }
+        
+        contentView.addSubview(rootStack)
+        rootStack.snp.makeConstraints { make in
+            make.top.equalTo(editButton.snp.bottom).offset(10)
+            make.bottom.equalTo(contentView).inset(10)
+            make.leading.trailing.equalTo(contentView).inset(20)
+        }
     }
     
 }

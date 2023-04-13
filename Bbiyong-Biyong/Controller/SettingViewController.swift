@@ -215,6 +215,7 @@ extension SettingViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - MFMailComposeViewControllerDelegate
 extension SettingViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         self.dismiss(animated: true, completion: nil)
