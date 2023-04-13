@@ -94,22 +94,24 @@ final class SettingViewController: UIViewController {
         self.model.append(Section(title: "시스템", options: [
             .switchCell(model: SettingSwitchOption(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray, isOn: isDarkMode) {
             }),
-//            .staticCell(model: SettingsOption(title: "알림", icon: UIImage(systemName: "bell.fill"), iconBackgroundColor: .systemPink) {
-//
-//            }),
-                .staticCell(model: SettingsOption(title: "서체 변경", icon: UIImage(systemName: "textformat"), iconBackgroundColor: .black) {
-                    let vc = FontTableViewController()
-                    vc.navigationItem.title = "서체 변경"
-                    self.navigationController?.pushViewController(vc, animated: true)
-
+            .staticCell(model: SettingsOption(title: "알림", icon: UIImage(systemName: "bell.fill"), iconBackgroundColor: .systemRed) {
+                let vc = NotificationViewController()
+                vc.navigationItem.title = "알림"
+                self.navigationController?.pushViewController(vc, animated: true)
+            }),
+            .staticCell(model: SettingsOption(title: "서체 변경", icon: UIImage(systemName: "textformat"), iconBackgroundColor: .black) {
+                let vc = FontTableViewController()
+                vc.navigationItem.title = "서체 변경"
+                self.navigationController?.pushViewController(vc, animated: true)
+                
             })
         ]))
         
-//        self.model.append(Section(title: "데이터", options: [
-//            .staticCell(model: SettingsOption(title: "백업 / 복구", icon: UIImage(systemName: "cloud"), iconBackgroundColor: .systemBlue) {
-//
-//            })
-//        ]))
+        //        self.model.append(Section(title: "데이터", options: [
+        //            .staticCell(model: SettingsOption(title: "백업 / 복구", icon: UIImage(systemName: "cloud"), iconBackgroundColor: .systemBlue) {
+        //
+        //            })
+        //        ]))
         
         self.model.append(Section(title: "정보", options: [
             .staticCell(model: SettingsOption(title: "오픈소스 라이브러리", icon: UIImage(systemName: "books.vertical.fill"), iconBackgroundColor: .systemGreen) {

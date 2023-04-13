@@ -14,6 +14,7 @@
 		071D8E972996DE9F001B3E71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071D8E952996DE9F001B3E71 /* LaunchScreen.storyboard */; };
 		071D8EA22996E797001B3E71 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D8EA12996E797001B3E71 /* HomeView.swift */; };
 		074178092996F9A30002984B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 074178082996F9A30002984B /* SnapKit */; };
+		0758001229E8572C0047881C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758001129E8572C0047881C /* NotificationViewController.swift */; };
 		075A2FAD29B628FB0021262B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FAC29B628FB0021262B /* Utils.swift */; };
 		075A2FAF29B72A920021262B /* EmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FAE29B72A920021262B /* EmotionViewController.swift */; };
 		075A2FB129B72BA20021262B /* EmotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A2FB029B72BA20021262B /* EmotionCell.swift */; };
@@ -61,6 +62,7 @@
 		071D8E962996DE9F001B3E71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		071D8E982996DE9F001B3E71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		071D8EA12996E797001B3E71 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0758001129E8572C0047881C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		075A2FAC29B628FB0021262B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		075A2FAE29B72A920021262B /* EmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewController.swift; sourceTree = "<group>"; };
 		075A2FB029B72BA20021262B /* EmotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCell.swift; sourceTree = "<group>"; };
@@ -154,10 +156,11 @@
 				07FD2BB6299CBE0A000E5088 /* MainTabBarController.swift */,
 				071D8E8E2996DE9E001B3E71 /* HomeViewController.swift */,
 				07FD2BB8299CC434000E5088 /* CalendarViewController.swift */,
-				07FD2BBA299CC440000E5088 /* SettingViewController.swift */,
 				07FD2BBC299D222E000E5088 /* ComposeViewController.swift */,
 				075A2FAE29B72A920021262B /* EmotionViewController.swift */,
+				07FD2BBA299CC440000E5088 /* SettingViewController.swift */,
 				07C1E66329D9A33D00E17CEF /* FontTableViewController.swift */,
+				0758001129E8572C0047881C /* NotificationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				071D8EA22996E797001B3E71 /* HomeView.swift in Sources */,
 				07FD2BB7299CBE0A000E5088 /* MainTabBarController.swift in Sources */,
 				077FDDAA29A874CC00B15E3E /* Observable.swift in Sources */,
+				0758001229E8572C0047881C /* NotificationViewController.swift in Sources */,
 				075A2FAF29B72A920021262B /* EmotionViewController.swift in Sources */,
 				07FD2B7C2997F733000E5088 /* RegistrationViewModel.swift in Sources */,
 				071D8E8B2996DE9E001B3E71 /* AppDelegate.swift in Sources */,
