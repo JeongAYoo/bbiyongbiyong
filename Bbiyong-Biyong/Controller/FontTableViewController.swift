@@ -8,6 +8,7 @@
 import UIKit
 
 class FontTableViewController: UITableViewController {
+    // MARK: - Properties
     private lazy var headerView = FontExampleHeaderView(frame: CGRect(x: 0, y: 0, width: 0, height: 120))
     private var fontNames = ["기본 시스템 폰트",
                              "나눔손글씨 꽃내음",
@@ -15,6 +16,7 @@ class FontTableViewController: UITableViewController {
                              "나눔손글씨 백의의 천사",
                              "나눔손글씨 성실체"]
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(FontTableViewCell.self, forCellReuseIdentifier: FontTableViewCell.identifier)

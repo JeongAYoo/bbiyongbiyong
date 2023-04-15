@@ -76,6 +76,7 @@ final class SettingViewController: UIViewController {
         })
     }
     
+    // MARK: - Helpers
     @objc func showEditProfile(_ sender: UIButton) {
         navigationController?.pushViewController(RegistrationViewController(), animated: true)
     }

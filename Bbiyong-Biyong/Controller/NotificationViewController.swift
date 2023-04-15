@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class NotificationViewController: UIViewController {
-
+    // MARK: - Properties
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "매일 알림"
@@ -95,11 +95,13 @@ class NotificationViewController: UIViewController {
         return stackView
     }()
     
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
 
+    // MARK: - Helpers
     func configure() {
         view.backgroundColor = .systemBackground
         [titleLabel, descriptionLabel, upperStackView, secondTitleLabel, lowerStackView].forEach {
