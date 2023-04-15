@@ -95,10 +95,47 @@ class NotificationViewController: UIViewController {
         return stackView
     }()
     
+    private let userNotificationCenter = UNUserNotificationCenter.current()
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        dailyNotificationSwitch.addTarget(self, action: #selector(updateNotificationSetting), for: .valueChanged)
+        monthlyNotificationSwitch.addTarget(self, action: #selector(updateNotificationSetting), for: .valueChanged)
+        
         configure()
+    }
+    
+    // MARK: - Actions
+    @objc func updateNotificationSetting(_ sender: UISwitch) {
+        if sender.isOn {
+            let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .sound)
+            
+            userNotificationCenter.requestAuthorization(options: authOptions) { success, error in
+                if success {
+                    if sender == self.dailyNotificationSwitch {
+                        DispatchQueue.main.async {
+                            self.sendDailyNotification(baseTime: self.datePicker.date)
+                        }
+                    } else {
+                        self.sendMonthlyNotification()
+                    }
+                } else {
+                    if let error {
+                        print("Notification Error: ", error)
+                    }
+                }
+            }
+            
+        } else {
+            if sender == dailyNotificationSwitch {
+                userNotificationCenter.removePendingNotificationRequests(withIdentifiers: ["dailyNoti"])
+                print("Notification: 매일 알림 취소")
+            } else {
+                userNotificationCenter.removePendingNotificationRequests(withIdentifiers: ["monthlyNoti"])
+                print("Notification: 매월 1일 알림 취소")
+            }
+        }
     }
 
     // MARK: - Helpers
@@ -131,6 +168,58 @@ class NotificationViewController: UIViewController {
             make.top.equalTo(secondTitleLabel.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(15)
         }
+    }
+    
+    func sendDailyNotification(baseTime: Date) {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "\(Date().day)일의 삐용비용을 입력할 시간!"
+        notificationContent.body = "오늘 하루 감정 소비를 기록해주세요"
         
+        var dateComponents = DateComponents()
+        dateComponents.calendar = Calendar.current
+        dateComponents.hour = baseTime.hour
+        dateComponents.minute = baseTime.minute
+
+        let trigger = UNCalendarNotificationTrigger(
+            dateMatching: dateComponents,
+            repeats: true
+        )
+        
+        let request = UNNotificationRequest(identifier: "dailyNoti",
+                                            content: notificationContent,
+                                            trigger: trigger)
+        
+        userNotificationCenter.add(request) { error in
+            if let error {
+                print("Notification Error: ", error)
+            }
+        }
+    }
+    
+    func sendMonthlyNotification() {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "\(Date().month)월의 소비한도 설정하기!"
+        notificationContent.body = "이번 달은 최대 얼마의 삐용비용을 사용할까요?"
+        
+        var dateComponents = DateComponents()
+        dateComponents.calendar = Calendar.current
+        dateComponents.day = 1
+        dateComponents.hour = 0
+        dateComponents.minute = 0
+
+        let trigger = UNCalendarNotificationTrigger(
+            dateMatching: dateComponents,
+            repeats: true
+        )
+        
+        let request = UNNotificationRequest(identifier: "monthlyNoti",
+                                            content: notificationContent,
+                                            trigger: trigger)
+        
+        userNotificationCenter.add(request) { error in
+            if let error {
+                print("Notification Error: ", error)
+            }
+        }
     }
 }
