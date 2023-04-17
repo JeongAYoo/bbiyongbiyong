@@ -44,10 +44,11 @@ class NotificationViewController: UIViewController {
         return picker
     }()
     
-    private let dailyNotificationSwitch: UISwitch = {
+    private lazy var dailyNotificationSwitch: UISwitch = {
         let modeSwitch = UISwitch()
         modeSwitch.onTintColor = .systemGreen
         modeSwitch.contentHorizontalAlignment = .trailing
+        modeSwitch.isOn = isDailyNotiOn
         return modeSwitch
     }()
     
@@ -80,10 +81,11 @@ class NotificationViewController: UIViewController {
         return label
     }()
     
-    private let monthlyNotificationSwitch: UISwitch = {
+    private lazy var monthlyNotificationSwitch: UISwitch = {
         let modeSwitch = UISwitch()
         modeSwitch.onTintColor = .systemGreen
         modeSwitch.contentHorizontalAlignment = .trailing
+        modeSwitch.isOn = isMonthlyNotiOn
         return modeSwitch
     }()
     
@@ -96,10 +98,26 @@ class NotificationViewController: UIViewController {
     }()
     
     private let userNotificationCenter = UNUserNotificationCenter.current()
+    private var isDailyNotiOn = UserDefaults.standard.bool(forKey: "isDailyNotiOn") {
+        didSet {
+            UserDefaults.standard.set(isDailyNotiOn, forKey: "isDailyNotiOn")
+            datePicker.isEnabled = isDailyNotiOn
+        }
+    }
+    private var isMonthlyNotiOn = UserDefaults.standard.bool(forKey: "isMonthlyNotiOn") {
+        didSet {
+            UserDefaults.standard.set(isMonthlyNotiOn, forKey: "isMonthlyNotiOn")
+        }
+    }
     
     // MARK: - Life cycle
+    override func viewWillAppear(_ animated: Bool) {
+        setDatePicker()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePicker.addTarget(self, action: #selector(timeSetHasChanged), for: .valueChanged)
         dailyNotificationSwitch.addTarget(self, action: #selector(updateNotificationSetting), for: .valueChanged)
         monthlyNotificationSwitch.addTarget(self, action: #selector(updateNotificationSetting), for: .valueChanged)
         
@@ -107,6 +125,11 @@ class NotificationViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @objc func timeSetHasChanged(_ sender: UIDatePicker) {
+        updateNotificationSetting(dailyNotificationSwitch)
+        UserDefaults.standard.set(sender.date, forKey: "notiTime")
+    }
+    
     @objc func updateNotificationSetting(_ sender: UISwitch) {
         if sender.isOn {
             let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .sound)
@@ -116,10 +139,13 @@ class NotificationViewController: UIViewController {
                     if sender == self.dailyNotificationSwitch {
                         DispatchQueue.main.async {
                             self.sendDailyNotification(baseTime: self.datePicker.date)
+                            self.isDailyNotiOn = true
                         }
                     } else {
                         self.sendMonthlyNotification()
+                        self.isMonthlyNotiOn = true
                     }
+                    print("Notification: 설정 완료")
                 } else {
                     if let error {
                         print("Notification Error: ", error)
@@ -130,9 +156,11 @@ class NotificationViewController: UIViewController {
         } else {
             if sender == dailyNotificationSwitch {
                 userNotificationCenter.removePendingNotificationRequests(withIdentifiers: ["dailyNoti"])
+                isDailyNotiOn = false
                 print("Notification: 매일 알림 취소")
             } else {
                 userNotificationCenter.removePendingNotificationRequests(withIdentifiers: ["monthlyNoti"])
+                isMonthlyNotiOn = false
                 print("Notification: 매월 1일 알림 취소")
             }
         }
@@ -174,6 +202,7 @@ class NotificationViewController: UIViewController {
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = "\(Date().day)일의 삐용비용을 입력할 시간!"
         notificationContent.body = "오늘 하루 감정 소비를 기록해주세요"
+        notificationContent.sound = .default
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
@@ -200,6 +229,7 @@ class NotificationViewController: UIViewController {
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = "\(Date().month)월의 소비한도 설정하기!"
         notificationContent.body = "이번 달은 최대 얼마의 삐용비용을 사용할까요?"
+        notificationContent.sound = .default
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
@@ -221,5 +251,14 @@ class NotificationViewController: UIViewController {
                 print("Notification Error: ", error)
             }
         }
+    }
+    
+    func setDatePicker() {
+        datePicker.isEnabled = isDailyNotiOn // 알림 설정 off일 땐, DatePicker 선택 불가
+
+        guard let baseTime = UserDefaults.standard.object(forKey: "notiTime") as? Date else {
+            return
+        }
+        datePicker.date = baseTime
     }
 }
