@@ -26,7 +26,7 @@ class FontTableViewCell: UITableViewCell {
         let button = UIButton()
         button.setImage(UIImage(systemName: "circle.circle"), for: .normal)
         button.isEnabled = false
-        
+        button.tintColor = .systemGreen
         return button
     }()
     // MARK: - Life cycle
@@ -43,9 +43,9 @@ class FontTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if selected {
-            radioButton.setImage(UIImage(systemName: "circle.circle.fill"), for: .normal)
+            radioButton.setImage(UIImage(systemName: "circle.inset.filled"), for: .normal)
         } else {
-            radioButton.setImage(UIImage(systemName: "circle.circle"), for: .normal)
+            radioButton.setImage(UIImage(systemName: "circle"), for: .normal)
         }
     }
     
