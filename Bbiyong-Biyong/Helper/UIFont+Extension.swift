@@ -7,6 +7,14 @@
 
 import UIKit
 
+enum CustomFont: Int {
+    case system = 0
+    case ggocNaeEum = 1
+    case muJinJang = 2
+    case baegEuiEuiCeonSa = 3
+    case seongSirCe = 4
+}
+
 extension UIFont {
     /*
      나눔손글씨 꽃내음
@@ -19,7 +27,23 @@ extension UIFont {
      ===> NanumSeongSirCe
      */
     
-    var handwriting1: UIFont {
-        return UIFont(name: "NanumGgocNaeEum", size: 14)!
+    var customTextFont: UIFont {
+        return customFont(ofSize: 17)
+    }
+    
+    var customContentFont: UIFont {
+        return customFont(ofSize: 18)
+    }
+    
+    var customTitleFont: UIFont {
+        return customFont(ofSize: 20, isBold: true)
+    }
+    
+    var customExtraLargeFont: UIFont {
+        return customFont(ofSize: 25, isBold: true)
+    }
+    
+    func customFont(ofSize fontSize: CGFloat, isBold: Bool = false) -> UIFont {
+        return .systemFont(ofSize: fontSize)
     }
 }

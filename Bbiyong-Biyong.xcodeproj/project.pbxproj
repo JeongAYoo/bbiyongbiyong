@@ -26,6 +26,7 @@
 		076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B229A38AD6006BC5C2 /* ComposeView.swift */; };
 		076486B529A3927F006BC5C2 /* ConsumptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */; };
 		076486B729A39920006BC5C2 /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076486B629A39920006BC5C2 /* Consumption.swift */; };
+		0767A89E29FA4E4900B84B73 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767A89D29FA4E4900B84B73 /* UserDefaults.swift */; };
 		077FDDAA29A874CC00B15E3E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077FDDA929A874CC00B15E3E /* Observable.swift */; };
 		077FDDAD29A990BA00B15E3E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 077FDDAC29A990BA00B15E3E /* Realm */; };
 		077FDDAF29A990BA00B15E3E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 077FDDAE29A990BA00B15E3E /* RealmSwift */; };
@@ -73,6 +74,7 @@
 		076486B229A38AD6006BC5C2 /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
 		076486B429A3927F006BC5C2 /* ConsumptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionViewModel.swift; sourceTree = "<group>"; };
 		076486B629A39920006BC5C2 /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
+		0767A89D29FA4E4900B84B73 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		077FDDA929A874CC00B15E3E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		07865FF429A0BF4300C482AB /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		07865FF629A0C61500C482AB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				07865FF629A0C61500C482AB /* Extensions.swift */,
 				075A2FAC29B628FB0021262B /* Utils.swift */,
 				07C1E66129D99EE200E17CEF /* UIFont+Extension.swift */,
+				0767A89D29FA4E4900B84B73 /* UserDefaults.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				07FD2BBB299CC440000E5088 /* SettingViewController.swift in Sources */,
 				07865FFB29A1131B00C482AB /* DayTableViewCell.swift in Sources */,
 				076486B329A38AD6006BC5C2 /* ComposeView.swift in Sources */,
+				0767A89E29FA4E4900B84B73 /* UserDefaults.swift in Sources */,
 				07865FF929A0F08500C482AB /* SwitchTableViewCell.swift in Sources */,
 				071D8E8F2996DE9E001B3E71 /* HomeViewController.swift in Sources */,
 				07C1E66229D99EE200E17CEF /* UIFont+Extension.swift in Sources */,
