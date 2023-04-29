@@ -17,14 +17,18 @@ class FontTableViewController: UITableViewController {
                              "나눔손글씨 백의의 천사",
                              "나눔손글씨 성실체"]
     
-    private var selectedIndex = UserDefaults.standard.integer(forKey: "selectedFontIndex")
+//    private var selectedIndex = UserDefaults.standard.integer(forKey: "selectedFontIndex")
+    private var selectedIndex = UserFont.customFont
 
     // MARK: - Life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
         tableView.register(FontTableViewCell.self, forCellReuseIdentifier: FontTableViewCell.identifier)
         tableView.tableHeaderView = headerView
         tableView.allowsMultipleSelection = false
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     // MARK: - Helpers
@@ -37,7 +41,8 @@ class FontTableViewController: UITableViewController {
     }
     
     func saveFontIndex(index: Int) {
-        UserDefaults.standard.set(index, forKey: "selectedFontIndex")   // 인덱스 저장
+//        UserDefaults.standard.set(index, forKey: "selectedFontIndex")   // 인덱스 저장
+        UserFont.customFont = index // 인덱스 저장
     }
 
     // MARK: - Table view data source

@@ -24,6 +24,11 @@ final class HomeViewController: UIViewController {
             NotificationCenter.default.removeObserver(token)
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        contentView.setFonts()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

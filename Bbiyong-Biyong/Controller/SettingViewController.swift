@@ -183,11 +183,13 @@ extension SettingViewController: UITableViewDataSource {
         case .staticCell(let data):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
             cell.configure(with: data)
+            cell.setFonts()
             return cell
             
         case .switchCell(let data):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.identifier, for: indexPath) as? SwitchTableViewCell else { return UITableViewCell() }
             cell.configure(with: data)
+            
             return cell
         }
     }

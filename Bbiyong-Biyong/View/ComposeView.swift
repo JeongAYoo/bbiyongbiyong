@@ -34,7 +34,6 @@ class ComposeView: UIView {
         label.textColor = .darkGreen
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 18)
         return label
     }()
     
@@ -53,7 +52,6 @@ class ComposeView: UIView {
         label.textColor = .darkGreen
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 18)
         return label
     }()
     
@@ -73,8 +71,6 @@ class ComposeView: UIView {
         label.textColor = .darkGreen
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 18)
-        
         return label
     }()
     
@@ -83,7 +79,6 @@ class ComposeView: UIView {
         tv.layer.borderWidth = 1
         tv.layer.borderColor = UIColor.darkGreen?.cgColor
         tv.layer.cornerRadius = 8
-        tv.font = .systemFont(ofSize: 17)
         tv.textContainerInset = .init(top: 15, left: 15, bottom: 15, right: 15)
         // 스택의 남은 세로로 남은 공간을 채우도록
         tv.setContentHuggingPriority(.defaultLow, for: .vertical)
@@ -140,5 +135,15 @@ class ComposeView: UIView {
             make.leading.trailing.equalToSuperview().inset(20)
             make.top.bottom.equalTo(safeAreaLayoutGuide).inset(20)
         }
+    }
+    
+    func setFonts() {
+        [titleLabel, costLabel, contentLabel].forEach { label in
+            label.font = UIFont().customContentFont
+        }
+        
+        titleTextField.font = UIFont().customTextFont
+        costTextField.font = UIFont().customTextFont
+        contentTextView.font = UIFont().customTextFont
     }
 }

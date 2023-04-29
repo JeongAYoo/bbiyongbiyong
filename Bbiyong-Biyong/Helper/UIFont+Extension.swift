@@ -36,14 +36,32 @@ extension UIFont {
     }
     
     var customTitleFont: UIFont {
+        return customFont(ofSize: 20)
+    }
+    
+    var customBoldTitleFont: UIFont {
         return customFont(ofSize: 20, isBold: true)
     }
     
+    /// Home - 총금액 표시레이블에 사용
     var customExtraLargeFont: UIFont {
         return customFont(ofSize: 25, isBold: true)
     }
     
     func customFont(ofSize fontSize: CGFloat, isBold: Bool = false) -> UIFont {
-        return .systemFont(ofSize: fontSize)
+        switch UserFont.customFont {
+        case CustomFont.system.rawValue:
+            return isBold ? .boldSystemFont(ofSize: fontSize) : .systemFont(ofSize: fontSize)
+        case CustomFont.ggocNaeEum.rawValue:
+            return UIFont(name: "NanumGgocNaeEum", size: fontSize)!
+        case CustomFont.muJinJang.rawValue:
+            return UIFont(name: "NanumMuJinJangCe", size: fontSize + 3)!
+        case CustomFont.baegEuiEuiCeonSa.rawValue:
+            return UIFont(name: "NanumBaegEuiEuiCeonSa", size: fontSize + 3)!
+        case CustomFont.seongSirCe.rawValue:
+            return UIFont(name: "NanumSeongSirCe", size: fontSize + 2)!
+        default:
+            return .systemFont(ofSize: fontSize)
+        }
     }
 }

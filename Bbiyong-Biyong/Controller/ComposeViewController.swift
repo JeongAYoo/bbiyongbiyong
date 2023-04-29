@@ -21,6 +21,11 @@ final class ComposeViewController: UIViewController {
     override func loadView() {
         view = composeView
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        composeView.setFonts()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

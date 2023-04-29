@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SettingTableViewCell: UITableViewCell {
+final class SettingTableViewCell: UITableViewCell {
     // MARK: - Properties
     static let identifier = "SettingTableViewCell"
     
@@ -40,6 +40,8 @@ class SettingTableViewCell: UITableViewCell {
 //        label.textAlignment = .right
 //        return label
 //    }()
+    
+    private var subtextLabel: UILabel!
     
     // MARK: - Life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -98,13 +100,18 @@ class SettingTableViewCell: UITableViewCell {
         iconContainer.backgroundColor = model.iconBackgroundColor
 
         if model.title == "버전" {
-            let subtext = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: self.frame.height))
-            subtext.text = Utils.getAppVersion()
-            subtext.textColor = .lightGray
-            subtext.textAlignment = .right
-            subtext.sizeToFit()
-            self.accessoryView = subtext
+            subtextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: self.frame.height))
+            subtextLabel.text = Utils.getAppVersion()
+            subtextLabel.textColor = .lightGray
+            subtextLabel.textAlignment = .right
+            subtextLabel.sizeToFit()
+            self.accessoryView = subtextLabel
         }
     }
-
+    
+    func setFonts() {
+        titleLabel.font = UIFont().customTextFont
+        guard let subtext = subtextLabel else { return }
+        subtext.font = UIFont().customTextFont
+    }
 }

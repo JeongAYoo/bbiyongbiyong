@@ -54,7 +54,7 @@ class HomeView: UIView {
         label.text = "💸 \(username)님의 이번 달 소비"
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: 20)
+//        label.font = .boldSystemFont(ofSize: 20)
 
         return label
     }()
@@ -120,6 +120,7 @@ class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
+        setFonts()
     }
 
     required init?(coder: NSCoder) {
@@ -190,5 +191,11 @@ class HomeView: UIView {
         }
         
         bbiyongImageView.image = UIImage(named: imageName)
+    }
+    
+    func setFonts() {
+        monthlyCostTitleLabel.font = UIFont().customBoldTitleFont
+        totalConsumptionLabel.font = UIFont().customExtraLargeFont
+        remainAmountLabel.font = UIFont().customTextFont
     }
 }
