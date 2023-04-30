@@ -23,7 +23,6 @@ class DayTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "가격"
         label.numberOfLines = 1
-        label.font = .boldSystemFont(ofSize: 17)
         label.textAlignment = .right
         return label
     }()
@@ -32,7 +31,6 @@ class DayTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "제목"
         label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 15)
         return label
     }()
     
@@ -40,7 +38,6 @@ class DayTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "내용"
         label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 14)
         label.textColor = .darkGray
         return label
     }()
@@ -73,6 +70,8 @@ class DayTableViewCell: UITableViewCell {
         contentView.backgroundColor = .secondarySystemGroupedBackground
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 10
+        
+        setFonts()
     }
     
     required init?(coder: NSCoder) {
@@ -105,8 +104,18 @@ class DayTableViewCell: UITableViewCell {
         emotionImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(40)
+            make.height.width.equalTo(50)
         }
     }
-
+    
+    override func prepareForReuse() {
+        setFonts()
+    }
+    
+    // MARK: - Helpers
+    func setFonts() {
+        costLabel.font = UIFont().customFont(ofSize: 17, isBold: true)
+        titleLabel.font = UIFont().customSmallTextFont  // 15
+        contentLabel.font = UIFont().customFont(ofSize: 14)
+    }
 }

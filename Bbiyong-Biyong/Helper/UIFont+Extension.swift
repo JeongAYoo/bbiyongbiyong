@@ -27,6 +27,10 @@ extension UIFont {
      ===> NanumSeongSirCe
      */
     
+    var customSmallTextFont: UIFont {
+        return customFont(ofSize: 15)
+    }
+    
     var customTextFont: UIFont {
         return customFont(ofSize: 17)
     }
@@ -55,7 +59,7 @@ extension UIFont {
         case CustomFont.ggocNaeEum.rawValue:
             return UIFont(name: "NanumGgocNaeEum", size: fontSize)!
         case CustomFont.muJinJang.rawValue:
-            return UIFont(name: "NanumMuJinJangCe", size: fontSize + 3)!
+            return UIFont(name: "NanumMuJinJangCe", size: fontSize + 2)!
         case CustomFont.baegEuiEuiCeonSa.rawValue:
             return UIFont(name: "NanumBaegEuiEuiCeonSa", size: fontSize + 3)!
         case CustomFont.seongSirCe.rawValue:

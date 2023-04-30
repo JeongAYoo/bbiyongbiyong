@@ -50,6 +50,7 @@ class SwitchTableViewCell: UITableViewCell {
         contentView.addSubview(modeSwitch)
         contentView.addSubview(label)
         modeSwitch.addTarget(self, action: #selector(updateAppearance), for: .valueChanged)
+        label.font = UIFont().customTextFont
     }
     
     required init?(coder: NSCoder) {
@@ -92,6 +93,7 @@ class SwitchTableViewCell: UITableViewCell {
         label.text = nil
         iconContainer.backgroundColor = nil
         modeSwitch.isOn = false
+        label.font = UIFont().customTextFont
     }
     
     // MARK: - Helpers
@@ -109,6 +111,5 @@ class SwitchTableViewCell: UITableViewCell {
         windows?.overrideUserInterfaceStyle = sender.isOn == true ? .dark : .light
         UserDefaults.standard.set(sender.isOn, forKey: "isDarkMode")
     }
-
 }
 

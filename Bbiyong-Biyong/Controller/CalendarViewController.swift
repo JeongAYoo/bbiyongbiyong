@@ -28,13 +28,8 @@ final class CalendarViewController: UIViewController {
         calendar.appearance.headerDateFormat = "YYYY년 M월"
         calendar.appearance.headerTitleColor = .label
         calendar.appearance.headerTitleAlignment = .center
-        calendar.appearance.headerTitleFont = .systemFont(ofSize: 18)
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.headerHeight = 40.0
-        
-        // weekdays, numbers Font
-        calendar.appearance.weekdayFont = .systemFont(ofSize: 15)
-        calendar.appearance.titleFont = .systemFont(ofSize: 16)
         
         // color
         calendar.appearance.titleDefaultColor = .label
@@ -50,7 +45,9 @@ final class CalendarViewController: UIViewController {
     }()
     
     private lazy var header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+    
     private let headerLabel = UILabel()
+    
     private let headerDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
@@ -76,6 +73,7 @@ final class CalendarViewController: UIViewController {
         let defaultDate = calendarView.selectedDate ?? calendarView.today!
         tasks = Consumption.fetchDate(date: defaultDate)
         calendarView.reloadData()
+        setFonts()
     }
     
     override func viewDidLoad() {
@@ -85,7 +83,7 @@ final class CalendarViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 70
+        tableView.rowHeight = 75
         
         tasks = Consumption.fetchDate(date: Date())
         
@@ -141,7 +139,6 @@ final class CalendarViewController: UIViewController {
                 
         // tableView header
         headerLabel.text = headerDateFormatter.string(from: Date())
-        headerLabel.font = .boldSystemFont(ofSize: 18)
         header.addSubview(headerLabel)
         headerLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(20)
@@ -162,6 +159,17 @@ final class CalendarViewController: UIViewController {
         }
         
         tableView.tableFooterView = footer
+    }
+    
+    // change calendar, tableview header label font
+    func setFonts() {
+        calendarView.appearance.headerTitleFont = UIFont().customContentFont
+        
+        // weekdays, numbers Font
+        calendarView.appearance.weekdayFont = UIFont().customSmallTextFont
+        calendarView.appearance.titleFont = UIFont().customFont(ofSize: 16)
+        
+        headerLabel.font = UIFont().customFont(ofSize: 18, isBold: true)
     }
     
 }

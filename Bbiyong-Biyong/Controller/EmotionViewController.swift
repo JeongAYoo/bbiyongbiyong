@@ -15,7 +15,6 @@ class EmotionViewController: UIViewController {
         label.text = "감정 선택"
         label.numberOfLines = 1
         label.textAlignment = .center
-        label.font = .boldSystemFont(ofSize: 20)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -24,7 +23,6 @@ class EmotionViewController: UIViewController {
         let label = UILabel()
         label.text = "어떤 감정때문에 삐용비용을 사용했나요?"
         label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 15)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.textColor = .secondaryLabel
@@ -51,6 +49,7 @@ class EmotionViewController: UIViewController {
       }()
     
     var delegate: SendDataDelegate?
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +57,7 @@ class EmotionViewController: UIViewController {
         collectionView.delegate = self
         
         configure()
+        setFonts()
     }
 
     // MARK: - Helpers
@@ -81,6 +81,11 @@ class EmotionViewController: UIViewController {
             make.top.equalTo(subtitleLabel.snp.bottom).offset(30)
             make.leading.trailing.bottom.equalToSuperview().inset(10)
         }
+    }
+    
+    func setFonts() {
+        titleLabel.font = UIFont().customBoldTitleFont
+        subtitleLabel.font = UIFont().customSmallTextFont
     }
 }
 
