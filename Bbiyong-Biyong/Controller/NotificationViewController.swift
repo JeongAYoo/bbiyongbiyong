@@ -107,6 +107,8 @@ class NotificationViewController: UIViewController {
     // MARK: - Life cycle
     override func viewWillAppear(_ animated: Bool) {
         setDatePicker()
+        setFonts()
+        setNavigationBarAppearance()
     }
     
     override func viewDidLoad() {
@@ -116,7 +118,6 @@ class NotificationViewController: UIViewController {
         monthlyNotificationSwitch.addTarget(self, action: #selector(updateNotificationSetting), for: .valueChanged)
         
         configure()
-        setFonts()
     }
     
     // MARK: - Actions

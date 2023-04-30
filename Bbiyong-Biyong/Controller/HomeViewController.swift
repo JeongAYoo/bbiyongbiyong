@@ -27,6 +27,7 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         contentView.setFonts()
+        setNavigationBarAppearance()
     }
     
     override func viewDidLoad() {

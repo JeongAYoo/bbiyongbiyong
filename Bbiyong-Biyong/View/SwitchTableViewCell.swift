@@ -89,10 +89,8 @@ class SwitchTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         // reset
-        iconImageView.image = nil
-        label.text = nil
-        iconContainer.backgroundColor = nil
-        modeSwitch.isOn = false
+        modeSwitch.isOn = DarkMode.isDarkMode
+        print("스위치 확인: \(modeSwitch.isOn)")
         label.font = UIFont().customTextFont
     }
     
@@ -101,7 +99,7 @@ class SwitchTableViewCell: UITableViewCell {
         label.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
-        modeSwitch.isOn = model.isOn
+        modeSwitch.isOn = DarkMode.isDarkMode
     }
     
     @objc func updateAppearance(_ sender: UISwitch) {
@@ -109,7 +107,7 @@ class SwitchTableViewCell: UITableViewCell {
         
         let windows = window.windows.first
         windows?.overrideUserInterfaceStyle = sender.isOn == true ? .dark : .light
-        UserDefaults.standard.set(sender.isOn, forKey: "isDarkMode")
+        DarkMode.isDarkMode = sender.isOn
     }
 }
 

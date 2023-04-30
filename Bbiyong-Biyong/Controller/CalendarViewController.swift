@@ -74,6 +74,7 @@ final class CalendarViewController: UIViewController {
         tasks = Consumption.fetchDate(date: defaultDate)
         calendarView.reloadData()
         setFonts()
+        setNavigationBarAppearance()
     }
     
     override func viewDidLoad() {

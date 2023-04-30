@@ -25,6 +25,7 @@ class FontTableViewController: UITableViewController {
         tableView.register(FontTableViewCell.self, forCellReuseIdentifier: FontTableViewCell.identifier)
         tableView.tableHeaderView = headerView
         tableView.allowsMultipleSelection = false
+        setNavigationBarAppearance()
     }
     
     override func viewDidLoad() {

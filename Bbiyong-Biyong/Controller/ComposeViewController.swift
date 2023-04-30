@@ -10,7 +10,9 @@ import UIKit
 final class ComposeViewController: UIViewController {
     // MARK: - Properties
     private lazy var saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+    
     private let composeView = ComposeView()
+    
     var viewModel = ConsumptionViewModel()
     // 읽기 모드
     var originalTarget: Consumption?
@@ -24,6 +26,7 @@ final class ComposeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         composeView.setFonts()
+        setNavigationBarAppearance()
     }
     
     override func viewDidLoad() {
@@ -162,7 +165,6 @@ final class ComposeViewController: UIViewController {
         navigationItem.scrollEdgeAppearance = navigationBarAppearance
         navigationItem.standardAppearance = navigationBarAppearance
         navigationController?.setNeedsStatusBarAppearanceUpdate()
-        
     }
     
     func setTargetActions() {

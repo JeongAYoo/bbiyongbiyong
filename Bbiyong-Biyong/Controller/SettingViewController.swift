@@ -32,7 +32,6 @@ struct SettingSwitchOption {
     let title: String
     let icon: UIImage?
     let iconBackgroundColor: UIColor
-    var isOn: Bool
     let handler: (() -> Void)
 }
 
@@ -47,8 +46,6 @@ final class SettingViewController: UIViewController {
     }()
     
     private lazy var headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height / 4))
-    
-    private var isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     
     var model: [Section] = []
     
@@ -65,6 +62,7 @@ final class SettingViewController: UIViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
         headerView.setFonts()
+        setNavigationBarAppearance()
     }
     
     override func viewDidLoad() {
@@ -100,7 +98,7 @@ final class SettingViewController: UIViewController {
     
     func configureData() {
         self.model.append(Section(title: "시스템", options: [
-            .switchCell(model: SettingSwitchOption(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray, isOn: isDarkMode) {
+            .switchCell(model: SettingSwitchOption(title: "다크모드", icon: UIImage(systemName: "moon.fill"), iconBackgroundColor: .darkGray) {
             }),
             .staticCell(model: SettingsOption(title: "알림", icon: UIImage(systemName: "bell.fill"), iconBackgroundColor: .systemRed) {
                 let vc = NotificationViewController()

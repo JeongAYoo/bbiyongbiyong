@@ -47,6 +47,10 @@ final class MainTabBarController: UITabBarController {
         navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.backgroundColor = .systemBackground
         navigationBarAppearance.shadowColor = nil
+
+        let attribute :[NSAttributedString.Key: Any] = [NSAttributedString.Key.font : UIFont().customFont(ofSize: 17, isBold: true)]
+        navigationBarAppearance.titleTextAttributes = attribute
+
         nav.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         nav.navigationBar.standardAppearance = navigationBarAppearance
         navigationItem.scrollEdgeAppearance = navigationBarAppearance

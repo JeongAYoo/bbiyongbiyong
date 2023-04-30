@@ -32,6 +32,12 @@ struct UserFont {
     static var customFont: Int
 }
 
+struct DarkMode {
+    @UserDefault(key: keyEnum.isDarkMode.rawValue, defaultValue: false)
+    static var isDarkMode: Bool
+}
+
 enum keyEnum: String {
     case customFont = "customFont"
+    case isDarkMode = "isDarkMode"
 }
