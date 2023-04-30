@@ -108,6 +108,7 @@ final class RegistrationViewController: UIViewController {
         configureUI()
         configureNotificationObservers()
         
+        // 설치된 이후에
         if UserDefaults.standard.bool(forKey: "launchedBefore") {
             titleLabel.text = "Profile"
             saveButton.setTitle("수정하기", for: .normal)
@@ -117,6 +118,8 @@ final class RegistrationViewController: UIViewController {
             let maximum = String(UserDefaults.standard.integer(forKey: "maximum"))
             viewModel.maximumCostString = maximum
             maximumCostTextField.text = maximum
+            
+            setFonts()
         }
     }
     
@@ -180,4 +183,14 @@ final class RegistrationViewController: UIViewController {
         saveButton.isEnabled = viewModel.formIsValid
     }
 
+    func setFonts() {
+        titleLabel.font = UIFont().customFont(ofSize: 28, isBold: true)
+        usernameLabel.font = UIFont().customFont(ofSize: 17, isBold: true)
+        usernameTextField.font = UIFont().customTextFont
+        usernameValidationLabel.font = UIFont().customFont(ofSize: 12, isBold: true)
+        maximumCostLabel.font = UIFont().customFont(ofSize: 17, isBold: true)
+        maximumCostTextField.font = UIFont().customTextFont
+        costValidationLabel.font = UIFont().customFont(ofSize: 12, isBold: true)
+        saveButton.titleLabel?.font = UIFont().customBoldTitleFont
+    }
 }

@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class ProfileHeaderView: UIView {
+    // MARK: - Properties
     var username: String = UserDefaults.standard.string(forKey: "username") ?? "" {
         didSet {
             usernameLabel.text = "\(username)"
@@ -32,7 +33,6 @@ class ProfileHeaderView: UIView {
     private let usernameStringLabel: UILabel = {
         let label = UILabel()
         label.text = "닉네임"
-        label.font = .systemFont(ofSize: 17)
         label.textAlignment = .left
         return label
     }()
@@ -40,7 +40,6 @@ class ProfileHeaderView: UIView {
     private let maximumStringLabel: UILabel = {
         let label = UILabel()
         label.text = "이번 달 한도"
-        label.font = .systemFont(ofSize: 17)
         label.textAlignment = .left
         return label
     }()
@@ -49,7 +48,6 @@ class ProfileHeaderView: UIView {
         let label = UILabel()
         label.text = "\(username)"
         label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 17)
         label.textAlignment = .right
         return label
     }()
@@ -58,7 +56,6 @@ class ProfileHeaderView: UIView {
         let label = UILabel()
         label.text = "\(maximum.numberToCurrency())"
         label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 17)
         label.textAlignment = .right
         return label
     }()
@@ -101,15 +98,18 @@ class ProfileHeaderView: UIView {
     
     private var contentView = UIView()
     
+    // MARK: - Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
+        setFonts()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Helpers
     func configure() {
         contentView.backgroundColor = .secondarySystemGroupedBackground
         contentView.layer.cornerRadius = 10
@@ -135,4 +135,9 @@ class ProfileHeaderView: UIView {
         }
     }
     
+    func setFonts() {
+        [usernameStringLabel, maximumStringLabel, usernameLabel, maximumLabel].forEach { label in
+            label.font = UIFont().customTextFont
+        }
+    }
 }

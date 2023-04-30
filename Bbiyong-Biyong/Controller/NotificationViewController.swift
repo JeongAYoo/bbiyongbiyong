@@ -15,8 +15,6 @@ class NotificationViewController: UIViewController {
         label.text = "매일 알림"
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 18)
-        
         return label
     }()
     
@@ -25,9 +23,7 @@ class NotificationViewController: UIViewController {
         label.text = "오늘의 소비 기록을 잊지 않도록 알려드려요"
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 14)
         label.textColor = .darkGray
-        
         return label
     }()
     
@@ -65,8 +61,6 @@ class NotificationViewController: UIViewController {
         label.text = "매월 1일"
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 18)
-        
         return label
     }()
     
@@ -75,9 +69,7 @@ class NotificationViewController: UIViewController {
         label.text = "이번달 소비한도 수정 알림"
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 16)
         label.sizeToFit()
-        
         return label
     }()
     
@@ -98,12 +90,14 @@ class NotificationViewController: UIViewController {
     }()
     
     private let userNotificationCenter = UNUserNotificationCenter.current()
+    
     private var isDailyNotiOn = UserDefaults.standard.bool(forKey: "isDailyNotiOn") {
         didSet {
             UserDefaults.standard.set(isDailyNotiOn, forKey: "isDailyNotiOn")
             datePicker.isEnabled = isDailyNotiOn
         }
     }
+    
     private var isMonthlyNotiOn = UserDefaults.standard.bool(forKey: "isMonthlyNotiOn") {
         didSet {
             UserDefaults.standard.set(isMonthlyNotiOn, forKey: "isMonthlyNotiOn")
@@ -122,6 +116,7 @@ class NotificationViewController: UIViewController {
         monthlyNotificationSwitch.addTarget(self, action: #selector(updateNotificationSetting), for: .valueChanged)
         
         configure()
+        setFonts()
     }
     
     // MARK: - Actions
@@ -260,5 +255,12 @@ class NotificationViewController: UIViewController {
             return
         }
         datePicker.date = baseTime
+    }
+    
+    func setFonts() {
+        titleLabel.font = UIFont().customContentFont
+        descriptionLabel.font = UIFont().customFont(ofSize: 14)
+        secondTitleLabel.font = UIFont().customContentFont
+        secondSubtitleLabel.font = UIFont().customFont(ofSize: 16)
     }
 }

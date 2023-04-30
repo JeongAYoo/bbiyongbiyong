@@ -47,6 +47,7 @@ final class SettingViewController: UIViewController {
     }()
     
     private lazy var headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height / 4))
+    
     private var isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     
     var model: [Section] = []
@@ -63,6 +64,7 @@ final class SettingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        headerView.setFonts()
     }
     
     override func viewDidLoad() {
