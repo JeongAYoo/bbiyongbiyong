@@ -56,7 +56,7 @@ class DayTableViewCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.spacing = 10
+        stackView.spacing = 9
         
         return stackView
     }()
@@ -95,16 +95,16 @@ class DayTableViewCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0))
         
         rootStackView.snp.makeConstraints { make in
-            make.leading.equalTo(emotionImageView.snp.trailing).offset(20)
+            make.leading.equalTo(emotionImageView.snp.trailing).offset(15)
             make.top.bottom.equalToSuperview().inset(10)
             make.trailing.equalToSuperview().inset(20)
         }
         
         //let size = contentView.frame.size.height
         emotionImageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(15)
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(50)
+            make.height.width.equalTo(45)
         }
     }
     

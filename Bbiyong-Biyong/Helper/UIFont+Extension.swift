@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum CustomFont: Int {
+enum CustomFont: Int, CaseIterable {
     case system = 0
     case ggocNaeEum = 1
     case muJinJang = 2

@@ -10,15 +10,14 @@ import UIKit
 class FontTableViewController: UITableViewController {
     // MARK: - Properties
     private lazy var headerView = FontExampleHeaderView(frame: CGRect(x: 0, y: 0, width: 0, height: 120))
-    // 테스트용
+    
+    private var selectedIndex = UserFont.customFont
+    
     private var fontNames = ["시스템",
                              "나눔손글씨 꽃내음",
                              "나눔손글씨 무진장체",
                              "나눔손글씨 백의의 천사",
                              "나눔손글씨 성실체"]
-    
-//    private var selectedIndex = UserDefaults.standard.integer(forKey: "selectedFontIndex")
-    private var selectedIndex = UserFont.customFont
 
     // MARK: - Life cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +41,6 @@ class FontTableViewController: UITableViewController {
     }
     
     func saveFontIndex(index: Int) {
-//        UserDefaults.standard.set(index, forKey: "selectedFontIndex")   // 인덱스 저장
         UserFont.customFont = index // 인덱스 저장
     }
 
@@ -54,9 +52,8 @@ class FontTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // the number of fonts
-        return fontNames.count
+        return CustomFont.allCases.count
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FontTableViewCell.identifier, for: indexPath) as! FontTableViewCell
