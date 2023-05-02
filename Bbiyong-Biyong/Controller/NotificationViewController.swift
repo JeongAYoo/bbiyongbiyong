@@ -196,7 +196,7 @@ class NotificationViewController: UIViewController {
     
     func sendDailyNotification(baseTime: Date) {
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "\(Date().day)일의 삐용비용을 입력할 시간!"
+        notificationContent.title = "삐용비용을 입력할 시간!"
         notificationContent.body = "오늘 하루 감정 소비를 기록해주세요"
         notificationContent.sound = .default
         

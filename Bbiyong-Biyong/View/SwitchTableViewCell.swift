@@ -90,7 +90,6 @@ class SwitchTableViewCell: UITableViewCell {
         super.prepareForReuse()
         // reset
         modeSwitch.isOn = DarkMode.isDarkMode
-        print("스위치 확인: \(modeSwitch.isOn)")
         label.font = UIFont().customTextFont
     }
     
