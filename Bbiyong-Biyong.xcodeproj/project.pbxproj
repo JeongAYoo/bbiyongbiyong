@@ -46,7 +46,6 @@
 		07C1E66829DEF8EE00E17CEF /* FontExampleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1E66729DEF8EE00E17CEF /* FontExampleHeaderView.swift */; };
 		07FD2B792997F505000E5088 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B782997F505000E5088 /* RegistrationViewController.swift */; };
 		07FD2B7C2997F733000E5088 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */; };
-		07FD2B7F2997FAE8000E5088 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B7E2997FAE8000E5088 /* User.swift */; };
 		07FD2B812997FDB2000E5088 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2B802997FDB2000E5088 /* CustomTextField.swift */; };
 		07FD2B8429981664000E5088 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 07FD2B8329981664000E5088 /* IQKeyboardManagerSwift */; };
 		07FD2BB7299CBE0A000E5088 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD2BB6299CBE0A000E5088 /* MainTabBarController.swift */; };
@@ -92,7 +91,6 @@
 		07C1E66729DEF8EE00E17CEF /* FontExampleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExampleHeaderView.swift; sourceTree = "<group>"; };
 		07FD2B782997F505000E5088 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		07FD2B7B2997F733000E5088 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
-		07FD2B7E2997FAE8000E5088 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		07FD2B802997FDB2000E5088 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		07FD2BB6299CBE0A000E5088 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		07FD2BB8299CC434000E5088 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 		071D8EA02996E133001B3E71 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				07FD2B7E2997FAE8000E5088 /* User.swift */,
 				076486B629A39920006BC5C2 /* Consumption.swift */,
 				075A2FB229B8CB1C0021262B /* ImageId.swift */,
 			);
@@ -358,7 +355,6 @@
 				07C1E66829DEF8EE00E17CEF /* FontExampleHeaderView.swift in Sources */,
 				076486B529A3927F006BC5C2 /* ConsumptionViewModel.swift in Sources */,
 				076486B129A1575D006BC5C2 /* AddNewButton.swift in Sources */,
-				07FD2B7F2997FAE8000E5088 /* User.swift in Sources */,
 				07865FF729A0C61500C482AB /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,7 +493,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7V2ZG69KPK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bbiyong-Biyong/Info.plist";
@@ -531,7 +527,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7V2ZG69KPK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bbiyong-Biyong/Info.plist";
