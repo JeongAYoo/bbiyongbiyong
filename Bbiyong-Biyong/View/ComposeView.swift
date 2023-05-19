@@ -124,9 +124,6 @@ class ComposeView: UIView {
     func configure() {
         backgroundColor = .sageGreen
         
-//        datePicker.snp.makeConstraints { make in
-//            make.leading.equalTo(stackView)
-//        }
         emotionButton.snp.makeConstraints { make in
             make.width.height.equalTo(50)
         }

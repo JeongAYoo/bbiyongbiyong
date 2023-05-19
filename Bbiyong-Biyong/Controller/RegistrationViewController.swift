@@ -109,13 +109,14 @@ final class RegistrationViewController: UIViewController {
         configureNotificationObservers()
         
         // 설치된 이후에
-        if UserDefaults.standard.bool(forKey: "launchedBefore") {
+        if FirstLaunch.launchedBefore {
             titleLabel.text = "Profile"
             saveButton.setTitle("수정하기", for: .normal)
-            let username = UserDefaults.standard.string(forKey: "username")
-            viewModel.username = username
-            usernameTextField.text = username
-            let maximum = String(UserDefaults.standard.integer(forKey: "maximum"))
+
+            viewModel.username = UserName.username
+            usernameTextField.text = UserName.username
+            
+            let maximum = String(MaximumCost.maximum)
             viewModel.maximumCostString = maximum
             maximumCostTextField.text = maximum
             
@@ -125,7 +126,7 @@ final class RegistrationViewController: UIViewController {
     
     // MARK: - Actions
     @objc func handleSave() {
-        if UserDefaults.standard.bool(forKey: "launchedBefore") {
+        if FirstLaunch.launchedBefore {
             viewModel.update()
             navigationController?.popViewController(animated: true)
         } else {

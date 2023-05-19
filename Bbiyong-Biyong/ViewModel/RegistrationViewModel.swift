@@ -46,14 +46,14 @@ struct RegistrationViewModel {
     }
     
     func signUp() {
-        UserDefaults.standard.setValue(true, forKey: "launchedBefore")
-        UserDefaults.standard.setValue(Date(), forKey: "firstRegisteredDate")
-        UserDefaults.standard.setValue(username!, forKey: "username")
-        UserDefaults.standard.setValue(Int(maximumCostString!)!, forKey: "maximum")
+        FirstLaunch.launchedBefore = true
+        RegisterDate.firstRegisteredDate = Date()
+        UserName.username = username!
+        MaximumCost.maximum = Int(maximumCostString!)!
     }
     
     func update() {
-        UserDefaults.standard.setValue(username!, forKey: "username")
-        UserDefaults.standard.setValue(Int(maximumCostString!)!, forKey: "maximum")
+        UserName.username = username!
+        MaximumCost.maximum = Int(maximumCostString!)!
     }
 }

@@ -27,6 +27,26 @@ struct UserDefault<T> {
     }
 }
 
+struct FirstLaunch {
+    @UserDefault(key: keyEnum.launchedBefore.rawValue, defaultValue: false)
+    static var launchedBefore: Bool
+}
+
+struct RegisterDate {
+    @UserDefault(key: keyEnum.firstRegisteredDate.rawValue, defaultValue: Date())
+    static var firstRegisteredDate: Date
+}
+
+struct UserName {
+    @UserDefault(key: keyEnum.username.rawValue, defaultValue: "User")
+    static var username: String
+}
+
+struct MaximumCost {
+    @UserDefault(key: keyEnum.maximum.rawValue, defaultValue: 0)
+    static var maximum: Int
+}
+
 struct UserFont {
     @UserDefault(key: keyEnum.customFont.rawValue, defaultValue: CustomFont.system.rawValue)
     static var customFont: Int
@@ -38,6 +58,10 @@ struct DarkMode {
 }
 
 enum keyEnum: String {
+    case launchedBefore = "launchedBefore"
+    case firstRegisteredDate = "firstRegisteredDate"
+    case username = "username"
+    case maximum = "maximum"
     case customFont = "customFont"
     case isDarkMode = "isDarkMode"
 }

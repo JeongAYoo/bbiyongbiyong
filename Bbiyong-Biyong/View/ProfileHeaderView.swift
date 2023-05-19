@@ -10,13 +10,13 @@ import SnapKit
 
 class ProfileHeaderView: UIView {
     // MARK: - Properties
-    var username: String = UserDefaults.standard.string(forKey: "username") ?? "" {
+    var username: String = UserName.username {
         didSet {
             usernameLabel.text = "\(username)"
         }
     }
     
-    var maximum: Int = UserDefaults.standard.integer(forKey: "maximum") {
+    var maximum: Int = MaximumCost.maximum {
         didSet {
             maximumLabel.text = "\(maximum.numberToCurrency())"
         }
@@ -90,8 +90,6 @@ class ProfileHeaderView: UIView {
         stack.distribution = .fill
         stack.alignment = .fill
         stack.spacing = 10
-//        stack.isLayoutMarginsRelativeArrangement = true
-//        stack.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
 
         return stack
     }()

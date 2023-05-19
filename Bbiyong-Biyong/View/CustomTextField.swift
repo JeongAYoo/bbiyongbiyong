@@ -29,8 +29,7 @@ class CustomTextField: UITextField {
         self.snp.makeConstraints { make in
             make.height.equalTo(50)
         }
-        
-//        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+
         attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.gray])
     }
     

@@ -11,14 +11,14 @@ import SnapKit
 
 class HomeView: UIView {
     // MARK: - Properties
-    var username: String = UserDefaults.standard.string(forKey: "username") ?? "" {
+    var username: String = UserName.username {
         didSet {
             monthlyCostTitleLabel.text = "💸 \(username)님의 이번 달 소비"
 //            statisticsTitleLabel.text = "📊 \(username)님의 통계"
         }
     }
     
-    var maximum: Int = UserDefaults.standard.integer(forKey: "maximum") {
+    var maximum: Int = MaximumCost.maximum {
         didSet {
             remain = maximum - total
             updateImage(propotion: Double(total) / Double(maximum))
@@ -54,7 +54,6 @@ class HomeView: UIView {
         label.text = "💸 \(username)님의 이번 달 소비"
         label.numberOfLines = 1
         label.textAlignment = .left
-//        label.font = .boldSystemFont(ofSize: 20)
 
         return label
     }()

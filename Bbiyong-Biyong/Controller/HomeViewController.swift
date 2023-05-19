@@ -107,8 +107,8 @@ final class HomeViewController: UIViewController {
     }
     
     func updateUserInfo() {
-        contentView.username = UserDefaults.standard.string(forKey: "username")!
-        contentView.maximum = UserDefaults.standard.integer(forKey: "maximum")
+        contentView.username = UserName.username
+        contentView.maximum = MaximumCost.maximum
     }
 }
 

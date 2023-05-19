@@ -223,7 +223,7 @@ class NotificationViewController: UIViewController {
     
     func sendMonthlyNotification() {
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "\(Date().month)월의 소비한도 설정하기!"
+        notificationContent.title = "새로운 달의 소비한도 설정하기!"
         notificationContent.body = "이번 달은 최대 얼마의 삐용비용을 사용할까요?"
         notificationContent.sound = .default
         
