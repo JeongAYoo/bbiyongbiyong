@@ -107,8 +107,10 @@ final class HomeViewController: UIViewController {
     }
     
     func updateUserInfo() {
-        contentView.username = UserName.username
-        contentView.maximum = MaximumCost.maximum
+        DispatchQueue.main.async {
+            self.contentView.username = UserName.username
+            self.contentView.maximum = MaximumCost.maximum
+        }
     }
 }
 
